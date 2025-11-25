@@ -105,12 +105,6 @@ item_table = {
 #     item_data = item_table[name]
 #     return SDItem(name, item_data.classification, item_data.code, self.player)
 
-
-def create_item(self, name: str) -> Item:
-    item_data = item_table[name]
-    item = SDItem(name, item_data.classification, item_data.code, self.player)
-    return item
-
 def create_all_items(world: SDWorld):
     itempool = []
 
@@ -122,25 +116,16 @@ def create_all_items(world: SDWorld):
 
     # Starting Party Member given at game start
     starter_member = "Pinn"
-    if (world.options.starting_party_member == "option_geo"):
+    if (world.options.starting_party_member == "geo"):
         starter_member = "Geo"
-    if (world.options.starting_party_member == "option_kani"):
+    if (world.options.starting_party_member == "kani"):
         starter_member = "Kani"
-    if (world.options.starting_party_member == "option_random"):
-
-        # TODO:
-        # Sawyer: Make sure this has all party members in the final game.
-        member = world.random.randint(1, 3)
-        if (member == 1):
-            starter_member = "Pinn"
-        elif (member == 2):
-            starter_member = "Geo"
-        elif (member == 3):
-            starter_member = "Kani"
 
     itempool.remove(starter_member)
 
-
+    # Sawyer: Add starter party member at the end.
+    starting_party_member = world.create_item(starter_member)
+    world.multiworld.push_precollected(starting_party_member)
 
     # other steps here maybe
 
@@ -156,6 +141,10 @@ def create_all_items(world: SDWorld):
     itempool += [world.create_filler() for _ in range(needed_number_of_filler_items)]
 
     world.multiworld.itempool += itempool
+    #world.multiworld.itempool += [world.create_item(itemname) for itemname in itempool]
 
-#Sawyer: Add starter party member at the end.
-    world.multiworld.push_precollected(world.create_item(starter_member))
+
+def create_item(self, name: str) -> Item:
+    item_data = item_table[name]
+    item = SDItem(name, item_data.classification, item_data.code, self.player)
+    return item

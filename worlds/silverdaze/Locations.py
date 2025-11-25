@@ -130,7 +130,7 @@ def create_regular_locations(world: SDWorld) -> None:
     red1.add_locations(red1_locations,SDLocation)
     red2_locations = get_location_names_with_ids(
         [
-            "Red4Chest1","Red4Chest2","Red4Chest3","RedTower2Chest","RedTower3Chest","Nyx","Kani","KaniMP3",
+            "Red4Chest1","Red4Chest2","Red4Chest3","RedTower2Chest","RedTower3Chest","Kani","KaniMP3",
             "KaniWeapon1","KaniWeapon2","KaniWeapon3","RedChasm1Chest","RedChasm2Chest1","RedChasm2Chest2",
             "RedChasmReunionChest","Hub2Chest2",
         ]

@@ -16,7 +16,7 @@ def set_all_rules(world: SDWorld) -> None:
     set_completion_condition(world)
 
 
-#Sawyer: The following are special rule shorthands for easy checking.
+#Sawyer: The following are special rule helpers for easy checking.
 lookup_key_from_color = {
     "red": "Red Key",
     "orange": "Orange Key",
@@ -37,6 +37,22 @@ def get_key_from_color(color: str) -> str:
 def sd_has_key(color: str, state: CollectionState, world: SDWorld) -> bool:
     return state.has(get_key_from_color(color), world.player)
 
+#The Discord recommended we just make one function per key. Something something performance.
+def sd_has_red(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Red Key", world.player)
+def sd_has_yellow(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Yellow Key", world.player)
+def sd_has_blue(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Blue Key", world.player)
+def sd_has_green(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Green Key", world.player)
+def sd_has_purple(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Purple Key", world.player)
+def sd_has_orange(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Orange Key", world.player)
+def sd_has_black(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Black Key", world.player)
+
 def sd_party_size_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
     # party_members is all items that are party members
     # keys is just the strings, which are item names
@@ -53,7 +69,7 @@ def sd_can_fight_warden(state: CollectionState, world: SDWorld) -> bool:
 def sd_can_fight_chaos_warden(state: CollectionState, world: SDWorld) -> bool:
     return sd_party_size_meets(state, world,5)
 
-#End of shorthands
+#End of helpers
 
 
 #Sawyer: Entrance time!
@@ -72,9 +88,9 @@ def set_all_entrance_rules(world: SDWorld) -> None:
 
 
 
-    set_rule(door_to_hub_2, lambda mystate: sd_has_key('yellow', mystate, world))
-    set_rule(red_main_entrance, lambda mystate: sd_has_key('yellow', mystate, world))
-    set_rule(red_kingoose_boss_door, lambda mystate: sd_has_key('yellow', mystate, world) and sd_can_fight_miniboss(mystate, world))
+    set_rule(door_to_hub_2, lambda mystate: sd_has_yellow( mystate, world))
+    set_rule(red_main_entrance, lambda mystate: sd_has_yellow( mystate, world))
+    set_rule(red_kingoose_boss_door, lambda mystate: sd_has_yellow( mystate, world) and sd_can_fight_miniboss(mystate, world))
 
     if world.options.minibosses:
         fight_red1_miniboss = world.get_entrance("Fight_Red1_Miniboss")
@@ -101,13 +117,13 @@ def set_all_location_rules(world: SDWorld) -> None:
     redchasm2chest1 = world.get_location("RedChasm2Chest1")
     red3backdoorchest = world.get_location("Red3BackdoorChest")
 
-    add_rule(hub2chest2, lambda mystate: sd_has_key('red', mystate, world))
-    add_rule(red1chest, lambda mystate: sd_has_key('red', mystate, world))
-    add_rule(redchasm2chest1, lambda mystate: sd_has_key('red', mystate, world))
-    add_rule(red3backdoorchest, lambda mystate: sd_has_key('red', mystate, world))
+    add_rule(hub2chest2, lambda mystate: sd_has_red( mystate, world))
+    add_rule(red1chest, lambda mystate: sd_has_red( mystate, world))
+    add_rule(redchasm2chest1, lambda mystate: sd_has_red( mystate, world))
+    add_rule(red3backdoorchest, lambda mystate: sd_has_red( mystate, world))
 
 #Sawyer: Time for the wincon! For now it'll just be three party members but once the demo works it should be Entropy
-def set_completion_condition(world: APQuestWorld) -> None:
+def set_completion_condition(world: SDWorld) -> None:
     player = world.player
     multiworld = world.multiworld
     mystate = CollectionState
