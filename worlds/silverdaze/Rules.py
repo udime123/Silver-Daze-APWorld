@@ -5,8 +5,10 @@ from typing import TYPE_CHECKING
 from BaseClasses import CollectionState
 from worlds.generic.Rules import add_rule, set_rule
 
+from .Items import party_members
+
 if TYPE_CHECKING:
-    from .world import SDWorld
+    from .World import SDWorld
 
 
 def set_all_rules(world: SDWorld) -> None:
@@ -57,7 +59,7 @@ def sd_party_size_meets(state: CollectionState, world: SDWorld, size: int) -> bo
     # party_members is all items that are party members
     # keys is just the strings, which are item names
 
-    return state.has_from_list_unique(Items.party_members.keys(), world.player, size)
+    return state.has_from_list_unique(party_members.keys(), world.player, size)
 
 
 def sd_can_fight_miniboss(state: CollectionState, world: SDWorld) -> bool:

@@ -33,7 +33,7 @@ LOCATION_NAME_TO_ID = {
     #Red Zone 1
     "Red1Chest": 10,
     "Red3Chest": 11,
-    "Red3BackdoorChest": 33,
+    "Red3BackdoorChest": 40,
     #Red Zone 2
     "Red4Chest1": 12,
     "Red4Chest2": 13,

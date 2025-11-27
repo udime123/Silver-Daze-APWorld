@@ -85,8 +85,6 @@ def get_random_filler_item_name(world: SDWorld) -> str:
     randomResult = world.random.randint(0, len(fillers) - 1)
     return fillers[randomResult]
 
-
-
 item_table = {
     # This includes all entries in those other dicts in this one
     **party_members,
@@ -105,6 +103,21 @@ item_table = {
 #     item_data = item_table[name]
 #     return SDItem(name, item_data.classification, item_data.code, self.player)
 
+
+#Sawyer: Make a random starting member.
+def get_random_member(world: SDWorld):
+    #Sawyer: First we get the keys (names of the values) from the party member list.
+    members = [key for key, val in party_members.items()]
+    #Sawyer: Then we get a random number from the length of that list.
+    randomResult = world.random.randint(0, len(members) - 1)
+    #Sawyer: Then we get the member belonging to that random number we picked.
+    member_name = members[randomResult]
+    starty_member = world.create_item(member_name)
+    #Next we grab the PinnJoin location which is where the first party member is always given.
+    location = world.multiworld.get_location("PinnJoin", world.player)
+    #Finally, add it to the location.
+    location.place_locked_item(starty_member)
+
 def create_all_items(world: SDWorld):
     itempool = []
 
@@ -112,20 +125,25 @@ def create_all_items(world: SDWorld):
     #for name, max_quantity in item_table:
     #    itempool += world.create_item(name)
     #    itempool += [name] * max_quantity
-        itempool += [name]
+        itempool.append(world.create_item(name))
 
     # Starting Party Member given at game start
-    starter_member = "Pinn"
-    if (world.options.starting_party_member == "geo"):
-        starter_member = "Geo"
-    if (world.options.starting_party_member == "kani"):
-        starter_member = "Kani"
 
-    itempool.remove(starter_member)
+    #Sawyer: I commented this out so we can just give you a random party member.
+    #starter_member = "Pinn"
+    #if (world.options.starting_party_member == "geo"):
+    #    starter_member = "Geo"
+    #if (world.options.starting_party_member == "kani"):
+    #    starter_member = "Kani"
 
+    #starter_member = get_random_member(world)
+    get_random_member(world)
+
+    #itempool.remove(starter_member)
     # Sawyer: Add starter party member at the end.
-    starting_party_member = world.create_item(starter_member)
-    world.multiworld.push_precollected(starting_party_member)
+    #starting_party_member = world.create_item(starter_member)
+    #world.multiworld.push_precollected(starting_party_member)
+
 
     # other steps here maybe
 
@@ -144,7 +162,7 @@ def create_all_items(world: SDWorld):
     #world.multiworld.itempool += [world.create_item(itemname) for itemname in itempool]
 
 
-def create_item(self, name: str) -> Item:
+def create_item(self, name: str) -> SDItem:
     item_data = item_table[name]
     item = SDItem(name, item_data.classification, item_data.code, self.player)
     return item
