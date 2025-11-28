@@ -64,7 +64,7 @@ def create_regular_locations(world: SDWorld) -> None:
     #Sawyer: Starting member is the only one in this region to ensure you always leave with a party member.
     geo_room_locations = get_location_names_with_ids(
         [
-            "PinnJoin","Ultima","PinnMP3","StarterHealToken1","StarterHealToken3",
+            "PinnJoin","Ultima","PinnMP3","StarterHealToken1","StarterHealToken2",
         ]
     )
     geo_room.add_locations(geo_room_locations, SDLocation)
