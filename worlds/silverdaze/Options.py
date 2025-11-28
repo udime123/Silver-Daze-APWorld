@@ -2,15 +2,14 @@ from dataclasses import dataclass
 
 from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle
 
-class starting_party_member(Choice):
+class starting_party_member(Toggle):
     """
-    This selects which party member you are given at the very beginning of the game.
+    If true, a party member will be given to you when you start the game. Otherwise, you may need to wait until another
+    player sends a party member to you.
     """
     display_name = "Starting Party Member"
-    option_pinn = 0
-    option_geo = 1
-    option_kani = 2
-    default = option_pinn
+    default = 1
+#
 #
 #  class IncludeShops(Toggle):
 #     """
@@ -30,18 +29,18 @@ class starting_party_member(Choice):
 
 class minibosses(Toggle):
     """
-    This toggles whether or not minibosses drop important items.
+    This toggles whether minibosses drop important items.
     NOTE: You may still need to defeat minibosses if they are blocking your path to progression
     """
-    display_name = "Miniboss Drops"
+    display_name = "Enable Miniboss Drops"
     default = 1
 
 class wardens(Toggle):
     """
-    This toggles whether or not Wardens drop important items.
+    This toggles whether Wardens drop important items.
     NOTE: This only includes normal Wardens, Chaos Wardens are a different option
     """
-    display_name = "Warden Drops"
+    display_name = "Enable Warden Drops"
     default = 1
 
 #class chaos_wardens(Toggle):

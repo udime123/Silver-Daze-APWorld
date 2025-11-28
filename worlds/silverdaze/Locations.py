@@ -1,5 +1,6 @@
 #Sawyer: Okay we have a whole lotta locations, here's hoping for the best!
 
+
 #Snagging all the below from APQuest again
 from __future__ import annotations
 
@@ -12,58 +13,15 @@ from . import Items
 if TYPE_CHECKING:
     from .World import SDWorld
 
+import json
+
 #Okay, looks like everything needs an ID. Blehhh it is what it is, I'll just go in order from the default thingy.
 
-LOCATION_NAME_TO_ID = {
-    #Start Game
-    "Ultima": 1,
-    "PinnJoin": 2,
-    "PinnMP3": 33,
-    "StarterHealToken1": 3,
-    "StarterHealToken3": 4,
-    #Grey Zone 1
-    "GeoJoin": 5,
-    "GeoMP3": 34,
-    "GeoWeapon1": 35,
-    "Cotton2Chest1": 6,
-    "Cotton3Chest1": 7,
-    "YellowKey": 8,
-    #Grey Zone 2
-    "Hub2Chest1": 9,
-    #Red Zone 1
-    "Red1Chest": 10,
-    "Red3Chest": 11,
-    "Red3BackdoorChest": 40,
-    #Red Zone 2
-    "Red4Chest1": 12,
-    "Red4Chest2": 13,
-    "Red4Chest3": 14,
-    "RedTower2Chest": 15,
-    "RedTower3Chest": 16,
-    "Kani": 18,
-    "KaniMP3": 36,
-    "KaniWeapon1": 37,
-    "KaniWeapon2": 38,
-    "KaniWeapon3": 39,
-    "RedChasm1Chest": 19,
-    "RedChasm2Chest1": 20,
-    "RedChasm2Chest2": 21,
-    "RedChasmReunionChest": 22,
-    #Grey Zone Red Chest
-    "Hub2Chest2": 23,
-    #Red MiniBoss Drops
-    "QuoDefender1": 24,
-    "QuoDefender2": 25,
-    "QuoDefender3": 26,
-    "Kingoose1": 27,
-    "Kingoose2": 28,
-    "Kingoose3": 29,
-    #Red Wardens
-    "Nyx": 17,
-    "Nyx1": 30,
-    "Nyx2": 31,
-    "Nyx3": 32,
-}
+
+LOCATION_NAME_TO_ID = json.load(open("./worlds/silverdaze/Location_Table.json"))
+
+# Sawyer: Locations are now stored inside the Location_Table.json file.
+# This is so they can easily be transferred to Silver Daze and given the location data.
 #Sawyer: PHEW! That covers the demo stuff. It'll be fun adding more haha
 
 class SDLocation(Location):
@@ -103,9 +61,10 @@ def create_regular_locations(world: SDWorld) -> None:
     #    ]
     #)
 
+    #Sawyer: Starting member is the only one in this region to ensure you always leave with a party member.
     geo_room_locations = get_location_names_with_ids(
         [
-            "Ultima","PinnJoin","PinnMP3","StarterHealToken1","StarterHealToken3",
+            "PinnJoin","Ultima","PinnMP3","StarterHealToken1","StarterHealToken3",
         ]
     )
     geo_room.add_locations(geo_room_locations, SDLocation)
@@ -164,7 +123,6 @@ def create_regular_locations(world: SDWorld) -> None:
 #Sawyer: I put the regions here just so my IDE wouldn't scream at me for leaving this empty.
 def create_events(world: SDWorld) -> None:
     #new_game = world.get_region("New_Game")
-
     geo_room = world.get_region("Geo_Room")
     cotton = world.get_region("Cotton")
     greyhub2 = world.get_region("GreyHub2")

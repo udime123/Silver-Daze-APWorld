@@ -89,7 +89,7 @@ def set_all_entrance_rules(world: SDWorld) -> None:
 
 
 
-
+    set_rule(leave_geo_room, lambda mystate: sd_party_size_meets(mystate, world,1))
     set_rule(door_to_hub_2, lambda mystate: sd_has_yellow( mystate, world))
     set_rule(red_main_entrance, lambda mystate: sd_has_yellow( mystate, world))
     set_rule(red_kingoose_boss_door, lambda mystate: sd_has_yellow( mystate, world) and sd_can_fight_miniboss(mystate, world))
@@ -130,5 +130,5 @@ def set_completion_condition(world: SDWorld) -> None:
     multiworld = world.multiworld
     mystate = CollectionState
 
-    world.multiworld.completion_condition[world.player] = lambda mystate: sd_party_size_meets(mystate, world,3)
+    world.multiworld.completion_condition[world.player] = lambda mystate: sd_party_size_meets(mystate, world,3) and sd_has_red( mystate, world)
 

@@ -99,11 +99,6 @@ item_table = {
     #  "Sneak Token":          ItemData(2006,       ItemClassification.filler, "Filler",   1),
 }
 
-# def create_item_with_correct_classification(world: SDWorld, name: str) -> SDItem:
-#     item_data = item_table[name]
-#     return SDItem(name, item_data.classification, item_data.code, self.player)
-
-
 #Sawyer: Make a random starting member.
 def get_random_member(world: SDWorld):
     #Sawyer: First we get the keys (names of the values) from the party member list.
@@ -122,36 +117,13 @@ def create_all_items(world: SDWorld):
     itempool = []
 
     for name in item_table:
-    #for name, max_quantity in item_table:
-    #    itempool += world.create_item(name)
-    #    itempool += [name] * max_quantity
         itempool.append(world.create_item(name))
 
     # Starting Party Member given at game start
-
-    #Sawyer: I commented this out so we can just give you a random party member.
-    #starter_member = "Pinn"
-    #if (world.options.starting_party_member == "geo"):
-    #    starter_member = "Geo"
-    #if (world.options.starting_party_member == "kani"):
-    #    starter_member = "Kani"
-
-    #starter_member = get_random_member(world)
-    get_random_member(world)
-
-    #itempool.remove(starter_member)
-    # Sawyer: Add starter party member at the end.
-    #starting_party_member = world.create_item(starter_member)
-    #world.multiworld.push_precollected(starting_party_member)
-
+    if world.options.starting_party_member:
+        get_random_member(world)
 
     # other steps here maybe
-
-    # Create Items
-    # itempool = [item for item in map(lambda name: world.create_item(name), itempool)]
-    # # Fill remaining items with randomly generated junk
-    # while len(itempool) < len(world.multiworld.get_unfilled_locations(world.player)):
-    #     itempool.append(world.get_random_filler_item_name())
 
     number_of_items = len(itempool)
     number_of_unfilled_locations = len(world.multiworld.get_unfilled_locations(world.player))
@@ -159,7 +131,6 @@ def create_all_items(world: SDWorld):
     itempool += [world.create_filler() for _ in range(needed_number_of_filler_items)]
 
     world.multiworld.itempool += itempool
-    #world.multiworld.itempool += [world.create_item(itemname) for itemname in itempool]
 
 
 def create_item(self, name: str) -> SDItem:
