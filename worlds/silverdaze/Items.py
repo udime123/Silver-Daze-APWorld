@@ -120,8 +120,8 @@ def create_all_items(world: SDWorld):
         itempool.append(world.create_item(name))
 
     # Starting Party Member given at game start
-    if world.options.starting_party_member:
-        get_random_member(world)
+    #if world.options.starting_party_member:
+    get_random_member(world)
 
     # other steps here maybe
 

@@ -2,13 +2,13 @@ from dataclasses import dataclass
 
 from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle
 
-class starting_party_member(Toggle):
-    """
-    If true, a party member will be given to you when you start the game. Otherwise, you may need to wait until another
-    player sends a party member to you.
-    """
-    display_name = "Starting Party Member"
-    default = 1
+# class starting_party_member(Toggle):
+#     """
+#     If true, a party member will be given to you when you start the game. Otherwise, you may need to wait until another
+#     player sends a party member to you.
+#     """
+#     display_name = "Starting Party Member"
+#     default = 1
 #
 #
 #  class IncludeShops(Toggle):
@@ -58,8 +58,17 @@ class wardens(Toggle):
 #    display_name = "Omni Drops"
 #    default = 0
 
+
+class shops(Toggle):
+    """
+    This toggles whether shops contain important items.
+    """
+    display_name = "Enable Shops"
+    default = 1
+
 @dataclass
 class SilverDazeOptions(PerGameCommonOptions):
-         starting_party_member: starting_party_member
+         #starting_party_member: starting_party_member
          minibosses: minibosses
          wardens: wardens
+         shops: shops

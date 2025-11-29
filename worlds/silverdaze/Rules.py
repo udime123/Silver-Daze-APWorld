@@ -107,6 +107,15 @@ def set_all_entrance_rules(world: SDWorld) -> None:
 
         set_rule(fight_red_warden, lambda mystate: sd_can_fight_warden(mystate,world))
 
+    if world.options.shops:
+        first_shop = world.get_entrance("Shop_One")
+        second_shop = world.get_entrance("Shop_Two")
+        third_shop = world.get_entrance("Shop_Three")
+
+        set_rule(first_shop, lambda mystate: sd_has_yellow( mystate, world))
+        set_rule(second_shop, lambda mystate: sd_has_yellow( mystate, world) and sd_party_size_meets(mystate, world,2))
+        set_rule(third_shop, lambda mystate: sd_has_yellow( mystate, world) and sd_party_size_meets(mystate, world,3))
+
 #Sawyer: These are the location rules! Hoo boy there are many haha
 def set_all_location_rules(world: SDWorld) -> None:
     player = world.player

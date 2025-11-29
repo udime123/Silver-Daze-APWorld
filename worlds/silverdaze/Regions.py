@@ -41,6 +41,15 @@ def create_all_regions(world: SDWorld) -> None:
 
         regions.append(red_wardens)
 
+    if world.options.shops:
+        shop_one = Region("Shop_One", world.player, world.multiworld)
+        shop_two = Region("Shop_Two", world.player, world.multiworld)
+        shop_three = Region("Shop_Three", world.player, world.multiworld)
+
+        regions.append(shop_one)
+        regions.append(shop_two)
+        regions.append(shop_three)
+
     #Sawyer: Add it all together now!
     world.multiworld.regions += regions
 
@@ -55,16 +64,26 @@ def connect_regions(world: SDWorld) -> None:
     red1 = world.get_region("Red1")
     red2 = world.get_region("Red2")
 
+    shop_one = world.get_region("Shop_One")
+    shop_two = world.get_region("Shop_Two")
+    shop_three = world.get_region("Shop_Three")
+
     #Sawyer: Siiiiigh Here goes!
     #new_game.connect(geo_room, "Begin_New_Game")
     geo_room.connect(cotton, "Leave_Geo_Room")
     cotton.connect(greyhub2, "Door_To_Hub_2")
     greyhub2.connect(red1, 'Red_Main_Entrance')
+
+    #Shops require a yellow key and get more stock with party members
+    if world.options.shops:
+        cotton.connect(shop_one, "Shop_One")
+        cotton.connect(shop_two, "Shop_Two")
+        cotton.connect(shop_three, "Shop_Three")
+
     #Sawyer: This is the first connection with a special requirement,
     # being that you need two party members to pass Kingoose in logic. Return here when you define that correctly.
     red1.connect(red2, 'Red_Kingoose_Boss_Door')
 
-    #Sawyer: Here's the optional bit again. Not using it yet but perhaps we will!
     if world.options.minibosses:
         red1_minibosses = world.get_region("Red1_Minibosses")
         red2_minibosses = world.get_region("Red2_Minibosses")

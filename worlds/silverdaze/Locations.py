@@ -51,6 +51,10 @@ def create_regular_locations(world: SDWorld) -> None:
         red2_minibosses = world.get_region("Red2_Minibosses")
     if world.options.wardens:
         red_wardens = world.get_region("Red_Wardens")
+    if world.options.shops:
+        first_shop = world.get_region('Shop_One')
+        second_shop = world.get_region('Shop_Two')
+        third_shop = world.get_region('Shop_Three')
 
     #Sawyer: Now we add stuff to regions!
 
@@ -118,6 +122,30 @@ def create_regular_locations(world: SDWorld) -> None:
             ]
         )
         red_wardens.add_locations(red_wardens_locations,SDLocation)
+
+    if world.options.shops:
+        first_shop_locations = get_location_names_with_ids(
+            [
+                "Shop1", "Shop2", "Shop3", "Shop4", "Shop5", "Shop6", "Shop7", "Shop8", "Shop9", "Shop10",
+                "Shop11", "Shop12", "Shop13", "Shop14", "Shop15", "Shop16", "Shop17",
+            ]
+        )
+        second_shop_locations = get_location_names_with_ids(
+            [
+                "Shop18", "Shop19", "Shop20", "Shop21", "Shop22",
+            ]
+        )
+        third_shop_locations = get_location_names_with_ids(
+            [
+                "Shop23", "Shop24", "Shop25", "Shop26", "Shop27", "Shop28",
+            ]
+        )
+
+        first_shop.add_locations(first_shop_locations, SDLocation)
+        second_shop.add_locations(second_shop_locations, SDLocation)
+        third_shop.add_locations(third_shop_locations, SDLocation)
+
+
 
 #Sawyer: Okay, the game literally has zero events because we turned all of those into items. Soooo... don't sweat it?
 #Sawyer: I put the regions here just so my IDE wouldn't scream at me for leaving this empty.
