@@ -87,6 +87,6 @@ class SilverDazeOptions(PerGameCommonOptions):
          wardens: wardens
          chaoswardens: chaoswardens
          shops: shops
-         recollections: recolletions
+         recollections: recollections
          starstuds: starstuds
          omni: omni

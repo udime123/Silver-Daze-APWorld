@@ -58,6 +58,12 @@ cards = {
     "PowerNap": ItemData(72),
     "Flatten": ItemData(18),
     "Dragon": ItemData(31),
+    "Kappa": ItemData(230),
+    "Unicorn": ItemData(187),
+    "Cyclops": ItemData(292),
+    "Phoenix": ItemData(86),
+    "Pulgasari": ItemData(345),
+    "Pixie": ItemData(137),
     "Variacut": ItemData(30),
     "Morning Ray": ItemData(7),
     "Zoner": ItemData(304),
@@ -68,7 +74,25 @@ cards = {
 
 keys = {
     "Yellow Key": ItemData(2010, ItemClassification.progression, "Key"),
+    "Green Key": ItemData(2011, ItemClassification.progression, "Key"),
+    "Blue Key": ItemData(2012, ItemClassification.progression, "Key"),
+    "Purple Key": ItemData(2013, ItemClassification.progression, "Key"),
     "Red Key": ItemData(2014, ItemClassification.progression, "Key"),
+    "Orange Key": ItemData(2015, ItemClassification.progression, "Key"),
+    "Black Key": ItemData(2016, ItemClassification.progression, "Key"),
+
+    "Blue_Zone()": ItemData(2018, ItemClassification.progression, "Glitch"),
+    "._locale": ItemData(2019, ItemClassification.progression, "Glitch"),
+
+    ".Memfinder": ItemData(2009, ItemClassification.progression, "Memfinder"),
+
+    "Red Fragment": ItemData(2022, ItemClassification.progression, "Fragment"),
+    "Orange Fragment": ItemData(2023, ItemClassification.progression, "Fragment"),
+    "Yellow Fragment": ItemData(2024, ItemClassification.progression, "Fragment"),
+    "Green Fragment": ItemData(2025, ItemClassification.progression, "Fragment"),
+    "Blue Fragment": ItemData(2026, ItemClassification.progression, "Fragment"),
+    "Purple Fragment": ItemData(2027, ItemClassification.progression, "Fragment"),
+    "Black Fragment": ItemData(2028, ItemClassification.progression, "Fragment"),
 }
 
 consumables = {
@@ -77,6 +101,10 @@ consumables = {
     "Hi-Heal Token": ItemData(2004, ItemClassification.filler, "Filler", 1),
     # Tent Token Here
     "Sneak Token": ItemData(2006, ItemClassification.filler, "Filler", 1),
+}
+
+starstuds = {
+    "Starstud": ItemData(None, ItemClassification.progression, "Event", 25)
 }
 
 #Sawyer: This should give us some random fillers. Let's look into adding traps later.

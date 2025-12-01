@@ -50,6 +50,9 @@ class SDWorld(World):
     def get_filler_item_name(self) -> str:
         return Items.get_random_filler_item_name(self)
 
+
+
+
     # #Sawyer: APQuest says to add this so we're adding it, not sure how it works yet.
     # def fill_slot_data(self) -> Mapping[str, Any]:
     #     return self.options.as_dict(

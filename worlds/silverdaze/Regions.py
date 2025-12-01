@@ -13,7 +13,8 @@ from .Rules import sd_has_dragon, sd_has_kappa, sd_has_cyclops, sd_has_unicorn, 
 if TYPE_CHECKING:
     from .World import SDWorld
 
-def create_and_connect_regions(state:CollectionState,world: SDWorld) -> None:
+def create_and_connect_regions(world: SDWorld) -> None:
+    state = CollectionState
     create_all_regions(world)
     connect_regions(state,world)
 
@@ -51,7 +52,6 @@ def create_all_regions(world: SDWorld) -> None:
         Region("Green2", world.player, world.multiworld),
         Region("SquailArea", world.player, world.multiworld),
         Region("OrangeBackdoorIsland", world.player, world.multiworld),
-        Region("GreenBackdoorIsland", world.player, world.multiworld),
         Region("Purple1", world.player, world.multiworld),
         Region("SwordmoleRoom", world.player, world.multiworld),
         Region("Purple2", world.player, world.multiworld),
@@ -64,24 +64,18 @@ def create_all_regions(world: SDWorld) -> None:
         Region("Orange1", world.player, world.multiworld),
         Region("DualistsRoom", world.player, world.multiworld),
         Region("Hub3PurpleSide", world.player, world.multiworld),
-        Region("Orange1", world.player, world.multiworld),
         Region("Orange2", world.player, world.multiworld),
-        Region("GreyIslandBlackDoor", world.player, world.multiworld),
-        Region("OrangeBackdoorIsland", world.player, world.multiworld),
         Region("GreenBackdoorIsland", world.player, world.multiworld),
         Region("Black1", world.player, world.multiworld),
         Region("KisaijuRoom", world.player, world.multiworld),
         Region("Black2", world.player, world.multiworld),
         Region("GriffinRoom", world.player, world.multiworld),
         Region("BlackDungeon", world.player, world.multiworld),
-        Region("BlackBackdoorIsland", world.player, world.multiworld),
         Region("Yellow1", world.player, world.multiworld),
         Region("EsquireRoom", world.player, world.multiworld),
         Region("Yellow2", world.player, world.multiworld),
         Region("MothershipRoom", world.player, world.multiworld),
         Region("YellowLighthouse", world.player, world.multiworld),
-        Region("YellowBackdoorIsland", world.player, world.multiworld),
-        Region("BlueBackdoorIsland", world.player, world.multiworld),
         Region("FinalLobby", world.player, world.multiworld),
         Region("ExanderZone", world.player, world.multiworld),
         Region("OmniZone1", world.player, world.multiworld),
@@ -165,10 +159,8 @@ def create_all_regions(world: SDWorld) -> None:
     #Sawyer: Add it all together now!
     world.multiworld.regions += regions
 
-def connect_2way(r1: Region, r2: Region, rule: Callable):
-    #Credit Emily, thank you!
-    r1.connect(connecting_region = r2, rule = rule)
-    r2.connect(connecting_region = r1, rule = rule)
+
+
 
 #Sawyer: Next part has me nervous. This is entrances, right?
 def connect_regions(state: CollectionState, world: SDWorld) -> None:

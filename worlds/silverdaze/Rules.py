@@ -75,6 +75,12 @@ def sd_has_pulgasari(state: CollectionState, world: SDWorld) -> bool:
 def sd_has_pixie(state: CollectionState, world: SDWorld) -> bool:
     return state.has("Pixie", world.player)
 
+def sd_has_chaotic(state: CollectionState, world: SDWorld) -> bool:
+    return (state.has("Red Fragment", world.player) and state.has("Blue Fragment", world.player) and
+            state.has("Green Fragment", world.player) and state.has("Purple Fragment", world.player) and
+            state.has("Black Fragment", world.player) and state.has("Orange Fragment", world.player) and
+            state.has("Yellow Fragment", world.player))
+
 def sd_party_size_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
     # party_members is all items that are party members
     # keys is just the strings, which are item names
@@ -124,13 +130,26 @@ def set_all_location_rules(world: SDWorld) -> None:
     multiworld = world.multiworld
 
     #Sawyer: Don't forget to define the locations we're adding rules to here.
-    add_rule(world.get_location("Red1Chest"), lambda mystate: sd_has_red( mystate, world))
-    add_rule(world.get_location("RedChasm2Chest2"), lambda mystate: sd_has_red( mystate, world))
     add_rule(world.get_location("Blue3Chest"), lambda mystate: sd_party_size_meets(mystate, world,3))
     add_rule(world.get_location("BlueCaveRightStory"), lambda mystate: sd_party_size_meets(mystate, world,3))
     add_rule(world.get_location("BlueCaveLeftStory"), lambda mystate: sd_party_size_meets(mystate, world,2))
-    add_rule(world.get_location("BlueCaveLeftChest"), lambda mystate: sd_has_blue(mystate, world))
     add_rule(world.get_location("Blue7Chest"), lambda mystate: sd_party_size_meets(mystate, world,4))
+    add_rule(world.get_location("BlueCaveLeftChest"), lambda mystate: sd_has_blue(mystate, world))
+    add_rule(world.get_location("GreenCyphonDebutChest"), lambda mystate: sd_has_green(mystate, world))
+    add_rule(world.get_location("Red1Chest"), lambda mystate: sd_has_red( mystate, world))
+    add_rule(world.get_location("RedChasm2Chest2"), lambda mystate: sd_has_red( mystate, world))
+    add_rule(world.get_location("GreenTheatreChest"), lambda mystate: sd_has_green( mystate, world))
+    add_rule(world.get_location("Purple1Chest2"), lambda mystate: sd_has_purple( mystate, world))
+    add_rule(world.get_location("PurpleLeftChest"), lambda mystate: sd_has_purple( mystate, world))
+    add_rule(world.get_location("Orange1Chest2"), lambda mystate: sd_has_orange( mystate, world))
+    add_rule(world.get_location("Black1Chest"), lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("BlackBetween1Chest"), lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("Black7Chest"), lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("BlackBetween2Chest"), lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("Yellow3Chest"), lambda mystate: sd_has_yellow( mystate, world))
+    add_rule(world.get_location("Yellow12Chest"), lambda mystate: sd_has_yellow( mystate, world))
+    add_rule(world.get_location("ChaoticDance"), lambda mystate: sd_has_chaotic( mystate, world))
+
 
     #Sawyer: Put the Starstud Rules here.
     if world.options.starstuds:
