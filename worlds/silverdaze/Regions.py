@@ -1,96 +1,393 @@
 #Sawyer: Don't know what a lot of this is but we'll get there!
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Callable
 
-from BaseClasses import Entrance, Region
+from BaseClasses import Entrance, Region, CollectionState
+
+from .Rules import sd_has_black, sd_has_blue, sd_has_red, sd_has_green, sd_has_orange, sd_has_purple, sd_has_yellow
+from .Rules import sd_can_fight_chaos_warden, sd_can_fight_warden, sd_can_fight_miniboss, sd_party_size_meets
+from .Rules import sd_has_memfinder, sd_has_glitch, sd_can_fight_omni
+from .Rules import sd_has_dragon, sd_has_kappa, sd_has_cyclops, sd_has_unicorn, sd_has_phoenix, sd_has_pulgasari, sd_has_pixie
 
 if TYPE_CHECKING:
     from .World import SDWorld
 
-def create_and_connect_regions(world: SDWorld) -> None:
+def create_and_connect_regions(state:CollectionState,world: SDWorld) -> None:
     create_all_regions(world)
-    connect_regions(world)
+    connect_regions(state,world)
 
  # Sawyer: Okay, we had some regions defined in our last attempts.
 def create_all_regions(world: SDWorld) -> None:
-    #Sawyer: Probably not using New Game but it's the menu region so we should keep it here to be safe.
-    #new_game = Region("New_Game", world.player, world.multiworld)
-
-    geo_room = Region("Geo_Room", world.player, world.multiworld)
-    cotton = Region("Cotton", world.player, world.multiworld)
-    greyhub2 = Region("GreyHub2", world.player, world.multiworld)
-
-    #Sawyer: In vanilla, we didn't have the first instance of a zone named. Bad idea, but don't forget that red1 is 'red'
-    red1 = Region("Red1", world.player, world.multiworld)
-    red2 = Region("Red2", world.player, world.multiworld)
 
     #Sawyer: Putting them all together now! Don't forget to add the full game's regions when you're done!
-    regions = [geo_room, cotton, greyhub2, red1, red2]
+    regions = [
+        Region("GeoRoom", world.player, world.multiworld),
+        Region("Hub1", world.player, world.multiworld),
+        Region("Hub2", world.player, world.multiworld),
+        Region("QuoDefenderRoom", world.player, world.multiworld),
+        Region("Red1", world.player, world.multiworld),
+        Region("KingooseRoom", world.player, world.multiworld),
+        Region("Red2", world.player, world.multiworld),
+        Region("GreyIslandGreenDoor", world.player, world.multiworld),
+        Region("YellowBackdoorIsland", world.player, world.multiworld),
+        Region("GreyIslandBlueDoor", world.player, world.multiworld),
+        Region("GreyIslandRedDoor", world.player, world.multiworld),
+        Region("RedBackdoorIsland", world.player, world.multiworld),
+        Region("Blue1", world.player, world.multiworld),
+        Region("Blue2", world.player, world.multiworld),
+        Region("Griffin1Room", world.player, world.multiworld),
+        Region("BlueShaneArea", world.player, world.multiworld),
+        Region("DiggerRoom", world.player, world.multiworld),
+        Region("Blue3", world.player, world.multiworld),
+        Region("Blue4", world.player, world.multiworld),
+        Region("Blue5", world.player, world.multiworld),
+        Region("Scatter", world.player, world.multiworld),
+        Region("PurpleBackdoorIsland", world.player, world.multiworld),
+        Region("PurpleHippoRoom", world.player, world.multiworld),
+        Region("BlueBackdoorIsland", world.player, world.multiworld),
+        Region("Green1", world.player, world.multiworld),
+        Region("DesmodusRoom", world.player, world.multiworld),
+        Region("Green2", world.player, world.multiworld),
+        Region("SquailArea", world.player, world.multiworld),
+        Region("OrangeBackdoorIsland", world.player, world.multiworld),
+        Region("GreenBackdoorIsland", world.player, world.multiworld),
+        Region("Purple1", world.player, world.multiworld),
+        Region("SwordmoleRoom", world.player, world.multiworld),
+        Region("Purple2", world.player, world.multiworld),
+        Region("ScaventureRoom", world.player, world.multiworld),
+        Region("PurpleTower", world.player, world.multiworld),
+        Region("GreyIslandBlackDoor", world.player, world.multiworld),
+        Region("BlackBackdoorIsland", world.player, world.multiworld),
+        Region("OngardRoom", world.player, world.multiworld),
+        Region("Hub3GreenSide", world.player, world.multiworld),
+        Region("Orange1", world.player, world.multiworld),
+        Region("DualistsRoom", world.player, world.multiworld),
+        Region("Hub3PurpleSide", world.player, world.multiworld),
+        Region("Orange1", world.player, world.multiworld),
+        Region("Orange2", world.player, world.multiworld),
+        Region("GreyIslandBlackDoor", world.player, world.multiworld),
+        Region("OrangeBackdoorIsland", world.player, world.multiworld),
+        Region("GreenBackdoorIsland", world.player, world.multiworld),
+        Region("Black1", world.player, world.multiworld),
+        Region("KisaijuRoom", world.player, world.multiworld),
+        Region("Black2", world.player, world.multiworld),
+        Region("GriffinRoom", world.player, world.multiworld),
+        Region("BlackDungeon", world.player, world.multiworld),
+        Region("BlackBackdoorIsland", world.player, world.multiworld),
+        Region("Yellow1", world.player, world.multiworld),
+        Region("EsquireRoom", world.player, world.multiworld),
+        Region("Yellow2", world.player, world.multiworld),
+        Region("MothershipRoom", world.player, world.multiworld),
+        Region("YellowLighthouse", world.player, world.multiworld),
+        Region("YellowBackdoorIsland", world.player, world.multiworld),
+        Region("BlueBackdoorIsland", world.player, world.multiworld),
+        Region("FinalLobby", world.player, world.multiworld),
+        Region("ExanderZone", world.player, world.multiworld),
+        Region("OmniZone1", world.player, world.multiworld),
+        Region("OmniZone2", world.player, world.multiworld),
+        Region("OmniZone3", world.player, world.multiworld),
+        Region("OmniZone4", world.player, world.multiworld),
+        Region("OmniZone5", world.player, world.multiworld),
+        Region("OmniZone6", world.player, world.multiworld),
+        Region("OmniZone7", world.player, world.multiworld),
+        Region("OmniRoom", world.player, world.multiworld),
+    ]
+
+    #Below are option regions
+    if world.options.shops:
+        regions.append(Region("Shop", world.player, world.multiworld))
+        # Shop is the hub that contains all other shop checks. It has no locations of its own.
+        # The following are all of the shop regions.
+        regions.append(Region("Shop1", world.player, world.multiworld))
+        regions.append(Region("Shop2", world.player, world.multiworld))
+        regions.append(Region("Shop3", world.player, world.multiworld))
+        regions.append(Region("Shop4", world.player, world.multiworld))
+        regions.append(Region("Shop5", world.player, world.multiworld))
+        regions.append(Region("Shop6", world.player, world.multiworld))
+        regions.append(Region("Shop7", world.player, world.multiworld))
+
+    if world.options.recollections:
+        regions.append(Region("ReCollectionBlue", world.player, world.multiworld))
+        regions.append(Region("ReCollectionPurple", world.player, world.multiworld))
+        regions.append(Region("ReCollectionBlack", world.player, world.multiworld))
+        regions.append(Region("ReCollectionRed", world.player, world.multiworld))
+        regions.append(Region("ReCollectionOrange", world.player, world.multiworld))
+        regions.append(Region("ReCollectionYellow", world.player, world.multiworld))
+        regions.append(Region("ReCollectionGreen", world.player, world.multiworld))
+        regions.append(Region("ReCollectionGrey", world.player, world.multiworld))
+        regions.append(Region("ReCollectionExander", world.player, world.multiworld))
+        regions.append(Region("ReCollectionWhite", world.player, world.multiworld))
 
     #Sawyer: Bosses are optional so they'll be their own region.
     if world.options.minibosses:
-        red1_minibosses = Region("Red1_Minibosses", world.player, world.multiworld)
-        red2_minibosses = Region("Red2_Minibosses", world.player, world.multiworld)
-
-        regions.append(red1_minibosses)
-        regions.append(red2_minibosses)
+        regions.append(Region("QuoDefenderItems", world.player, world.multiworld))
+        regions.append(Region("KingooseItems", world.player, world.multiworld))
+        regions.append(Region("Griffin1Items", world.player, world.multiworld))
+        regions.append(Region("DiggerItems", world.player, world.multiworld))
+        regions.append(Region("DesmodusItems", world.player, world.multiworld))
+        regions.append(Region("SquailItems", world.player, world.multiworld))
+        regions.append(Region("SwordmoleItems", world.player, world.multiworld))
+        regions.append(Region("ScaventureItems", world.player, world.multiworld))
+        regions.append(Region("OngardItems", world.player, world.multiworld))
+        regions.append(Region("DualistsItems", world.player, world.multiworld))
+        regions.append(Region("KisaijuItems", world.player, world.multiworld))
+        regions.append(Region("Griffin2Items", world.player, world.multiworld))
+        regions.append(Region("EsquireItems", world.player, world.multiworld))
+        regions.append(Region("MothershipItems", world.player, world.multiworld))
 
     if world.options.wardens:
-        red_wardens = Region("Red_Wardens", world.player, world.multiworld)
+        regions.append(Region("NyxItems", world.player, world.multiworld))
+        regions.append(Region("ScatterItems", world.player, world.multiworld))
+        regions.append(Region("CyphonItems", world.player, world.multiworld))
+        regions.append(Region("EnriItems", world.player, world.multiworld))
+        regions.append(Region("RudaItems", world.player, world.multiworld))
+        regions.append(Region("RotItems", world.player, world.multiworld))
+        regions.append(Region("WinkItems", world.player, world.multiworld))
+        regions.append(Region("FinalGriffinItems", world.player, world.multiworld))
 
-        regions.append(red_wardens)
+    if world.options.chaoswardens:
+        regions.append(Region("PurpleHippoItems", world.player, world.multiworld))
+        regions.append(Region("ChaosRotItems", world.player, world.multiworld))
+        regions.append(Region("ChaosRudaItems", world.player, world.multiworld))
+        regions.append(Region("ChaosNyxItems", world.player, world.multiworld))
+        regions.append(Region("ChaosCyphonItems", world.player, world.multiworld))
+        regions.append(Region("ChaosWinkItems", world.player, world.multiworld))
+        regions.append(Region("ChaosScatterItems", world.player, world.multiworld))
 
-    if world.options.shops:
-        shop_one = Region("Shop_One", world.player, world.multiworld)
-        shop_two = Region("Shop_Two", world.player, world.multiworld)
-        shop_three = Region("Shop_Three", world.player, world.multiworld)
+    if world.options.omni:
+        regions.append(Region("OmniItems", world.player, world.multiworld))
 
-        regions.append(shop_one)
-        regions.append(shop_two)
-        regions.append(shop_three)
+    if world.options.starstuds:
+        regions.append(Region("Starstuds", world.player, world.multiworld))
+
 
     #Sawyer: Add it all together now!
     world.multiworld.regions += regions
 
+def connect_2way(r1: Region, r2: Region, rule: Callable):
+    #Credit Emily, thank you!
+    r1.connect(connecting_region = r2, rule = rule)
+    r2.connect(connecting_region = r1, rule = rule)
+
 #Sawyer: Next part has me nervous. This is entrances, right?
-def connect_regions(world: SDWorld) -> None:
-    #new_game = world.get_region("New_Game")
+def connect_regions(state: CollectionState, world: SDWorld) -> None:
+    world.connect_2way(world.get_region("GeoRoom"), world.get_region("Hub1"), sd_party_size_meets(state, world,1))
+    world.connect_2way(world.get_region("Hub1"), world.get_region("Hub2"), sd_has_yellow(state, world))
 
-    geo_room = world.get_region("Geo_Room")
-    cotton = world.get_region("Cotton")
-    greyhub2 = world.get_region("GreyHub2")
+    #this path continues through Red Zone.
+    world.connect_2way(world.get_region("Hub2"), world.get_region("QuoDefenderRoom"), sd_has_yellow(state, world))
+    world.connect_2way(world.get_region("QuoDefenderRoom"), world.get_region("Red1"), sd_can_fight_miniboss(state, world))
+    world.connect_2way(world.get_region("Red1"), world.get_region("KingooseRoom"), sd_has_yellow(state, world))
+    world.connect_2way(world.get_region("KingooseRoom"), world.get_region("Red2"), sd_can_fight_miniboss(state, world))
 
-    red1 = world.get_region("Red1")
-    red2 = world.get_region("Red2")
+    #This path leads through the green door in red zone 1
+    world.connect_2way(world.get_region("Red1"), world.get_region("GreyIslandGreenDoor"), sd_has_green(state, world))
+    #This path leads through the green door in red zone 2
+    world.connect_2way(world.get_region("Red2"), world.get_region("YellowBackdoorIsland"), sd_has_green(state, world))
+    #This path leads through the blue door in red tower
+    world.connect_2way(world.get_region("Red2"), world.get_region("GreyIslandBlueDoor"), sd_has_blue(state, world))
+    #This path leads through the red door in red zone chasm.
+    # For all intents and purposes this belongs to Red Zone 2, but I'm diligent.
+    world.connect_2way(world.get_region("Red2"), world.get_region("GreyIslandRedDoor"), sd_has_red(state, world))
+    #This path leads to the red backdoor island
+    world.connect_2way(world.get_region("Red1"), world.get_region("RedBackdoorIsland"), sd_has_red(state, world))
 
-    shop_one = world.get_region("Shop_One")
-    shop_two = world.get_region("Shop_Two")
-    shop_three = world.get_region("Shop_Three")
 
-    #Sawyer: Siiiiigh Here goes!
-    #new_game.connect(geo_room, "Begin_New_Game")
-    geo_room.connect(cotton, "Leave_Geo_Room")
-    cotton.connect(greyhub2, "Door_To_Hub_2")
-    greyhub2.connect(red1, 'Red_Main_Entrance')
+
+    #Blue Zone!
+    world.connect_2way(world.get_region("Hub2"), world.get_region("Blue1"), sd_has_red(state, world))
+    #You need two party members to pass the first Blue Bridge.
+    world.connect_2way(world.get_region("Blue1"), world.get_region("Blue2"), sd_party_size_meets(state, world,2))
+    world.connect_2way(world.get_region("Blue2"), world.get_region("Griffin1Room"), sd_party_size_meets(state, world,1))
+    # Right now miniboss logic is the same as Blue2's entrance but that could change, prepping in advance.
+    # ShaneArea is technically in Blue2 but I'm making it its own region to be safe.
+    world.connect_2way(world.get_region("Griffin1Room"), world.get_region("BlueShaneArea"), sd_can_fight_miniboss(state, world))
+    #You can also technically skip Griffin by hopping the 3-long bridge.
+    world.connect_2way(world.get_region("Griffin1Room"), world.get_region("BlueShaneArea"), sd_party_size_meets(state, world,3))
+    #Adding the digger room, but it's not necessary because it blocks no paths.
+    world.connect_2way(world.get_region("BlueShaneArea"), world.get_region("DiggerRoom"), sd_party_size_meets(state, world,1))
+    #To proceed, you now need three party members.
+    world.connect_2way(world.get_region("BlueShaneArea"), world.get_region("Blue3"), sd_party_size_meets(state, world,3))
+    #To proceed, you now need four party members already!
+    world.connect_2way(world.get_region("Blue3"), world.get_region("Blue4"), sd_party_size_meets(state, world,4))
+    #Let's start by going through the Wink side in Blue 4.
+    #Back on track, confronting Scatter!
+    world.connect_2way(world.get_region("Blue3"), world.get_region("Blue5"), sd_party_size_meets(state, world,4))
+    #Normally I don't connect boss rooms but Scatter is a special case because he demands key items.
+    world.connect_2way(world.get_region("Blue5"), world.get_region("Scatter"), (sd_party_size_meets(state, world,2)
+                                                                                and sd_has_glitch(state, world)))
+    #This path leads through the blue door in blue zone 1
+    world.connect_2way(world.get_region("Blue1"), world.get_region("RedBackdoorIsland"), sd_has_blue(state, world))
+    #This path leads through the blue door in blue zone 3
+    world.connect_2way(world.get_region("Blue3"), world.get_region("GreyIslandBlueDoor"), sd_has_blue(state, world))
+    #This path leads through the yellow door in blue zone 4
+    world.connect_2way(world.get_region("Blue4"), world.get_region("PurpleBackdoorIsland"), sd_has_yellow(state, world))
+    #This path leads through the long path to Purple Hippo's room
+    world.connect_2way(world.get_region("Blue3"), world.get_region("PurpleHippoRoom"), sd_party_size_meets(state, world,6))
+    #This path leads to the Blue Backdoor Island
+    world.connect_2way(world.get_region("Blue3"), world.get_region("BlueBackdoorIsland"), sd_has_blue(state, world))
+
+
+    #Green Zone!
+    #Don't forget the chest in Grey Zone on your way to Green1, it should be considered part of Green1
+    world.connect_2way(world.get_region("Hub1"), world.get_region("Green1"), sd_has_blue(state, world))
+    world.connect_2way(world.get_region("Green1"), world.get_region("DesmodusRoom"), sd_party_size_meets(state, world,1))
+    world.connect_2way(world.get_region("DesmodusRoom"), world.get_region("Green2"), sd_can_fight_miniboss(state, world))
+    #Calling it "Squail Area" because it includes everything behind the Squail such as the chest that requires the green key
+    world.connect_2way(world.get_region("Green2"), world.get_region("SquailArea"), sd_can_fight_miniboss(state, world))
+
+    #This path is through the Purple Door in the Cyphon Debut area
+    world.connect_2way(world.get_region("Green1"), world.get_region("OrangeBackdoorIsland"), sd_has_purple(state, world))
+    #This path is through the Green Door in the left area
+    world.connect_2way(world.get_region("Green2"), world.get_region("GreyIslandGreenDoor"), sd_has_purple(state, world))
+    #This path is to the Green Backdoor Island
+    world.connect_2way(world.get_region("Green2"), world.get_region("GreenBackdoorIsland"), sd_has_green(state, world))
+
+
+    #Time for Purple Zone!
+    world.connect_2way(world.get_region("Hub2"), world.get_region("Purple1"), sd_has_blue(state, world))
+    world.connect_2way(world.get_region("Purple1"), world.get_region("SwordmoleRoom"), sd_party_size_meets(state, world,1))
+    world.connect_2way(world.get_region("SwordmoleRoom"), world.get_region("Purple2"), sd_can_fight_miniboss(state, world))
+    world.connect_2way(world.get_region("Purple2"), world.get_region("ScaventureRoom"), sd_party_size_meets(state, world,1))
+    world.connect_2way(world.get_region("ScaventureRoom"), world.get_region("PurpleTower"), sd_can_fight_miniboss(state, world))
+
+    #this connects to the purple backdoor
+    world.connect_2way(world.get_region("Purple1"), world.get_region("PurpleBackdoorIsland"), sd_has_purple(state, world))
+    #this is the path through the black door in purple 2
+    world.connect_2way(world.get_region("Purple2"), world.get_region("GreyIslandBlackDoor"), sd_has_black(state, world))
+    #this is the path through the red door in the tower area
+    world.connect_2way(world.get_region("PurpleTower"), world.get_region("BlackBackdoorIsland"), sd_has_red(state, world))
+
+
+    #On to Orange Zone!
+    #Green Side First
+    world.connect_2way(world.get_region("Hub2"), world.get_region("OngardRoom"), sd_has_green(state, world))
+    world.connect_2way(world.get_region("OngardRoom"), world.get_region("Hub3GreenSide"), sd_can_fight_miniboss(state, world))
+    world.connect_2way(world.get_region("Hub3GreenSide"), world.get_region("Orange1"), sd_has_purple(state, world))
+    #Sawyer! There is a Starstud on the Hub3GreenSide, don't forget!
+    #Now Purple Side
+    world.connect_2way(world.get_region("Hub2"), world.get_region("DualistsRoom"), sd_has_purple(state, world))
+    world.connect_2way(world.get_region("DualistsRoom"), world.get_region("Hub3PurpleSide"), sd_can_fight_miniboss(state, world))
+    world.connect_2way(world.get_region("Hub3PurpleSide"), world.get_region("Orange1"), sd_has_purple(state, world))
+    #Now we are in Orange Zone proper!
+    world.connect_2way(world.get_region("Orange1"), world.get_region("Orange2"), sd_has_orange(state, world))
+
+    #this is the path through the black door in orange1
+    world.connect_2way(world.get_region("Orange1"), world.get_region("GreyIslandBlackDoor"), sd_has_black(state, world))
+    #this is the path to the orange backdoor
+    world.connect_2way(world.get_region("Orange1"), world.get_region("OrangeBackdoorIsland"), sd_has_orange(state, world))
+    #this is the path through the orange door in the hub
+    world.connect_2way(world.get_region("Orange1"), world.get_region("GreenBackdoorIsland"), sd_has_orange(state, world))
+
+
+    #Now we do Black Zone! I'm getting close, I hope.
+    world.connect_2way(world.get_region("Hub1"), world.get_region("Black1"), sd_has_orange(state, world))
+    world.connect_2way(world.get_region("Black1"), world.get_region("KisaijuRoom"), sd_party_size_meets(state, world,1))
+    world.connect_2way(world.get_region("KisaijuRoom"), world.get_region("Black2"), sd_can_fight_miniboss(state, world))
+    world.connect_2way(world.get_region("Black2"), world.get_region("GriffinRoom"), sd_can_fight_miniboss(state, world))
+    world.connect_2way(world.get_region("Griffin2Room"), world.get_region("BlackDungeon"), sd_party_size_meets(state, world,1))
+
+    #Here's the backdoor
+    world.connect_2way(world.get_region("Black1"), world.get_region("BlackBackdoorIsland"), sd_has_black(state, world))
+    #The Rot black doors don't lead to a new region. Treat them as item rules.
+
+    #Huh, okay, Yellow Time I guess!
+    world.connect_2way(world.get_region("Hub1"), world.get_region("Yellow1"), sd_has_black(state, world))
+    world.connect_2way(world.get_region("Yellow1"), world.get_region("EsquireRoom"), sd_can_fight_miniboss(state, world))
+    world.connect_2way(world.get_region("EsquireRoom"), world.get_region("Yellow2"), sd_party_size_meets(state, world,1))
+    world.connect_2way(world.get_region("Yellow2"), world.get_region("MothershipRoom"), sd_party_size_meets(state, world,1))
+    world.connect_2way(world.get_region("MothershipRoom"), world.get_region("YellowLighthouse"), sd_can_fight_miniboss(state, world))
+
+    #This leads to the backdoor!
+    world.connect_2way(world.get_region("Yellow1"), world.get_region("YellowBackdoorIsland"), sd_party_size_meets(state, world,1))
+    #Here's the black door in Yellow Zone
+    world.connect_2way(world.get_region("Yellow2"), world.get_region("BlueBackdoorIsland"), sd_has_black(state, world))
+
+    #Next up, let's connect the fast travels.
+    world.connect_2way(world.get_region("GeoRoom"), world.get_region("Red2"), sd_has_red(state, world) and sd_has_memfinder(state,world))
+    world.connect_2way(world.get_region("GeoRoom"), world.get_region("ScatterRoom"), sd_has_blue(state, world) and sd_has_memfinder(state,world))
+    world.connect_2way(world.get_region("GeoRoom"), world.get_region("Green2"), sd_has_green(state, world) and sd_has_memfinder(state,world))
+    world.connect_2way(world.get_region("GeoRoom"), world.get_region("PurpleTower"), sd_has_purple(state, world) and sd_has_memfinder(state,world))
+    world.connect_2way(world.get_region("GeoRoom"), world.get_region("Orange1"), sd_has_orange(state, world) and sd_has_memfinder(state,world))
+    world.connect_2way(world.get_region("GeoRoom"), world.get_region("BlackDungeon"), sd_has_black(state, world) and sd_has_memfinder(state,world))
+    world.connect_2way(world.get_region("GeoRoom"), world.get_region("YellowLighthouse"), sd_has_yellow(state, world) and sd_has_memfinder(state,world))
+
+    #Next up, we'll do the big Final Area shit.
+    world.connect_2way(world.get_region("Hub1"), world.get_region("FinalLobby"), sd_has_black(state, world))
+    #This is also how we reach our goal.
+    world.connect_2way(world.get_region("FinalLobby"), world.get_region("ExanderZone"), sd_has_black(state, world) and sd_party_size_meets(state, world, 7))
+
+    world.connect_2way(world.get_region("FinalLobby"), world.get_region("OmniZone1"), sd_party_size_meets(state, world, 1))
+    world.connect_2way(world.get_region("OmniZone1"), world.get_region("OmniZone2"), sd_has_dragon(state, world))
+    world.connect_2way(world.get_region("OmniZone2"), world.get_region("OmniZone3"), sd_has_kappa(state, world))
+    world.connect_2way(world.get_region("OmniZone3"), world.get_region("OmniZone4"), sd_has_cyclops(state, world))
+    world.connect_2way(world.get_region("OmniZone4"), world.get_region("OmniZone5"), sd_has_unicorn(state, world))
+    world.connect_2way(world.get_region("OmniZone5"), world.get_region("OmniZone6"), sd_has_phoenix(state, world))
+    world.connect_2way(world.get_region("OmniZone6"), world.get_region("OmniZone7"), sd_has_pulgasari(state, world))
+    world.connect_2way(world.get_region("OmniZone7"), world.get_region("OmniRoom"), sd_has_pixie(state, world))
+
 
     #Shops require a yellow key and get more stock with party members
     if world.options.shops:
-        cotton.connect(shop_one, "Shop_One")
-        cotton.connect(shop_two, "Shop_Two")
-        cotton.connect(shop_three, "Shop_Three")
+        world.connect_2way(world.get_region("Hub1"), world.get_region("Shop"),sd_has_yellow(state, world))
+        world.connect_2way(world.get_region("Shop"), world.get_region("Shop1"),sd_party_size_meets(state, world, 1))
+        world.connect_2way(world.get_region("Shop"), world.get_region("Shop2"),sd_party_size_meets(state, world, 2))
+        world.connect_2way(world.get_region("Shop"), world.get_region("Shop3"),sd_party_size_meets(state, world, 3))
+        world.connect_2way(world.get_region("Shop"), world.get_region("Shop4"),sd_party_size_meets(state, world, 4))
+        world.connect_2way(world.get_region("Shop"), world.get_region("Shop5"),sd_party_size_meets(state, world, 5))
+        world.connect_2way(world.get_region("Shop"), world.get_region("Shop6"),sd_party_size_meets(state, world, 6))
+        world.connect_2way(world.get_region("Shop"), world.get_region("Shop7"),sd_party_size_meets(state, world, 7))
 
-    #Sawyer: This is the first connection with a special requirement,
-    # being that you need two party members to pass Kingoose in logic. Return here when you define that correctly.
-    red1.connect(red2, 'Red_Kingoose_Boss_Door')
+    if world.options.recollections:
+        world.connect_2way(world.get_region("Blue4"), world.get_region("ReCollectionBlue"), sd_has_memfinder(state, world))
+        world.connect_2way(world.get_region("Green1"), world.get_region("ReCollectionGreen"),sd_has_memfinder(state, world))
+        world.connect_2way(world.get_region("PurpleTower"), world.get_region("ReCollectionPurple"), sd_has_memfinder(state, world))
+        world.connect_2way(world.get_region("Orange2"), world.get_region("ReCollectionOrange"),sd_has_memfinder(state, world))
+        world.connect_2way(world.get_region("Griffin2Room"), world.get_region("ReCollectionBlack"),sd_has_memfinder(state, world))
+        world.connect_2way(world.get_region("YellowLighthouse"), world.get_region("ReCollectionYellow"),sd_has_memfinder(state, world) and sd_has_yellow(state, world))
+        world.connect_2way(world.get_region("Red2"), world.get_region("ReCollectionRed"), sd_has_memfinder(state, world))
+        world.connect_2way(world.get_region("Hub2"), world.get_region("ReCollectionGrey"),sd_has_memfinder(state, world))
+        world.connect_2way(world.get_region("FinalLobby"), world.get_region("ReCollectionWhite"), sd_has_memfinder(state, world))
+        world.connect_2way(world.get_region("ExanderZone"), world.get_region("ReCollectionExander"),sd_has_memfinder(state, world))
 
     if world.options.minibosses:
-        red1_minibosses = world.get_region("Red1_Minibosses")
-        red2_minibosses = world.get_region("Red2_Minibosses")
+        world.connect_2way(world.get_region("QuoDefenderRoom"), world.get_region("QuoDefenderItems"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("KingooseRoom"), world.get_region("KingooseItems"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("Griffin1Room"), world.get_region("Griffin1Items"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("DiggerRoom"), world.get_region("DiggerItems"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("DesmodusRoom"), world.get_region("DesmodusItems"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("SquailArea"), world.get_region("SquailItems"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("SwordmoleRoom"), world.get_region("SwordmoleItems"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("ScaventureRoom"), world.get_region("ScaventureItems"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("OngardRoom"), world.get_region("OngardItems"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("DualistsRoom"), world.get_region("DualistsItems"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("KisaijuRoom"), world.get_region("KisaijuItems"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("Griffin2Room"), world.get_region("Griffin2Items"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("EsquireRoom"), world.get_region("EsquireItems"), sd_can_fight_miniboss(state, world))
+        world.connect_2way(world.get_region("MothershipRoom"), world.get_region("MothershipItems"), sd_can_fight_miniboss(state, world))
 
-        red1.connect(red1_minibosses,"Fight_Red1_Miniboss")
-        red2.connect(red2_minibosses,"Fight_Red2_Miniboss")
     if world.options.wardens:
-        red_wardens = world.get_region("Red_Wardens")
+        world.connect_2way(world.get_region("Red2"), world.get_region("NyxItems"), sd_can_fight_warden(state, world))
+        world.connect_2way(world.get_region("ScatterRoom"), world.get_region("ScatterItems"), sd_can_fight_warden(state, world))
+        world.connect_2way(world.get_region("Green2"), world.get_region("CyphonItems"), sd_can_fight_warden(state, world))
+        world.connect_2way(world.get_region("PurpleTower"), world.get_region("EnriItems"), sd_can_fight_warden(state, world))
+        world.connect_2way(world.get_region("Orange1"), world.get_region("RudaItems"), sd_can_fight_warden(state, world))
+        world.connect_2way(world.get_region("BlackDungeon"), world.get_region("RotItems"), sd_can_fight_warden(state, world))
+        world.connect_2way(world.get_region("YellowLighthouse"), world.get_region("WinkItems"), sd_can_fight_warden(state, world))
+        world.connect_2way(world.get_region("ExanderZone"), world.get_region("FinalGriffinItems"), sd_can_fight_warden(state, world))
 
-        red2.connect(red_wardens,"Fight_Red_Warden")
+    if world.options.chaoswardens:
+        world.connect_2way(world.get_region("PurpleHippoRoom"), world.get_region("PurpleHippoItems"), sd_can_fight_warden(state, world))
+        world.connect_2way(world.get_region("RedBackdoorIsland"), world.get_region("ChaosRotItems"), sd_can_fight_chaos_warden(state, world))
+        world.connect_2way(world.get_region("PurpleBackdoorIsland"), world.get_region("ChaosRudaItems"), sd_can_fight_chaos_warden(state, world))
+        world.connect_2way(world.get_region("BlueBackdoorIsland"), world.get_region("ChaosNyxItems"), sd_can_fight_chaos_warden(state, world))
+        world.connect_2way(world.get_region("PurpleBackdoorIsland"), world.get_region("ChaosCyphonItems"), sd_can_fight_chaos_warden(state, world))
+        world.connect_2way(world.get_region("GreenBackdoorIsland"), world.get_region("ChaosWinkItems"), sd_can_fight_chaos_warden(state, world))
+        world.connect_2way(world.get_region("BlackBackdoorIsland"), world.get_region("ChaosScatterItems"), sd_can_fight_chaos_warden(state, world))
+
+    if world.options.omni:
+        world.connect_2way(world.get_region("OmniRoom"), world.get_region("OmniItems"), sd_can_fight_omni(state, world))
+
+    if world.options.starstuds:
+        world.connect_2way(world.get_region("Hub1"), world.get_region("Starstuds"), sd_party_size_meets(state, world, 1))

@@ -100,7 +100,7 @@ item_table = {
 }
 
 #Sawyer: Make a random starting member.
-def get_random_member(world: SDWorld):
+def get_random_member(world: SDWorld) -> SDItem:
     #Sawyer: First we get the keys (names of the values) from the party member list.
     members = [key for key, val in party_members.items()]
     #Sawyer: Then we get a random number from the length of that list.
@@ -112,6 +112,8 @@ def get_random_member(world: SDWorld):
     location = world.multiworld.get_location("PinnJoin", world.player)
     #Finally, add it to the location.
     location.place_locked_item(starty_member)
+    return starty_member
+    #members.remove(starty_member)
 
 def create_all_items(world: SDWorld):
     itempool = []
@@ -121,7 +123,7 @@ def create_all_items(world: SDWorld):
 
     # Starting Party Member given at game start
     #if world.options.starting_party_member:
-    get_random_member(world)
+    itempool.remove(get_random_member(world))
 
     # other steps here maybe
 

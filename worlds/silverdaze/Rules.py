@@ -55,11 +55,41 @@ def sd_has_orange(state: CollectionState, world: SDWorld) -> bool:
 def sd_has_black(state: CollectionState, world: SDWorld) -> bool:
     return state.has("Black Key", world.player)
 
+def sd_has_memfinder(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Memfinder", world.player)
+def sd_has_glitch(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Blue_Zone()", world.player) and state.has("._locale", world.player)
+
+def sd_has_dragon(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Dragon", world.player)
+def sd_has_kappa(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Kappa", world.player)
+def sd_has_unicorn(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Unicorn", world.player)
+def sd_has_cyclops(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Cyclops", world.player)
+def sd_has_phoenix(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Phoenix", world.player)
+def sd_has_pulgasari(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Pulgasari", world.player)
+def sd_has_pixie(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Pixie", world.player)
+
 def sd_party_size_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
     # party_members is all items that are party members
     # keys is just the strings, which are item names
 
     return state.has_from_list_unique(party_members.keys(), world.player, size)
+
+#This is copied from vanilla, I won't bother reconfiguring the logic.
+#Basic gist is that it checks every location where a Starstud could be available and adds it to the pile.
+def sd_stars(state: CollectionState, world: SDWorld, size:int) -> bool:
+    stars = 0
+    if lambda mystate: sd_party_size_meets(state, world,1): stars += 1
+    if lambda mystate: sd_has_yellow(state, world): stars += 1
+    if lambda mystate: sd_has_yellow(state, world) and sd_has_green(state, world): stars += 1
+
+    return stars >= size
 
 
 def sd_can_fight_miniboss(state: CollectionState, world: SDWorld) -> bool:
@@ -70,6 +100,9 @@ def sd_can_fight_warden(state: CollectionState, world: SDWorld) -> bool:
 
 def sd_can_fight_chaos_warden(state: CollectionState, world: SDWorld) -> bool:
     return sd_party_size_meets(state, world,5)
+
+def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
+    return sd_party_size_meets(state, world,7)
 
 #End of helpers
 
@@ -83,55 +116,49 @@ def set_all_entrance_rules(world: SDWorld) -> None:
 
     #begin_new_game = world.get_entrance("Begin_New_Game")
     leave_geo_room = world.get_entrance("Leave_Geo_Room")
-    door_to_hub_2 = world.get_entrance("Door_To_Hub_2")
-    red_main_entrance = world.get_entrance("Red_Main_Entrance")
-    red_kingoose_boss_door = world.get_entrance("Red_Kingoose_Boss_Door")
 
-
-
-    set_rule(leave_geo_room, lambda mystate: sd_party_size_meets(mystate, world,1))
-    set_rule(door_to_hub_2, lambda mystate: sd_has_yellow( mystate, world))
-    set_rule(red_main_entrance, lambda mystate: sd_has_yellow( mystate, world))
-    set_rule(red_kingoose_boss_door, lambda mystate: sd_has_yellow( mystate, world) and sd_can_fight_miniboss(mystate, world))
-
-    if world.options.minibosses:
-        fight_red1_miniboss = world.get_entrance("Fight_Red1_Miniboss")
-        fight_red2_miniboss = world.get_entrance("Fight_Red2_Miniboss")
-
-        set_rule(fight_red1_miniboss, lambda mystate: sd_can_fight_miniboss(mystate,world))
-        set_rule(fight_red2_miniboss, lambda mystate: sd_can_fight_miniboss(mystate,world))
-
-
-    if world.options.wardens:
-        fight_red_warden = world.get_entrance("Fight_Red_Warden")
-
-        set_rule(fight_red_warden, lambda mystate: sd_can_fight_warden(mystate,world))
-
-    if world.options.shops:
-        first_shop = world.get_entrance("Shop_One")
-        second_shop = world.get_entrance("Shop_Two")
-        third_shop = world.get_entrance("Shop_Three")
-
-        set_rule(first_shop, lambda mystate: sd_has_yellow( mystate, world))
-        set_rule(second_shop, lambda mystate: sd_has_yellow( mystate, world) and sd_party_size_meets(mystate, world,2))
-        set_rule(third_shop, lambda mystate: sd_has_yellow( mystate, world) and sd_party_size_meets(mystate, world,3))
 
 #Sawyer: These are the location rules! Hoo boy there are many haha
 def set_all_location_rules(world: SDWorld) -> None:
     player = world.player
     multiworld = world.multiworld
-    mystate = CollectionState
 
     #Sawyer: Don't forget to define the locations we're adding rules to here.
-    hub2chest2 = world.get_location("Hub2Chest2")
-    red1chest = world.get_location("Red1Chest")
-    redchasm2chest1 = world.get_location("RedChasm2Chest1")
-    red3backdoorchest = world.get_location("Red3BackdoorChest")
+    add_rule(world.get_location("Red1Chest"), lambda mystate: sd_has_red( mystate, world))
+    add_rule(world.get_location("RedChasm2Chest2"), lambda mystate: sd_has_red( mystate, world))
+    add_rule(world.get_location("Blue3Chest"), lambda mystate: sd_party_size_meets(mystate, world,3))
+    add_rule(world.get_location("BlueCaveRightStory"), lambda mystate: sd_party_size_meets(mystate, world,3))
+    add_rule(world.get_location("BlueCaveLeftStory"), lambda mystate: sd_party_size_meets(mystate, world,2))
+    add_rule(world.get_location("BlueCaveLeftChest"), lambda mystate: sd_has_blue(mystate, world))
+    add_rule(world.get_location("Blue7Chest"), lambda mystate: sd_party_size_meets(mystate, world,4))
 
-    add_rule(hub2chest2, lambda mystate: sd_has_red( mystate, world))
-    add_rule(red1chest, lambda mystate: sd_has_red( mystate, world))
-    add_rule(redchasm2chest1, lambda mystate: sd_has_red( mystate, world))
-    add_rule(red3backdoorchest, lambda mystate: sd_has_red( mystate, world))
+    #Sawyer: Put the Starstud Rules here.
+    if world.options.starstuds:
+        add_rule(world.get_location("StarStud1"), lambda mystate: sd_stars(mystate, world, 1))
+        add_rule(world.get_location("StarStud2"), lambda mystate: sd_stars(mystate, world, 2))
+        add_rule(world.get_location("StarStud3"), lambda mystate: sd_stars(mystate, world, 3))
+        add_rule(world.get_location("StarStud4"), lambda mystate: sd_stars(mystate, world, 4))
+        add_rule(world.get_location("StarStud5"), lambda mystate: sd_stars(mystate, world, 5))
+        add_rule(world.get_location("StarStud6"), lambda mystate: sd_stars(mystate, world, 6))
+        add_rule(world.get_location("StarStud7"), lambda mystate: sd_stars(mystate, world, 7))
+        add_rule(world.get_location("StarStud8"), lambda mystate: sd_stars(mystate, world, 8))
+        add_rule(world.get_location("StarStud9"), lambda mystate: sd_stars(mystate, world, 9))
+        add_rule(world.get_location("StarStud10"), lambda mystate: sd_stars(mystate, world, 10))
+        add_rule(world.get_location("StarStud11"), lambda mystate: sd_stars(mystate, world, 11))
+        add_rule(world.get_location("StarStud12"), lambda mystate: sd_stars(mystate, world, 12))
+        add_rule(world.get_location("StarStud13"), lambda mystate: sd_stars(mystate, world, 13))
+        add_rule(world.get_location("StarStud14"), lambda mystate: sd_stars(mystate, world, 14))
+        add_rule(world.get_location("StarStud15"), lambda mystate: sd_stars(mystate, world, 15))
+        add_rule(world.get_location("StarStud16"), lambda mystate: sd_stars(mystate, world, 16))
+        add_rule(world.get_location("StarStud17"), lambda mystate: sd_stars(mystate, world, 17))
+        add_rule(world.get_location("StarStud18"), lambda mystate: sd_stars(mystate, world, 18))
+        add_rule(world.get_location("StarStud19"), lambda mystate: sd_stars(mystate, world, 19))
+        add_rule(world.get_location("StarStud20"), lambda mystate: sd_stars(mystate, world, 20))
+        add_rule(world.get_location("StarStud21"), lambda mystate: sd_stars(mystate, world, 21))
+        add_rule(world.get_location("StarStud22"), lambda mystate: sd_stars(mystate, world, 22))
+        add_rule(world.get_location("StarStud23"), lambda mystate: sd_stars(mystate, world, 23))
+        add_rule(world.get_location("StarStud24"), lambda mystate: sd_stars(mystate, world, 24))
+        add_rule(world.get_location("StarStud25"), lambda mystate: sd_stars(mystate, world, 25))
 
 #Sawyer: Time for the wincon! For now it'll just be three party members but once the demo works it should be Entropy
 def set_completion_condition(world: SDWorld) -> None:
