@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING
 from BaseClasses import ItemClassification, Location
 
 from . import Items
+from ..factorio import location_pools
 
 if TYPE_CHECKING:
     from .World import SDWorld
@@ -230,7 +231,7 @@ def create_regular_locations(world: SDWorld) -> None:
         "Black7Chest","BlackBetween2Chest",
     ]),SDLocation)
 #
-    world.get_region("GriffinRoom").add_locations(get_location_names_with_ids([
+    world.get_region("Griffin2Room").add_locations(get_location_names_with_ids([
         "Memo14","Memo14A","ReCollection01",
     ]),SDLocation)
 #
@@ -388,7 +389,7 @@ def create_regular_locations(world: SDWorld) -> None:
         ]), SDLocation)
 #
         world.get_region("WinkItems").add_locations(get_location_names_with_ids([
-
+            "Wink1","Wink2","Wink3"
         ]), SDLocation)
 #
         world.get_region("FinalGriffinItems").add_locations(get_location_names_with_ids([
@@ -430,14 +431,17 @@ def create_regular_locations(world: SDWorld) -> None:
             "PurpleHippo1","PurpleHippo2","PurpleHippo3"
         ]), SDLocation)
 
-    if world.options.chaoswardens:
-        world.get_region("Omni").add_locations(get_location_names_with_ids([
+    if world.options.omni:
+        world.get_region("OmniItems").add_locations(get_location_names_with_ids([
             "Omni1","Omni2","Omni3",
         ]), SDLocation)
 
     if world.options.starstuds:
         world.get_region("Starstuds").add_locations(get_location_names_with_ids([
-
+            "Starstud1","Starstud2","Starstud3","Starstud4","Starstud5","Starstud6","Starstud7","Starstud8","Starstud9",
+            "Starstud10","Starstud11","Starstud12","Starstud13","Starstud14","Starstud15","Starstud16","Starstud17",
+            "Starstud18","Starstud19",
+            "Starstud20","Starstud21","Starstud22","Starstud23","Starstud24","Starstud25",
         ]), SDLocation)
 
 
@@ -449,7 +453,7 @@ def create_regular_locations(world: SDWorld) -> None:
 #         ]), SDLocation)
 #
         world.get_region("Shop1").add_locations(get_location_names_with_ids([
-            "Shop1", "Shop2""Shop3", "Shop4", "Shop5", "Shop6", "Shop7", "Shop8", "Shop9", "Shop10", "Shop11", "Shop12",
+            "Shop1", "Shop2","Shop3", "Shop4", "Shop5", "Shop6", "Shop7", "Shop8", "Shop9", "Shop10", "Shop11", "Shop12",
             "Shop13","Shop14", "Shop15", "Shop16", "Shop17",
         ]), SDLocation)
 #
@@ -470,11 +474,11 @@ def create_regular_locations(world: SDWorld) -> None:
         ]), SDLocation)
 #
         world.get_region("Shop6").add_locations(get_location_names_with_ids([
-
+            "Shop41", "Shop42", "Shop43", "Shop44", "Shop45", "Shop46",
         ]), SDLocation)
 #
         world.get_region("Shop7").add_locations(get_location_names_with_ids([
-            "Shop41","Shop42","Shop43","Shop44","Shop45","Shop46","Shop47","Shop48","Shop49",
+            "Shop47","Shop48","Shop49",
             "Shop50","Shop51","Shop52","Shop53","Shop54","Shop55","Shop56","Shop57","Shop58","Shop59",
         ]), SDLocation)
 
@@ -534,57 +538,39 @@ def create_regular_locations(world: SDWorld) -> None:
 
 
 def create_events(world: SDWorld) -> None:
-    world.get_region("Hub1").locations.append(SDLocation(world.player, "Starstud1", None, world.get_region("Hub1")))
-    world.get_region("Hub2").locations.append(SDLocation(world.player, "Starstud2", None, world.get_region("Hub2")))
-    world.get_region("Red1").locations.append(SDLocation(world.player, "Starstud3", None, world.get_region("Red1")))
-    world.get_region("Red2").locations.append(SDLocation(world.player, "Starstud4", None, world.get_region("Red2")))
-    world.get_region("Red2").locations.append(SDLocation(world.player, "Starstud5", None, world.get_region("Red2")))
-    world.get_region("Orange1").locations.append(SDLocation(world.player, "Starstud6", None, world.get_region("Orange1")))
-    world.get_region("Orange1").locations.append(SDLocation(world.player, "Starstud24", None, world.get_region("Orange1")))
-    world.get_region("Orange2").locations.append(SDLocation(world.player, "Starstud7", None, world.get_region("Orange2")))
-    world.get_region("Hub3GreenSide").locations.append(SDLocation(world.player, "Starstud8", None, world.get_region("Hub3GreenSide")))
-    world.get_region("EsquireRoom").locations.append(SDLocation(world.player, "Starstud9", None, world.get_region("EsquireRoom")))
-    world.get_region("Yellow2").locations.append(SDLocation(world.player, "Starstud10", None, world.get_region("Yellow2")))
-    world.get_region("YellowLighthouse").locations.append(SDLocation(world.player, "Starstud11", None, world.get_region("YellowLighthouse")))
-    world.get_region("Green1").locations.append(SDLocation(world.player, "Starstud12", None, world.get_region("Green1")))
-    world.get_region("Green2").locations.append(SDLocation(world.player, "Starstud13", None, world.get_region("Green2")))
-    world.get_region("Green2").locations.append(SDLocation(world.player, "Starstud14", None, world.get_region("Green2")))
-    world.get_region("Blue1").locations.append(SDLocation(world.player, "Starstud15", None, world.get_region("Blue1")))
-    world.get_region("Blue4").locations.append(SDLocation(world.player, "Starstud16", None, world.get_region("Blue4")))
-    world.get_region("Blue5").locations.append(SDLocation(world.player, "Starstud17", None, world.get_region("Blue5")))
-    world.get_region("Purple1").locations.append(SDLocation(world.player, "Starstud18", None, world.get_region("Purple1")))
-    world.get_region("PurpleTower").locations.append(SDLocation(world.player, "Starstud19", None, world.get_region("PurpleTower")))
-    world.get_region("PurpleTower").locations.append(SDLocation(world.player, "Starstud20", None, world.get_region("PurpleTower")))
-    world.get_region("Black1").locations.append(SDLocation(world.player, "Starstud21", None, world.get_region("Black1")))
-    world.get_region("Black2").locations.append(SDLocation(world.player, "Starstud22", None, world.get_region("Black2")))
-    world.get_region("BlackDungeon").locations.append(SDLocation(world.player, "Starstud23", None, world.get_region("BlackDungeon")))
-    world.get_region("OmniZone1").locations.append(SDLocation(world.player, "Starstud25", None, world.get_region("OmniZone1")))
+    world.get_region("Hub1").locations.append(SDLocation(world.player, "Starstud1Empty", None, world.get_region("Hub1")))
+    world.get_region("Hub2").locations.append(SDLocation(world.player, "Starstud2Empty", None, world.get_region("Hub2")))
+    world.get_region("Red1").locations.append(SDLocation(world.player, "Starstud3Empty", None, world.get_region("Red1")))
+    world.get_region("Red2").locations.append(SDLocation(world.player, "Starstud4Empty", None, world.get_region("Red2")))
+    world.get_region("Red2").locations.append(SDLocation(world.player, "Starstud5Empty", None, world.get_region("Red2")))
+    world.get_region("Orange1").locations.append(SDLocation(world.player, "Starstud6Empty", None, world.get_region("Orange1")))
+    world.get_region("Orange1").locations.append(SDLocation(world.player, "Starstud24Empty", None, world.get_region("Orange1")))
+    world.get_region("Orange2").locations.append(SDLocation(world.player, "Starstud7Empty", None, world.get_region("Orange2")))
+    world.get_region("Hub3GreenSide").locations.append(SDLocation(world.player, "Starstud8Empty", None, world.get_region("Hub3GreenSide")))
+    world.get_region("EsquireRoom").locations.append(SDLocation(world.player, "Starstud9Empty", None, world.get_region("EsquireRoom")))
+    world.get_region("Yellow2").locations.append(SDLocation(world.player, "Starstud10Empty", None, world.get_region("Yellow2")))
+    world.get_region("YellowLighthouse").locations.append(SDLocation(world.player, "Starstud11Empty", None, world.get_region("YellowLighthouse")))
+    world.get_region("Green1").locations.append(SDLocation(world.player, "Starstud12Empty", None, world.get_region("Green1")))
+    world.get_region("Green2").locations.append(SDLocation(world.player, "Starstud13Empty", None, world.get_region("Green2")))
+    world.get_region("Green2").locations.append(SDLocation(world.player, "Starstud14Empty", None, world.get_region("Green2")))
+    world.get_region("Blue1").locations.append(SDLocation(world.player, "Starstud15Empty", None, world.get_region("Blue1")))
+    world.get_region("Blue4").locations.append(SDLocation(world.player, "Starstud16Empty", None, world.get_region("Blue4")))
+    world.get_region("Blue5").locations.append(SDLocation(world.player, "Starstud17Empty", None, world.get_region("Blue5")))
+    world.get_region("Purple1").locations.append(SDLocation(world.player, "Starstud18Empty", None, world.get_region("Purple1")))
+    world.get_region("PurpleTower").locations.append(SDLocation(world.player, "Starstud19Empty", None, world.get_region("PurpleTower")))
+    world.get_region("PurpleTower").locations.append(SDLocation(world.player, "Starstud20Empty", None, world.get_region("PurpleTower")))
+    world.get_region("Black1").locations.append(SDLocation(world.player, "Starstud21Empty", None, world.get_region("Black1")))
+    world.get_region("Black2").locations.append(SDLocation(world.player, "Starstud22Empty", None, world.get_region("Black2")))
+    world.get_region("BlackDungeon").locations.append(SDLocation(world.player, "Starstud23Empty", None, world.get_region("BlackDungeon")))
+    world.get_region("OmniZone1").locations.append(SDLocation(world.player, "Starstud25Empty", None, world.get_region("OmniZone1")))
 
-    starstud = world.create_item("Starstud")
-    SDLocation(world.player,"Starstud1").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud2").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud3").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud4").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud5").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud6").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud7").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud8").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud9").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud10").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud11").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud12").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud13").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud14").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud15").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud16").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud17").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud18").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud19").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud20").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud21").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud22").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud23").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud24").place_locked_item(starstud)
-    SDLocation(world.player,"Starstud25").place_locked_item(starstud)
+    for i in range(25):
+        location_name = f"Starstud{i + 1}Empty"
+        location = world.get_location(location_name)
+        starstud = Items.SDItem("Starstud", ItemClassification.progression, None, world.player)
+        location.place_locked_item(starstud)
+
+
+
 
 

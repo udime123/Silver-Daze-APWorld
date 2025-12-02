@@ -31,6 +31,10 @@ party_members = {
     "Pinn": ItemData(3001, ItemClassification.progression, "Party"),
     "Geo": ItemData(3002, ItemClassification.progression, "Party"),
     "Kani": ItemData(3003, ItemClassification.progression, "Party"),
+    "Shane": ItemData(3004, ItemClassification.progression, "Party"),
+    "Jeff": ItemData(3005, ItemClassification.progression, "Party"),
+    "Wink": ItemData(3006, ItemClassification.progression, "Party"),
+    "Liza": ItemData(3007, ItemClassification.progression, "Party"),
 }
 
 mp3s = {
@@ -57,13 +61,13 @@ cards = {
     "SmokeBreak": ItemData(311),
     "PowerNap": ItemData(72),
     "Flatten": ItemData(18),
-    "Dragon": ItemData(31),
-    "Kappa": ItemData(230),
-    "Unicorn": ItemData(187),
-    "Cyclops": ItemData(292),
-    "Phoenix": ItemData(86),
-    "Pulgasari": ItemData(345),
-    "Pixie": ItemData(137),
+    "Dragon": ItemData(31, ItemClassification.progression, "Card"),
+    "Kappa": ItemData(230, ItemClassification.progression, "Card"),
+    "Unicorn": ItemData(187, ItemClassification.progression, "Card"),
+    "Cyclops": ItemData(292, ItemClassification.progression, "Card"),
+    "Phoenix": ItemData(86, ItemClassification.progression, "Card"),
+    "Pulgasari": ItemData(345, ItemClassification.progression, "Card"),
+    "Pixie": ItemData(137, ItemClassification.progression, "Card"),
     "Variacut": ItemData(30),
     "Morning Ray": ItemData(7),
     "Zoner": ItemData(304),
@@ -84,7 +88,7 @@ keys = {
     "Blue_Zone()": ItemData(2018, ItemClassification.progression, "Glitch"),
     "._locale": ItemData(2019, ItemClassification.progression, "Glitch"),
 
-    ".Memfinder": ItemData(2009, ItemClassification.progression, "Memfinder"),
+    "Memfinder": ItemData(2009, ItemClassification.progression, "Memfinder"),
 
     "Red Fragment": ItemData(2022, ItemClassification.progression, "Fragment"),
     "Orange Fragment": ItemData(2023, ItemClassification.progression, "Fragment"),

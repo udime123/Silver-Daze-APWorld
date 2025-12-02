@@ -1,13 +1,19 @@
 #Snagged from APQuest, not actually sure what these are.
 
 from collections.abc import Mapping
-from typing import Any
+from typing import Any, Callable
 
 # Imports base Archipelago autoworld.
 from worlds.AutoWorld import World
 
+from BaseClasses import Entrance, Region, CollectionState
+
 # Imports our files. We use capitals for the paths.
 from . import Items, Locations, Options, Regions, Rules
+
+
+
+
 
 class SDWorld(World):
     """
@@ -27,8 +33,14 @@ class SDWorld(World):
     item_name_to_id = {key: item.code for (key, item) in Items.item_table.items()}
     #item_name_to_id = Items.item_table
 
+    @staticmethod
+    def connect_2way(r1: Region, r2: Region, rule: Callable[[CollectionState], bool]):
+        #Credit Emily, thank you!
+        r1.connect(connecting_region=r2, rule=rule)
+        r2.connect(connecting_region=r1, rule=rule)
+
     #Sawyer: You start in Geo's Room, after all.
-    origin_region_name = "Geo_Room"
+    origin_region_name = "GeoRoom"
 
     #Sawyer: These are important rules, check APQuest for an explanation.
     def create_regions(self) -> None:
@@ -51,10 +63,9 @@ class SDWorld(World):
         return Items.get_random_filler_item_name(self)
 
 
-
-
     # #Sawyer: APQuest says to add this so we're adding it, not sure how it works yet.
     # def fill_slot_data(self) -> Mapping[str, Any]:
     #     return self.options.as_dict(
     #         #Sawyer: ATM we don't have any of these but that can change.
     #     )
+
