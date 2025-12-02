@@ -178,5 +178,5 @@ def set_completion_condition(world: SDWorld) -> None:
     multiworld = world.multiworld
     mystate = CollectionState
 
-    world.multiworld.completion_condition[world.player] = lambda mystate: sd_party_size_meets(mystate, world,3) and sd_has_red( mystate, world)
+    world.multiworld.completion_condition[world.player] = lambda mystate: sd_party_size_meets(mystate, world,7) and sd_has_black( mystate, world)
 
