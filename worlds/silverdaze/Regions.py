@@ -7,7 +7,7 @@ from BaseClasses import Entrance, Region, CollectionState
 
 from .Rules import sd_has_black, sd_has_blue, sd_has_red, sd_has_green, sd_has_orange, sd_has_purple, sd_has_yellow
 from .Rules import sd_can_fight_chaos_warden, sd_can_fight_warden, sd_can_fight_miniboss, sd_party_size_meets
-from .Rules import sd_has_memfinder, sd_has_glitch, sd_can_fight_omni
+from .Rules import sd_has_memfinder, sd_has_glitch, sd_can_fight_omni, sd_has_reco, sd_has_reco10
 from .Rules import sd_has_dragon, sd_has_kappa, sd_has_cyclops, sd_has_unicorn, sd_has_phoenix, sd_has_pulgasari, sd_has_pixie
 
 if TYPE_CHECKING:
@@ -333,16 +333,16 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
         world.connect_2way(world.get_region("Shop"), world.get_region("Shop7"),lambda state: sd_party_size_meets(state, world, 7))
 
     if world.options.recollections:
-        world.connect_2way(world.get_region("Blue4"), world.get_region("ReCollectionBlue"), lambda state: sd_has_memfinder(state, world))
-        world.connect_2way(world.get_region("Green1"), world.get_region("ReCollectionGreen"),lambda state: sd_has_memfinder(state, world))
-        world.connect_2way(world.get_region("PurpleTower"), world.get_region("ReCollectionPurple"), lambda state: sd_has_memfinder(state, world))
-        world.connect_2way(world.get_region("Orange2"), world.get_region("ReCollectionOrange"),lambda state: sd_has_memfinder(state, world))
-        world.connect_2way(world.get_region("Griffin2Room"), world.get_region("ReCollectionBlack"),lambda state: sd_has_memfinder(state, world))
-        world.connect_2way(world.get_region("YellowLighthouse"), world.get_region("ReCollectionYellow"),lambda state: sd_has_memfinder(state, world) and sd_has_yellow(state, world))
-        world.connect_2way(world.get_region("Red2"), world.get_region("ReCollectionRed"), lambda state: sd_has_memfinder(state, world))
-        world.connect_2way(world.get_region("Hub2"), world.get_region("ReCollectionGrey"),lambda state: sd_has_memfinder(state, world))
-        world.connect_2way(world.get_region("FinalLobby"), world.get_region("ReCollectionWhite"), lambda state: sd_has_memfinder(state, world))
-        world.connect_2way(world.get_region("ExanderZone"), world.get_region("ReCollectionExander"),lambda state: sd_has_memfinder(state, world))
+        world.connect_2way(world.get_region("Blue4"), world.get_region("ReCollectionBlue"), lambda state: sd_has_memfinder(state, world) and sd_has_reco(state, world, 5))
+        world.connect_2way(world.get_region("Green1"), world.get_region("ReCollectionGreen"),lambda state: sd_has_memfinder(state, world) and sd_has_reco(state, world, 3))
+        world.connect_2way(world.get_region("PurpleTower"), world.get_region("ReCollectionPurple"), lambda state: sd_has_memfinder(state, world) and sd_has_reco(state, world, 4))
+        world.connect_2way(world.get_region("Orange2"), world.get_region("ReCollectionOrange"),lambda state: sd_has_memfinder(state, world) and sd_has_reco(state, world, 7))
+        world.connect_2way(world.get_region("Griffin2Room"), world.get_region("ReCollectionBlack"),lambda state: sd_has_memfinder(state, world) and sd_has_reco(state, world, 1))
+        world.connect_2way(world.get_region("YellowLighthouse"), world.get_region("ReCollectionYellow"),lambda state: sd_has_memfinder(state, world) and sd_has_yellow(state, world) and sd_has_reco(state, world, 6))
+        world.connect_2way(world.get_region("Red2"), world.get_region("ReCollectionRed"), lambda state: sd_has_memfinder(state, world) and sd_has_reco(state, world, 2))
+        world.connect_2way(world.get_region("Hub2"), world.get_region("ReCollectionGrey"),lambda state: sd_has_memfinder(state, world) and sd_has_reco(state, world, 8))
+        world.connect_2way(world.get_region("FinalLobby"), world.get_region("ReCollectionWhite"), lambda state: sd_has_memfinder(state, world) and sd_has_reco10(state, world))
+        world.connect_2way(world.get_region("ExanderZone"), world.get_region("ReCollectionExander"),lambda state: sd_has_memfinder(state, world) and sd_has_reco(state, world, 9))
 
     if world.options.minibosses:
         world.connect_2way(world.get_region("QuoDefenderRoom"), world.get_region("QuoDefenderItems"), lambda state: sd_can_fight_miniboss(state, world))

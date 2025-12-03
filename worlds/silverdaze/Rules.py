@@ -75,6 +75,11 @@ def sd_has_pulgasari(state: CollectionState, world: SDWorld) -> bool:
 def sd_has_pixie(state: CollectionState, world: SDWorld) -> bool:
     return state.has("Pixie", world.player)
 
+def sd_has_reco(state: CollectionState, world: SDWorld, num) -> bool:
+    return state.has(f"ReCollection0{num}", world.player)
+def sd_has_reco10(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("ReCollection10", world.player)
+
 def sd_has_chaotic(state: CollectionState, world: SDWorld) -> bool:
     return (state.has("Red Fragment", world.player) and state.has("Blue Fragment", world.player) and
             state.has("Green Fragment", world.player) and state.has("Purple Fragment", world.player) and
@@ -142,6 +147,8 @@ def set_all_location_rules(world: SDWorld) -> None:
     add_rule(world.get_location("Yellow3Chest"), lambda mystate: sd_has_yellow( mystate, world))
     add_rule(world.get_location("Yellow12Chest"), lambda mystate: sd_has_yellow( mystate, world))
     add_rule(world.get_location("ChaoticDance"), lambda mystate: sd_has_chaotic( mystate, world))
+    add_rule(world.get_location("ReCollection05"), lambda mystate: sd_has_yellow( mystate, world))
+    add_rule(world.get_location("Yellow12Chest"), lambda mystate: sd_has_yellow( mystate, world))
 
 
     #Sawyer: Put the Starstud Rules here.

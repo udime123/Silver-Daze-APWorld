@@ -38,7 +38,6 @@ def create_all_locations(world: SDWorld) -> None:
 
 def create_regular_locations(world: SDWorld) -> None:
     #Sawyer: Now we add stuff to regions!
-
 #Here's the main story non optional stuff.
     world.get_region("GeoRoom").add_locations(get_location_names_with_ids([
         "PinnJoin","Ultima","PinnMP3","StarterHealToken1","StarterHealToken2",
@@ -140,7 +139,7 @@ def create_regular_locations(world: SDWorld) -> None:
 
 #
     world.get_region("Green1").add_locations(get_location_names_with_ids([
-        "Green1Chest","GreenCyphonDebutChest","Jeff","JeffMP3","JeffWeapon1","JeffWeapon2","JeffWeapon3","ReCollection03",
+        "Green1Chest","GreenCyphonDebutChest","Jeff","JeffMP3","JeffWeapon1","JeffWeapon2","JeffWeapon3","ReCollection03","HubGreenChest",
     ]),SDLocation)
 #
     world.get_region("DesmodusRoom").add_locations(get_location_names_with_ids([
@@ -256,11 +255,11 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("YellowLighthouse").add_locations(get_location_names_with_ids([
-        "Yellow12Chest","Yellow14Chest1","Yellow14Chest2","Yellow14Chest3","YellowTower5Chest1","YellowTower5Chest2",
+        "Yellow12Chest","Yellow14Chest1","Yellow14Chest2","Yellow14Chest3","YellowTower5Chest1","YellowTower5Chest2","ReCollection06",
     ]),SDLocation)
 #
     world.get_region("FinalLobby").add_locations(get_location_names_with_ids([
-        "ChaoticDance","ReCollection10",
+        "ChaoticDance","ReCollection10","MemFinder",
     ]),SDLocation)
 #
     world.get_region("ExanderZone").add_locations(get_location_names_with_ids([
@@ -365,7 +364,7 @@ def create_regular_locations(world: SDWorld) -> None:
     if world.options.wardens:
 #
         world.get_region("NyxItems").add_locations(get_location_names_with_ids([
-            "Nyx1","Nyx1","Nyx1","Nyx"
+            "Nyx1","Nyx2","Nyx3","Nyx"
         ]), SDLocation)
 #
         world.get_region("ScatterItems").add_locations(get_location_names_with_ids([
@@ -533,8 +532,6 @@ def create_regular_locations(world: SDWorld) -> None:
             "ReCollection10_1", "ReCollection10_2", "ReCollection10_3",
             "ReCollection10_4", "ReCollection10_5", "ReCollection10_6",
         ]), SDLocation)
-
-
 
 
 def create_events(world: SDWorld) -> None:

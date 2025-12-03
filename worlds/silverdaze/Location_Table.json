@@ -91,8 +91,9 @@
     "JeffWeapon2": 905,
     "JeffWeapon3": 906,
     "ReCollection03": 907,
+	"HubGreenChest": 908,
 	
-    "Memo7": 908,
+
     "Memo7A": 909,
     "CyphonHallChest": 910,
     "GreenLeftUpChest": 911,
@@ -100,6 +101,7 @@
     "Memo8": 913,
     "Memo8A": 914,
     "GreenTheatreChest": 915,
+	"Memo7": 916,
 	
     "Purple1Chest2": 1000,
     "Purple1Chest1": 1001,
@@ -173,10 +175,12 @@
     "YellowTower5Chest1": 1213,
     "YellowTower5Chest2": 1214,
     "ReCollection06": 1215,
+	"Yellow12Chest": 1216,
 	
     "YellowTower5Chest2": 1300,
     "ChaoticDance": 1301,
     "ReCollection10": 1302,
+	"MemFinder": 1303,
 	
     "Final1Chest": 1400,
     "Final2Chest": 1401,
