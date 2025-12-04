@@ -2,30 +2,6 @@ from dataclasses import dataclass
 
 from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle
 
-# class starting_party_member(Toggle):
-#     """
-#     If true, a party member will be given to you when you start the game. Otherwise, you may need to wait until another
-#     player sends a party member to you.
-#     """
-#     display_name = "Starting Party Member"
-#     default = 1
-#
-#
-#  class IncludeShops(Toggle):
-#     """
-#    This toggles whether shops can have important items.
-#     """
-#     display_name = "Include Shops"
-#     default = 1
-#
-# class Deathlink(Toggle):
-#     """
-#    This toggles deathlink.
-#     """
-#     display_name = "Deathlink"
-#     default = 1
-#
-
 
 class minibosses(Toggle):
     """

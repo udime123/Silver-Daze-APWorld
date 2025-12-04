@@ -9,17 +9,21 @@ from typing import TYPE_CHECKING
 from BaseClasses import ItemClassification, Location
 
 from . import Items
-from ..factorio import location_pools
 
 if TYPE_CHECKING:
     from .World import SDWorld
-
+import os
 import json
+from .Location_Table import location_table
 
 #Okay, looks like everything needs an ID. Blehhh it is what it is, I'll just go in order from the default thingy.
 
 
-LOCATION_NAME_TO_ID = json.load(open("./worlds/silverdaze/Location_Table.json"))
+#LOCATION_NAME_TO_ID = json.load(open("./worlds/silverdaze/Location_Table.json"))
+LOCATION_NAME_TO_ID = location_table
+
+#with open(os.path.join(os.path.dirname(__file__), 'Location_Table.json'), 'r') as file:
+#    LOCATION_NAME_TO_ID = json.loads(file.read())
 
 # Sawyer: Locations are now stored inside the Location_Table.json file.
 # This is so they can easily be transferred to Silver Daze and given the location data.
@@ -566,6 +570,8 @@ def create_events(world: SDWorld) -> None:
         location = world.get_location(location_name)
         starstud = Items.SDItem("Starstud", ItemClassification.progression, None, world.player)
         location.place_locked_item(starstud)
+
+    #LOCATION_NAME_TO_ID.close()
 
 
 

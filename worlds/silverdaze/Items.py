@@ -373,7 +373,9 @@ keys = {
     "Blue Fragment": ItemData(2026, ItemClassification.progression, "Fragment"),
     "Purple Fragment": ItemData(2027, ItemClassification.progression, "Fragment"),
     "Black Fragment": ItemData(2028, ItemClassification.progression, "Fragment"),
+}
 
+reco_keys = {
     "ReCollection01": ItemData(4175, ItemClassification.progression, "Fragment"),
     "ReCollection02": ItemData(4166, ItemClassification.progression, "Fragment"),
     "ReCollection03": ItemData(4169, ItemClassification.progression, "Fragment"),
@@ -384,7 +386,9 @@ keys = {
     "ReCollection08": ItemData(4182, ItemClassification.progression, "Fragment"),
     "ReCollection09": ItemData(4184, ItemClassification.progression, "Fragment"),
     "ReCollection10": ItemData(4186, ItemClassification.progression, "Fragment"),
+}
 
+card_keys = {
 #These are cards but we shall treat them as progression.
     "Dragon": ItemData(31, ItemClassification.progression, "Card"),
     "Kappa": ItemData(230, ItemClassification.progression, "Card"),
@@ -408,6 +412,8 @@ starstuds = {
     "Starstud": ItemData(None, ItemClassification.progression, "Event", 25)
 }
 
+fillercards = list(cards.keys())
+
 #Sawyer: This should give us some random fillers. Let's look into adding traps later.
 def get_random_filler_item_name(world: SDWorld) -> str:
     fillers = [
@@ -420,6 +426,7 @@ def get_random_filler_item_name(world: SDWorld) -> str:
         "Slug Shot",
         "RATD", "Morning Ray", "Cold As Ice", "Strife",
     ]
+
     randomResult = world.random.randint(0, len(fillers) - 1)
     return fillers[randomResult]
 
@@ -428,6 +435,8 @@ item_table = {
     **party_members,
     **mp3s,
     **keys,
+    **reco_keys,
+    **card_keys,
     **consumables,
     **cards,
 
@@ -456,8 +465,19 @@ def get_random_member(world: SDWorld) -> SDItem:
 def create_all_items(world: SDWorld):
     itempool = []
 
-    for name in item_table:
+    # for name in item_table:
+    #     itempool.append(world.create_item(name))
+    for name in party_members:
         itempool.append(world.create_item(name))
+    for name in mp3s:
+        itempool.append(world.create_item(name))
+    for name in keys:
+        itempool.append(world.create_item(name))
+    for name in card_keys:
+        itempool.append(world.create_item(name))
+    if world.options.recollections:
+        for name in reco_keys:
+            itempool.append(world.create_item(name))
 
     # Starting Party Member given at game start
     #if world.options.starting_party_member:
@@ -465,6 +485,20 @@ def create_all_items(world: SDWorld):
 
     # other steps here maybe
 
+    #The following block will give us random cards but will *not* give us duplicate cards.
+    #Create a "deck" of cards from the list.
+    fillerCards = list(cards)
+    #Shuffle the deck of cards.
+    world.random.shuffle((fillerCards))
+    #Then for each card in the shuffled deck, if we still need filler, add the next card in the deck.
+    for name in fillerCards:
+        number_of_items = len(itempool)
+        number_of_unfilled_locations = len(world.multiworld.get_unfilled_locations(world.player))
+        needed_number_of_filler_items = number_of_unfilled_locations - number_of_items
+        if needed_number_of_filler_items > 0:
+            itempool.append(world.create_item(name))
+
+    #If we still need more filler after that, add filler.
     number_of_items = len(itempool)
     number_of_unfilled_locations = len(world.multiworld.get_unfilled_locations(world.player))
     needed_number_of_filler_items = number_of_unfilled_locations - number_of_items
