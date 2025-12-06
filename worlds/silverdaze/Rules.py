@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from BaseClasses import CollectionState
 from worlds.generic.Rules import add_rule, set_rule
 
-from .Items import party_members
+from .Items import party_members, redcards, orangecards, yellowcards, greencards, bluecards, purplecards, blackcards
 
 if TYPE_CHECKING:
     from .World import SDWorld
@@ -109,6 +109,25 @@ def sd_can_fight_chaos_warden(state: CollectionState, world: SDWorld) -> bool:
 def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
     return sd_party_size_meets(state, world,7)
 
+def sd_can_status_stun(state: CollectionState, world: SDWorld) -> bool:
+    return (state.has("Stungun", world.player) or state.has("FRAGSTUN", world.player) or state.has("Kappa", world.player)
+            or state.has("Kappa+", world.player) or state.has("Floodgate", world.player) or state.has("Smokebreak", world.player)
+            or state.has("Disruption", world.player) or (state.has("Voxel Generation", world.player) and state.has("Kani", world.player)))
+
+def sd_can_status_depression(state: CollectionState, world: SDWorld) -> bool:
+    return state.has("Irritate", world.player)
+
+def sd_can_use_all_colors(state: CollectionState, world: SDWorld) -> bool:
+    return  (state.has("Pinn", world.player) or state.has("Kani", world.player) or state.has("Wink", world.player) and
+            (state.has_from_list_unique(redcards.keys(), world.player, 1) or state.has("Kani", world.player)) and
+            (state.has_from_list_unique(orangecards.keys(), world.player, 1) or state.has("Shane", world.player)) and
+            (state.has_from_list_unique(yellowcards.keys(), world.player, 1) or state.has("Wink", world.player)) and
+            (state.has_from_list_unique(greencards.keys(), world.player, 1) or state.has("Liza", world.player)) and
+            (state.has_from_list_unique(bluecards.keys(), world.player, 1) or state.has("Pinn", world.player)) and
+            (state.has_from_list_unique(purplecards.keys(), world.player, 1) or state.has("Jeff", world.player)) and
+            (state.has_from_list_unique(blackcards.keys(), world.player, 1) or state.has("Geo", world.player))
+            )
+
 #End of helpers
 
 
@@ -128,56 +147,55 @@ def set_all_location_rules(world: SDWorld) -> None:
     multiworld = world.multiworld
 
     #Sawyer: Don't forget to define the locations we're adding rules to here.
-    add_rule(world.get_location("Blue3Chest"), lambda mystate: sd_party_size_meets(mystate, world,3))
-    add_rule(world.get_location("BlueCaveRightStory"), lambda mystate: sd_party_size_meets(mystate, world,3))
-    add_rule(world.get_location("BlueCaveLeftStory"), lambda mystate: sd_party_size_meets(mystate, world,2))
-    add_rule(world.get_location("Blue7Chest"), lambda mystate: sd_party_size_meets(mystate, world,4))
-    add_rule(world.get_location("BlueCaveLeftChest"), lambda mystate: sd_has_blue(mystate, world))
-    add_rule(world.get_location("GreenCyphonDebutChest"), lambda mystate: sd_has_green(mystate, world))
-    add_rule(world.get_location("Red1Chest"), lambda mystate: sd_has_red( mystate, world))
-    add_rule(world.get_location("RedChasm2Chest2"), lambda mystate: sd_has_red( mystate, world))
-    add_rule(world.get_location("GreenTheatreChest"), lambda mystate: sd_has_green( mystate, world))
-    add_rule(world.get_location("Purple1Chest2"), lambda mystate: sd_has_purple( mystate, world))
-    add_rule(world.get_location("PurpleLeftChest"), lambda mystate: sd_has_purple( mystate, world))
-    add_rule(world.get_location("Orange1Chest2"), lambda mystate: sd_has_orange( mystate, world))
-    add_rule(world.get_location("Black1Chest"), lambda mystate: sd_has_black( mystate, world))
-    add_rule(world.get_location("BlackBetween1Chest"), lambda mystate: sd_has_black( mystate, world))
-    add_rule(world.get_location("Black7Chest"), lambda mystate: sd_has_black( mystate, world))
-    add_rule(world.get_location("BlackBetween2Chest"), lambda mystate: sd_has_black( mystate, world))
-    add_rule(world.get_location("Yellow3Chest"), lambda mystate: sd_has_yellow( mystate, world))
-    add_rule(world.get_location("Yellow12Chest"), lambda mystate: sd_has_yellow( mystate, world))
-    add_rule(world.get_location("ChaoticDance"), lambda mystate: sd_has_chaotic( mystate, world))
-    add_rule(world.get_location("ReCollection05"), lambda mystate: sd_has_yellow( mystate, world))
-    add_rule(world.get_location("Yellow12Chest"), lambda mystate: sd_has_yellow( mystate, world))
+    add_rule(world.get_location("Blue Zone - Glitch Bridge 1 Silver Chest"), lambda mystate: sd_party_size_meets(mystate, world,3))
+    add_rule(world.get_location("Blue Cavern - Right Side Glitch Chest"), lambda mystate: sd_party_size_meets(mystate, world,3))
+    add_rule(world.get_location("Blue Cavern - Left Side Glitch Chest"), lambda mystate: sd_party_size_meets(mystate, world,2))
+    add_rule(world.get_location("Blue Zone - Wink Area Silver Chest"), lambda mystate: sd_party_size_meets(mystate, world,4))
+    add_rule(world.get_location("Blue Cavern - Left Side Silver Chest"), lambda mystate: sd_has_blue(mystate, world))
+    add_rule(world.get_location("Green Zone - Cyphon's Debut Silver Chest"), lambda mystate: sd_has_green(mystate, world))
+    add_rule(world.get_location("Red Zone - Green Chest Behind Key Bridge"), lambda mystate: sd_has_red( mystate, world))
+    add_rule(world.get_location("Red Zone Chasm - Silver Chest Behind Key Bridge"), lambda mystate: sd_has_red( mystate, world))
+    add_rule(world.get_location("Green Zone - Squail Theatre Chest"), lambda mystate: sd_has_green( mystate, world))
+    add_rule(world.get_location("Purple Zone - First Room Silver Chest"), lambda mystate: sd_has_purple( mystate, world))
+    add_rule(world.get_location("Purple Zone - Left Path Silver Chest"), lambda mystate: sd_has_purple( mystate, world))
+    add_rule(world.get_location("Orange Zone - Center Room Silver Chest"), lambda mystate: sd_has_orange( mystate, world))
+    add_rule(world.get_location("Black Zone - First Room Chest Behind Key Bridge"), lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("Black Zone - Rot Passageway 1 Gold Chest"), lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("Black Zone - Second Elevator Room Behind Key Bridge"), lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("Black Zone - Rot Passageway 2 Gold Chest"), lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("Yellow Zone - Green Chest Behind Early Key Bridge"), lambda mystate: sd_has_yellow( mystate, world))
+    add_rule(world.get_location("Yellow Zone - ReCollection Room Chest"), lambda mystate: sd_has_yellow( mystate, world))
+    add_rule(world.get_location("Forge Chaotic Dance"), lambda mystate: sd_has_chaotic( mystate, world))
+    add_rule(world.get_location("Yellow Zone - ReCollection 06 Unlock"), lambda mystate: sd_has_yellow( mystate, world))
 
 
     #Sawyer: Put the Starstud Rules here.
     if world.options.starstuds:
-        add_rule(world.get_location("Starstud1"), lambda mystate: sd_stars(mystate, world, 1))
-        add_rule(world.get_location("Starstud2"), lambda mystate: sd_stars(mystate, world, 2))
-        add_rule(world.get_location("Starstud3"), lambda mystate: sd_stars(mystate, world, 3))
-        add_rule(world.get_location("Starstud4"), lambda mystate: sd_stars(mystate, world, 4))
-        add_rule(world.get_location("Starstud5"), lambda mystate: sd_stars(mystate, world, 5))
-        add_rule(world.get_location("Starstud6"), lambda mystate: sd_stars(mystate, world, 6))
-        add_rule(world.get_location("Starstud7"), lambda mystate: sd_stars(mystate, world, 7))
-        add_rule(world.get_location("Starstud8"), lambda mystate: sd_stars(mystate, world, 8))
-        add_rule(world.get_location("Starstud9"), lambda mystate: sd_stars(mystate, world, 9))
-        add_rule(world.get_location("Starstud10"), lambda mystate: sd_stars(mystate, world, 10))
-        add_rule(world.get_location("Starstud11"), lambda mystate: sd_stars(mystate, world, 11))
-        add_rule(world.get_location("Starstud12"), lambda mystate: sd_stars(mystate, world, 12))
-        add_rule(world.get_location("Starstud13"), lambda mystate: sd_stars(mystate, world, 13))
-        add_rule(world.get_location("Starstud14"), lambda mystate: sd_stars(mystate, world, 14))
-        add_rule(world.get_location("Starstud15"), lambda mystate: sd_stars(mystate, world, 15))
-        add_rule(world.get_location("Starstud16"), lambda mystate: sd_stars(mystate, world, 16))
-        add_rule(world.get_location("Starstud17"), lambda mystate: sd_stars(mystate, world, 17))
-        add_rule(world.get_location("Starstud18"), lambda mystate: sd_stars(mystate, world, 18))
-        add_rule(world.get_location("Starstud19"), lambda mystate: sd_stars(mystate, world, 19))
-        add_rule(world.get_location("Starstud20"), lambda mystate: sd_stars(mystate, world, 20))
-        add_rule(world.get_location("Starstud21"), lambda mystate: sd_stars(mystate, world, 21))
-        add_rule(world.get_location("Starstud22"), lambda mystate: sd_stars(mystate, world, 22))
-        add_rule(world.get_location("Starstud23"), lambda mystate: sd_stars(mystate, world, 23))
-        add_rule(world.get_location("Starstud24"), lambda mystate: sd_stars(mystate, world, 24))
-        add_rule(world.get_location("Starstud25"), lambda mystate: sd_stars(mystate, world, 25))
+        add_rule(world.get_location("Starstud 1"), lambda mystate: sd_stars(mystate, world, 1))
+        add_rule(world.get_location("Starstud 2"), lambda mystate: sd_stars(mystate, world, 2))
+        add_rule(world.get_location("Starstud 3"), lambda mystate: sd_stars(mystate, world, 3))
+        add_rule(world.get_location("Starstud 4"), lambda mystate: sd_stars(mystate, world, 4))
+        add_rule(world.get_location("Starstud 5"), lambda mystate: sd_stars(mystate, world, 5))
+        add_rule(world.get_location("Starstud 6"), lambda mystate: sd_stars(mystate, world, 6))
+        add_rule(world.get_location("Starstud 7"), lambda mystate: sd_stars(mystate, world, 7))
+        add_rule(world.get_location("Starstud 8"), lambda mystate: sd_stars(mystate, world, 8))
+        add_rule(world.get_location("Starstud 9"), lambda mystate: sd_stars(mystate, world, 9))
+        add_rule(world.get_location("Starstud 10"), lambda mystate: sd_stars(mystate, world, 10))
+        add_rule(world.get_location("Starstud 11"), lambda mystate: sd_stars(mystate, world, 11))
+        add_rule(world.get_location("Starstud 12"), lambda mystate: sd_stars(mystate, world, 12))
+        add_rule(world.get_location("Starstud 13"), lambda mystate: sd_stars(mystate, world, 13))
+        add_rule(world.get_location("Starstud 14"), lambda mystate: sd_stars(mystate, world, 14))
+        add_rule(world.get_location("Starstud 15"), lambda mystate: sd_stars(mystate, world, 15))
+        add_rule(world.get_location("Starstud 16"), lambda mystate: sd_stars(mystate, world, 16))
+        add_rule(world.get_location("Starstud 17"), lambda mystate: sd_stars(mystate, world, 17))
+        add_rule(world.get_location("Starstud 18"), lambda mystate: sd_stars(mystate, world, 18))
+        add_rule(world.get_location("Starstud 19"), lambda mystate: sd_stars(mystate, world, 19))
+        add_rule(world.get_location("Starstud 20"), lambda mystate: sd_stars(mystate, world, 20))
+        add_rule(world.get_location("Starstud 21"), lambda mystate: sd_stars(mystate, world, 21))
+        add_rule(world.get_location("Starstud 22"), lambda mystate: sd_stars(mystate, world, 22))
+        add_rule(world.get_location("Starstud 23"), lambda mystate: sd_stars(mystate, world, 23))
+        add_rule(world.get_location("Starstud 24"), lambda mystate: sd_stars(mystate, world, 24))
+        add_rule(world.get_location("Starstud 25"), lambda mystate: sd_stars(mystate, world, 25))
 
 #Sawyer: Time for the wincon! For now it'll just be three party members but once the demo works it should be Entropy
 def set_completion_condition(world: SDWorld) -> None:

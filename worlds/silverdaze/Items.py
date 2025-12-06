@@ -35,7 +35,6 @@ party_members = {
     "Jeff": ItemData(3005, ItemClassification.progression, "Party"),
     "Wink": ItemData(3006, ItemClassification.progression, "Party"),
     "Liza": ItemData(3007, ItemClassification.progression, "Party"),
-    "Exander": ItemData(4247, ItemClassification.useful, "Party"),
 }
 
 mp3s = {
@@ -125,7 +124,7 @@ mp3s = {
 }
 
 # In Visual Studio Code or another IDE you can collapse the dict to hide the cards
-cards = {
+redcards = {
     "RATD": ItemData(4, ItemClassification.filler, "Card", 0),
     "Cold As Ice": ItemData(5, ItemClassification.filler, "Card", 0),
     "Strife": ItemData(6, ItemClassification.filler, "Card", 0),
@@ -158,7 +157,8 @@ cards = {
     "Re:Move": ItemData(43),
     "En Passant": ItemData(44),
     "Dragon+": ItemData(48),
-
+}
+orangecards = {
     "Motivate": ItemData(52, ItemClassification.filler, "Card", 0),
     "Gyro": ItemData(53, ItemClassification.filler, "Card", 0),
     "Hear Me Out": ItemData(56),
@@ -194,7 +194,8 @@ cards = {
     "Capitalism": ItemData(92),
     "Consume": ItemData(93),
     "Phoenix+": ItemData(98),
-
+}
+yellowcards = {
     "Flash": ItemData(102, ItemClassification.filler, "Card", 0),
     "Soft Glow": ItemData(103),
     "Amp Up": ItemData(105),
@@ -226,7 +227,8 @@ cards = {
     "Shoot Star": ItemData(140),
     "EggnogGuard": ItemData(141),
     "Glass Cannon": ItemData(142),
-
+}
+greencards = {
     "Somewhen": ItemData(156, ItemClassification.filler, "Card", 0),
     "Somewhen (Foil)": ItemData(656),
     "TeaTime": ItemData(157, ItemClassification.filler, "Card", 0),
@@ -259,7 +261,8 @@ cards = {
     "Simple Playing": ItemData(193, ItemClassification.filler, "Card"),
     "GoMode": ItemData(194),
     "Unicorn+": ItemData(198),
-
+}
+bluecards = {
     "Drive Bit": ItemData(206, ItemClassification.filler, "Card", 0),
     "Schema": ItemData(209, ItemClassification.filler, "Card", 0),
     "Rushdown": ItemData(210, ItemClassification.filler, "Card", 0),
@@ -275,7 +278,6 @@ cards = {
     "JstDessrts": ItemData(223),
     "LimitDrive": ItemData(224),
     "VariaDive": ItemData(227),
-    "Irritate": ItemData(228),
     "Progress": ItemData(229),
     "Grapevine": ItemData(231),
     "FRAGDRIVE": ItemData(234),
@@ -289,7 +291,8 @@ cards = {
     "Save4thBase": ItemData(243),
     "Mono No Aware": ItemData(244),
     "Kappa+": ItemData(248),
-
+}
+purplecards = {
     "Curiosity": ItemData(254),
     "Speed Mode": ItemData(255, ItemClassification.filler, "Card", 0),
     "Fine Tune": ItemData(256),
@@ -318,7 +321,8 @@ cards = {
     "JumperJet": ItemData(296),
     "Tranche-Voix": ItemData(297),
     "Cyclops+": ItemData(298),
-
+}
+blackcards = {
     "CRT": ItemData(303, ItemClassification.filler, "Card", 0),
     "Zoner": ItemData(304, ItemClassification.filler, "Card", 0),
     "Play It Loud": ItemData(307, ItemClassification.filler, "Card", 0),
@@ -373,6 +377,8 @@ keys = {
     "Blue Fragment": ItemData(2026, ItemClassification.progression, "Fragment"),
     "Purple Fragment": ItemData(2027, ItemClassification.progression, "Fragment"),
     "Black Fragment": ItemData(2028, ItemClassification.progression, "Fragment"),
+
+    "Exander": ItemData(4247, ItemClassification.useful, "Party"),
 }
 
 reco_keys = {
@@ -397,6 +403,8 @@ card_keys = {
     "Phoenix": ItemData(86, ItemClassification.progression, "Card"),
     "Pulgasari": ItemData(345, ItemClassification.progression, "Card"),
     "Pixie": ItemData(137, ItemClassification.progression, "Card"),
+#Irritate is progressive to ensure you can enter the Purple Reco
+    "Irritate": ItemData(228, ItemClassification.progression, "Card"),
 }
 
 consumables = {
@@ -410,6 +418,16 @@ consumables = {
 
 starstuds = {
     "Starstud": ItemData(None, ItemClassification.progression, "Event", 25)
+}
+
+cards = {
+    **redcards,
+    **orangecards,
+    **yellowcards,
+    **greencards,
+    **bluecards,
+    **purplecards,
+    **blackcards
 }
 
 fillercards = list(cards.keys())
@@ -438,7 +456,13 @@ item_table = {
     **reco_keys,
     **card_keys,
     **consumables,
-    **cards,
+    **redcards,
+    **orangecards,
+    **yellowcards,
+    **greencards,
+    **bluecards,
+    **purplecards,
+    **blackcards,
 
     # Events - Note that these are items!
 
@@ -456,7 +480,7 @@ def get_random_member(world: SDWorld) -> SDItem:
     member_name = members[randomResult]
     starty_member = world.create_item(member_name)
     #Next we grab the PinnJoin location which is where the first party member is always given.
-    location = world.multiworld.get_location("PinnJoin", world.player)
+    location = world.multiworld.get_location("Geo's Room Reward 1", world.player)
     #Finally, add it to the location.
     location.place_locked_item(starty_member)
     return starty_member
@@ -483,7 +507,6 @@ def create_all_items(world: SDWorld):
     #if world.options.starting_party_member:
     itempool.remove(get_random_member(world))
 
-    # other steps here maybe
 
     #The following block will give us random cards but will *not* give us duplicate cards.
     #Create a "deck" of cards from the list.
