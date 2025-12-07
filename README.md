@@ -66,25 +66,25 @@ This options prevents important items from being associated with the rewards at 
 This option prevents important items from being associated with Starstuds.
 
 # FAQ
-How do I get hints?
+### How do I get hints?
 -At the moment, it is recommended that you play this game alongside the Generic Client, as Silver Daze currently does not have a native way to send messages or request hints.
 
-What happens if I disconnect?
+### What happens if I disconnect?
 -The game will remember your room number when you save. As long as your room number doesn't change, you can use these settings to quickly connect.
 
-What happens to the locations I exclude in my options?
+### What happens to the locations I exclude in my options?
 -Excluded locations from your options will cause those slots to be filled with random cards.
 
-The item I need is in the shop but I can't find it.
+### The item I need is in the shop but I can't find it.
 -Shops in the randomizer obtain new stock every time you get a new party member. All 59 shop items will only be available if you have seven party members.
 
-I haven't gotten my item yet while I'm in a battle.
+### I haven't gotten my item yet while I'm in a battle.
 -Items will not be given to you during battle. Leaving combat will cause items to be delivered to you.
 
-Are enemy drops shuffled?
+### Are enemy drops shuffled?
 -Enemy drops are not currently included in the multiworld pool, but they are randomized.
 
-Is there Deathlink support?
+### Is there Deathlink support?
 -Deathlink is in development.
 
 
