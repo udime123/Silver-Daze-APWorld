@@ -3,10 +3,13 @@ Welcome to the Silver Daze APWorld! This will allow you to create a multiworld w
 To play it, [you'll need your own copy of Silver Daze.](https://store.steampowered.com/app/2912770/Silver_Daze/)
 
 # Quick Install Instructions
-###-Place the ArchipelagoSilverDaze.json file in the www folder of your Silver Daze install path.
-###-Open the game, select New Game, then Archipelago.
-###-It'll ask you to enter your host, room number, and player name.
-###-Give it a couple seconds, and you're in!
+Place the ArchipelagoSilverDaze.json file in the www folder of your Silver Daze install path.
+
+Open the game, select New Game, then Archipelago.
+
+It'll ask you to enter your host, room number, and player name.
+
+Give it a couple seconds, and you're in!
 
 
 
