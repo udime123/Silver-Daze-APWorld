@@ -3,6 +3,13 @@ from dataclasses import dataclass
 from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle
 
 
+#Win Condition (Entropy, Omni, Bounty Hunt, Memo Hunt, ChaoticDance)
+
+#Number of Memos (1-14)
+
+#Number of Bounties (1-9)
+#Bounties could be any Chaos Warden, Omni, or Purple Hippo
+
 class minibosses(Toggle):
     """
     This toggles whether minibosses drop important items.
