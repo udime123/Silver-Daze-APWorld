@@ -158,6 +158,7 @@ def set_all_location_rules(world: SDWorld) -> None:
     add_rule(world.get_location("Green Zone - Squail Theatre Chest"), lambda mystate: sd_has_green( mystate, world))
     add_rule(world.get_location("Purple Zone - First Room Silver Chest"), lambda mystate: sd_has_purple( mystate, world))
     add_rule(world.get_location("Purple Zone - Left Path Silver Chest"), lambda mystate: sd_has_purple( mystate, world))
+    add_rule(world.get_location("Purple Zone - Before Scaventure Gold Chest"), lambda mystate: sd_has_purple(mystate, world))
     add_rule(world.get_location("Orange Zone - Center Room Silver Chest"), lambda mystate: sd_has_orange( mystate, world))
     add_rule(world.get_location("Black Zone - First Room Chest Behind Key Bridge"), lambda mystate: sd_has_black( mystate, world))
     add_rule(world.get_location("Black Zone - Rot Passageway 1 Gold Chest"), lambda mystate: sd_has_black( mystate, world))
