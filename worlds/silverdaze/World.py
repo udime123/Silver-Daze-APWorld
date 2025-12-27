@@ -64,6 +64,9 @@ class SDWorld(World):
 
 
 
-    # #Sawyer: APQuest says to add this so we're adding it, not sure how it works yet.
-    #def fill_slot_data(self) -> Mapping[str, Any]:
-    #    return []
+    # #Sawyer: Slotdata currently contains Goal.
+    def fill_slot_data(self) -> Mapping[str, Any]:
+        # This is just options.
+        return self.options.as_dict(
+            "minibosses","wardens","chaoswardens","omni","shops","recollections","starstuds","goal"
+        )

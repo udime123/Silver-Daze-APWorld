@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+from operator import truediv
 from typing import TYPE_CHECKING
 
 from BaseClasses import CollectionState
 from worlds.generic.Rules import add_rule, set_rule
 
+import Options
 from .Items import party_members, redcards, orangecards, yellowcards, greencards, bluecards, purplecards, blackcards
 
 if TYPE_CHECKING:
@@ -107,7 +109,47 @@ def sd_can_fight_chaos_warden(state: CollectionState, world: SDWorld) -> bool:
     return sd_party_size_meets(state, world,5)
 
 def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
-    return sd_party_size_meets(state, world,7)
+    if world.options.omni:
+        return sd_party_size_meets(state, world,7)
+    else:
+        return (
+                #First team to defeat Omni
+                (
+                    state.has("Jeff", world.player) and state.has("Kani", world.player) and state.has("Pinn", world.player)
+                    and state.has("Reflect", world.player) and state.has("Shoto", world.player) and state.has("Team Player", world.player)
+                    and state.has("Bubble (Foil)", world.player) and state.has("Second Chance", world.player) and state.has("Microwave", world.player)
+                    and state.has("RE:Move", world.player) and state.has("Bloody Heck", world.player, 2) and state.has("FirstCut", world.player)
+                    and state.has("I'm So Tired", world.player) and state.has("Mono No Aware", world.player) and state.has("Storm", world.player)
+                    and state.has("Pep Talk", world.player) and state.has("Someday", world.player)
+                )
+                #Second team to defeat Omni
+                or (
+                    state.has("Kani", world.player) and state.has("Liza", world.player) and state.has("Wink", world.player)
+                    and state.has("Microwave", world.player) and state.has("Voxel Generation", world.player) and state.has("FirstCut", world.player)
+                    and state.has("Momentum", world.player) and state.has("SmokeBreak", world.player) and state.has("GoMode", world.player)
+                    and state.has("Exception", world.player) and state.has("Bubble (Foil)", world.player) and state.has("Wall (Foil)", world.player)
+                    and state.has("Revolution 1", world.player) and state.has("Footstool", world.player) and state.has("Amp Up", world.player)
+                    and state.has("Chain Bolt", world.player) and state.has("Nightvision", world.player)
+                )
+                #Third team to defeat Omni
+                or (
+                    state.has("Geo", world.player) and state.has("Liza", world.player) and state.has("Pinn", world.player)
+                    and state.has("Bubble (Foil)", world.player, 2) and state.has("Team Player", world.player)
+                    and state.has("NoU", world.player, 2) and state.has("I'm So Tired", world.player)
+                    and state.has("GoMode", world.player) and state.has("Exception", world.player) and state.has("Wall (Foil)", world.player)
+                    and state.has("Revolution 1", world.player) and state.has("Mono No Aware", world.player) and state.has("Exploit", world.player)
+                    and state.has("ZoneSlice", world.player) and state.has("Pep Talk", world.player) and state.has("Move Along", world.player)
+                )
+                #Team that defeated Omni without taking damage
+                or (
+                    state.has("Geo", world.player) and state.has("Kani", world.player) and state.has("Pinn", world.player)
+                    and state.has("Wet Hands", world.player) and state.has("Pushbie", world.player) and state.has("Wall (Foil)", world.player)
+                    and state.has("Mono No Aware", world.player) and state.has("ZoneSlice", world.player) and state.has("MOTS", world.player)
+                    and state.has("Shoto", world.player) and state.has("Bubble (Foil)", world.player) and state.has("FeelingBlue", world.player)
+                    and state.has("Pullbie", world.player) and state.has("NoU", world.player) and state.has("Team Player", world.player)
+                    and state.has("WeirdSig", world.player) and state.has("Move Along", world.player) and state.has("Freddie Freeloader", world.player)
+                )
+        )
 
 def sd_can_status_stun(state: CollectionState, world: SDWorld) -> bool:
     return (state.has("Stungun", world.player) or state.has("FRAGSTUN", world.player) or state.has("Kappa", world.player)
@@ -198,11 +240,13 @@ def set_all_location_rules(world: SDWorld) -> None:
         add_rule(world.get_location("Starstud 24"), lambda mystate: sd_stars(mystate, world, 24))
         add_rule(world.get_location("Starstud 25"), lambda mystate: sd_stars(mystate, world, 25))
 
-#Sawyer: Time for the wincon! For now it'll just be three party members but once the demo works it should be Entropy
+#Sawyer: Time for the wincon! For now, it'll just be three party members but once the demo works it should be Entropy
 def set_completion_condition(world: SDWorld) -> None:
     player = world.player
     multiworld = world.multiworld
     mystate = CollectionState
 
-    world.multiworld.completion_condition[world.player] = lambda mystate: sd_party_size_meets(mystate, world,7) and sd_has_black( mystate, world)
-
+    if world.options.goal == 0:
+        world.multiworld.completion_condition[world.player] = lambda mystate: sd_party_size_meets(mystate, world,7) and sd_has_black( mystate, world)
+    elif world.options.goal == 1:
+        world.multiworld.completion_condition[world.player] = lambda mystate: sd_can_fight_omni(mystate, world) and mystate.can_reach_region('OmniItems', player)

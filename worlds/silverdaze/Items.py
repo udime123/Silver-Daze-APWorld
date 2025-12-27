@@ -141,7 +141,6 @@ redcards = {
     "Flatten": ItemData(18),
     "Projector": ItemData(19),
     "Off Wave": ItemData(23),
-    "Pushbie": ItemData(24),
     "ValorDrive": ItemData(25),
     "FirstBurst": ItemData(26),
     "Initiative": ItemData(28),
@@ -149,12 +148,10 @@ redcards = {
     "VariaCut": ItemData(30),
     "Blaze": ItemData(34, ItemClassification.filler, "Card", 0),
     "TobiasMoor": ItemData(35),
-    "Bloody Heck": ItemData(38),
     "Parry": ItemData(39),
     "FRAGSLASH": ItemData(40),
     "FastestFist": ItemData(41),
     "Finish Touch": ItemData(42),
-    "Re:Move": ItemData(43),
     "En Passant": ItemData(44),
     "Dragon+": ItemData(48),
 }
@@ -177,7 +174,6 @@ orangecards = {
     "ThiefBolt": ItemData(71),
     "PowerNap": ItemData(72),
     "Bubble": ItemData(73),
-    "Bubble (Foil)": ItemData(573),
     "NovaBurst": ItemData(75),
     "MasterDrive": ItemData(76),
     "Pilfer": ItemData(77, ItemClassification.filler, "Card", 0),
@@ -198,7 +194,6 @@ orangecards = {
 yellowcards = {
     "Flash": ItemData(102, ItemClassification.filler, "Card", 0),
     "Soft Glow": ItemData(103),
-    "Amp Up": ItemData(105),
     "Synchlite": ItemData(106, ItemClassification.filler, "Card", 0),
     "Disarm": ItemData(108),
     "Quick Strike": ItemData(109, ItemClassification.filler, "Card", 0),
@@ -246,7 +241,6 @@ greencards = {
     "Why Lie?": ItemData(172),
     "GuardBreak": ItemData(173),
     "Wall": ItemData(174),
-    "Wall (Foil)": ItemData(674),
     "UngaBunga": ItemData(175),
     "GuardiaDrive": ItemData(177),
     "Forcefield": ItemData(178),
@@ -259,22 +253,17 @@ greencards = {
     "FRAGSHIELD": ItemData(189),
     "Robo Punch": ItemData(192),
     "Simple Playing": ItemData(193, ItemClassification.filler, "Card"),
-    "GoMode": ItemData(194),
     "Unicorn+": ItemData(198),
 }
 bluecards = {
     "Drive Bit": ItemData(206, ItemClassification.filler, "Card", 0),
     "Schema": ItemData(209, ItemClassification.filler, "Card", 0),
     "Rushdown": ItemData(210, ItemClassification.filler, "Card", 0),
-    "FeelingBlue": ItemData(211),
     "Be The One": ItemData(212),
     "Light Form": ItemData(213),
-    "Microwave": ItemData(214),
     "Vizio": ItemData(215),
     "G.D.Break": ItemData(216),
-    "Storm": ItemData(217, ItemClassification.filler, "Card", 0),
     "D-Buster": ItemData(219),
-    "Pullbie": ItemData(222),
     "JstDessrts": ItemData(223),
     "LimitDrive": ItemData(224),
     "VariaDive": ItemData(227),
@@ -285,11 +274,9 @@ bluecards = {
     "Wishful (Foil)": ItemData(736),
     "Multiguard": ItemData(237),
     "Pointblank": ItemData(238),
-    "Exploit": ItemData(239),
     "Defender": ItemData(241, ItemClassification.filler, "Card", 0),
     "Vorpal": ItemData(242),
     "Save4thBase": ItemData(243),
-    "Mono No Aware": ItemData(244),
     "Kappa+": ItemData(248),
 }
 purplecards = {
@@ -313,7 +300,6 @@ purplecards = {
     "Improvise": ItemData(282, ItemClassification.filler, "Card", 0),
     "WisdomDrive": ItemData(284),
     "Patience": ItemData(286),
-    "Reflect": ItemData(287, ItemClassification.filler, "Card", 0),
     "VariaBeam": ItemData(288),
     "Voidskipper": ItemData(290),
     "FRAGBOOST": ItemData(291),
@@ -328,7 +314,6 @@ blackcards = {
     "Play It Loud": ItemData(307, ItemClassification.filler, "Card", 0),
     "Cellik": ItemData(308, ItemClassification.filler, "Card", 0),
     "Switchblade": ItemData(310, ItemClassification.filler, "Card", 0),
-    "SmokeBreak": ItemData(311),
     "PaintItBlck": ItemData(312),
     "Wasting Time": ItemData(314),
     "PitchShift": ItemData(315),
@@ -337,7 +322,6 @@ blackcards = {
     "Heavyweight": ItemData(319),
     "Disruption": ItemData(321, ItemClassification.filler, "Card", 0),
     "SaltInWound": ItemData(322),
-    "NoU": ItemData(323),
     "ShadowPulse": ItemData(324),
     "AntiDrive": ItemData(329),
     "Begrudge": ItemData(331),
@@ -347,7 +331,6 @@ blackcards = {
     "Mesmer Eyes (Foil)": ItemData(837),
     "CraftyCoyote": ItemData(339),
     "FRAGBLAST": ItemData(340),
-    "WeirdSig": ItemData(341),
     "Backup": ItemData(342, ItemClassification.filler, "Card", 0),
     "CursedSword": ItemData(343),
     "ChaoticDance": ItemData(344, ItemClassification.filler, "Card", 0),
@@ -407,6 +390,35 @@ card_keys = {
     "Irritate": ItemData(228, ItemClassification.progression, "Card"),
 }
 
+omni_keys = {
+#These are progression because they can be used to defeat Omni, but they won't be listed as such.
+    "Shoto": ItemData(9),
+    "Team Player": ItemData(346),
+    "Reflect": ItemData(287),
+    "Bubble (Foil)": ItemData(573, ItemClassification.useful, "Card", 2),
+    "Microwave": ItemData(214),
+    "Re:Move": ItemData(43),
+    "Bloody Heck": ItemData(38, ItemClassification.useful, "Card", 2),
+    "FirstCut": ItemData(27),
+    "Mono No Aware": ItemData(244),
+    "Storm": ItemData(217),
+    "Pep Talk": ItemData(204),
+    "SmokeBreak": ItemData(311),
+    "GoMode": ItemData(194),
+    "Exception": ItemData(221),
+    "Wall (Foil)": ItemData(674),
+    "Footstool": ItemData(138),
+    "Amp Up": ItemData(105),
+    "NoU": ItemData(323),
+    "Exploit": ItemData(239),
+    "ZoneSlice": ItemData(224),
+    "Pushbie": ItemData(24),
+    "MOTS": ItemData(8),
+    "FeelingBlue": ItemData(211),
+    "Pullbie": ItemData(222),
+    "WeirdSig": ItemData(341),
+}
+
 consumables = {
     "Heal Token": ItemData(2002, ItemClassification.filler, "Filler", 0),
     "Evade Token": ItemData(2003, ItemClassification.filler, "Filler", 0),
@@ -455,6 +467,7 @@ item_table = {
     **keys,
     **reco_keys,
     **card_keys,
+    **omni_keys,
     **consumables,
     **redcards,
     **orangecards,
@@ -499,9 +512,12 @@ def create_all_items(world: SDWorld):
         itempool.append(world.create_item(name))
     for name in card_keys:
         itempool.append(world.create_item(name))
+    for name in omni_keys:
+        itempool.append(world.create_item(name))
     if world.options.recollections:
         for name in reco_keys:
             itempool.append(world.create_item(name))
+
 
     # Starting Party Member given at game start
     #if world.options.starting_party_member:

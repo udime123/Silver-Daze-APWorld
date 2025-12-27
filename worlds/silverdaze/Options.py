@@ -10,6 +10,18 @@ from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle
 #Number of Bounties (1-9)
 #Bounties could be any Chaos Warden, Omni, or Purple Hippo
 
+class goal(Choice):
+    """
+    This selects the victory condition from the following:
+    Entropy - Collect seven party members and beat Entropy.
+    Omni - Reach Omni and defeat them using any strategy.
+    """
+    display_name = "Victory Condition"
+    option_entropy = 0
+    option_omni = 1
+
+    default = option_entropy
+
 class minibosses(Toggle):
     """
     This toggles whether minibosses drop important items.
@@ -37,10 +49,10 @@ class chaoswardens(Toggle):
 class omni(Toggle):
     """
     This toggles whether Omni drops important items.
+    Note! Disabling this could prevent Omni from being beatable.
     """
     display_name = "Omni Drops"
     default = 0
-
 
 class shops(Toggle):
     """
@@ -63,6 +75,14 @@ class starstuds(Toggle):
     display_name = "Enable Starstuds"
     default = 1
 
+class omniscaling(Toggle):
+    """
+    This toggles whether Omni scales the party's level down to 50 when fought.
+    """
+    display_name = "Omni Level Scaling"
+    default = 1
+
+
 @dataclass
 class SilverDazeOptions(PerGameCommonOptions):
          #starting_party_member: starting_party_member
@@ -73,3 +93,16 @@ class SilverDazeOptions(PerGameCommonOptions):
          recollections: recollections
          starstuds: starstuds
          omni: omni
+         goal: goal
+
+options_groups = [
+    OptionGroup(
+        "Gameplay",
+        [goal,omniscaling]
+    ),
+    OptionGroup(
+        "Excluded Locations",
+        [starstuds,omni,minibosses,wardens,chaoswardens,shops,recollections]
+    ),
+
+]
