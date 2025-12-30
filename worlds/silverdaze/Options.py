@@ -75,6 +75,14 @@ class starstuds(Toggle):
     display_name = "Enable Starstuds"
     default = 1
 
+class easylogic(Toggle):
+    """
+    This creates an easier path for the player which prevents logic requiring the use of the multicolored doors found
+    in other zones.
+    """
+    display_name = "Easy Logic"
+    default = 0
+
 class omniscaling(Toggle):
     """
     This toggles whether Omni scales the party's level down to 50 when fought.
@@ -86,6 +94,10 @@ class omniscaling(Toggle):
 @dataclass
 class SilverDazeOptions(PerGameCommonOptions):
          #starting_party_member: starting_party_member
+         goal: goal
+         easylogic: easylogic
+         omniscaling: omniscaling
+
          minibosses: minibosses
          wardens: wardens
          chaoswardens: chaoswardens
@@ -93,12 +105,12 @@ class SilverDazeOptions(PerGameCommonOptions):
          recollections: recollections
          starstuds: starstuds
          omni: omni
-         goal: goal
+
 
 options_groups = [
     OptionGroup(
         "Gameplay",
-        [goal,omniscaling]
+        [goal,omniscaling,easylogic]
     ),
     OptionGroup(
         "Excluded Locations",

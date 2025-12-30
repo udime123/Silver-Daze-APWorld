@@ -1,4 +1,4 @@
-#Snagged from APQuest, not actually sure what these are.
+
 
 from collections.abc import Mapping
 from typing import Any, Callable

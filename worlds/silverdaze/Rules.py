@@ -41,7 +41,7 @@ def get_key_from_color(color: str) -> str:
 def sd_has_key(color: str, state: CollectionState, world: SDWorld) -> bool:
     return state.has(get_key_from_color(color), world.player)
 
-#The Discord recommended we just make one function per key. Something something performance.
+#The Discord recommended we just make one function per key.
 def sd_has_red(state: CollectionState, world: SDWorld) -> bool:
     return state.has("Red Key", world.player)
 def sd_has_yellow(state: CollectionState, world: SDWorld) -> bool:
@@ -109,7 +109,7 @@ def sd_can_fight_chaos_warden(state: CollectionState, world: SDWorld) -> bool:
     return sd_party_size_meets(state, world,5)
 
 def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
-    if world.options.omni:
+    if world.options.omni and not(world.options.goal == 1):
         return sd_party_size_meets(state, world,7)
     else:
         return (

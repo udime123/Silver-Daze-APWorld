@@ -72,25 +72,26 @@ def create_regular_locations(world: SDWorld) -> None:
         "Red Zone Chasm - Silver Chest Behind Key Bridge","Red Zone Chasm - Green Chest","Red Zone - ReCollection 02 Unlock"
     ]),SDLocation)
 #
-    world.get_region("GreyIslandGreenDoor").add_locations(get_location_names_with_ids([
-        "Grey Zone - Silver Chest From Green Door"
-    ]),SDLocation)
+    if not (world.options.easylogic):
+        world.get_region("GreyIslandGreenDoor").add_locations(get_location_names_with_ids([
+            "Grey Zone - Silver Chest From Green Door"
+        ]),SDLocation)
 #
-    world.get_region("YellowBackdoorIsland").add_locations(get_location_names_with_ids([
-        "Yellow Zone - Chaos Enri Silver Chest"
-    ]),SDLocation)
+        world.get_region("YellowBackdoorIsland").add_locations(get_location_names_with_ids([
+            "Yellow Zone - Chaos Enri Silver Chest"
+        ]),SDLocation)
 #
-    world.get_region("GreyIslandBlueDoor").add_locations(get_location_names_with_ids([
-        "Grey Zone - Gold Chest From Blue Door"
-    ]),SDLocation)
+        world.get_region("GreyIslandBlueDoor").add_locations(get_location_names_with_ids([
+            "Grey Zone - Gold Chest From Blue Door"
+        ]),SDLocation)
 #
-    world.get_region("GreyIslandRedDoor").add_locations(get_location_names_with_ids([
-        "Grey Zone - Gold Chest From Red Door",
-    ]),SDLocation)
+        world.get_region("GreyIslandRedDoor").add_locations(get_location_names_with_ids([
+            "Grey Zone - Gold Chest From Red Door",
+        ]),SDLocation)
 #
-    world.get_region("RedBackdoorIsland").add_locations(get_location_names_with_ids([
-        "Red Zone - Chaos Rot Chest"
-    ]),SDLocation)
+        world.get_region("RedBackdoorIsland").add_locations(get_location_names_with_ids([
+            "Red Zone - Chaos Rot Chest"
+        ]),SDLocation)
 
 #
 #    world.get_region("Blue1").add_locations(get_location_names_with_ids([
@@ -129,17 +130,20 @@ def create_regular_locations(world: SDWorld) -> None:
 #       Scatter lacks locations as well.
 #    ]),SDLocation)
 #
-    world.get_region("PurpleBackdoorIsland").add_locations(get_location_names_with_ids([
-        "Purple Zone - Chaos Ruda Chest",
-    ]),SDLocation)
 #
     world.get_region("PurpleHippoRoom").add_locations(get_location_names_with_ids([
         "Blue Zone - Purple Hippo Chest",
-    ]),SDLocation)
+    ]), SDLocation)
 #
-    world.get_region("BlueBackdoorIsland").add_locations(get_location_names_with_ids([
-        "Blue Zone - Chaos Nyx Chest",
-    ]),SDLocation)
+    if not (world.options.easylogic):
+        world.get_region("PurpleBackdoorIsland").add_locations(get_location_names_with_ids([
+            "Purple Zone - Chaos Ruda Chest",
+        ]),SDLocation)
+
+#
+        world.get_region("BlueBackdoorIsland").add_locations(get_location_names_with_ids([
+            "Blue Zone - Chaos Nyx Chest",
+        ]),SDLocation)
 
 #
     world.get_region("Green1").add_locations(get_location_names_with_ids([
@@ -180,13 +184,14 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 
 #
-    world.get_region("GreyIslandBlackDoor").add_locations(get_location_names_with_ids([
-        "Grey Zone - Silver Chest From Black Door"
-    ]),SDLocation)
+    if not (world.options.easylogic):
+        world.get_region("GreyIslandBlackDoor").add_locations(get_location_names_with_ids([
+            "Grey Zone - Silver Chest From Black Door"
+        ]),SDLocation)
 #
-    world.get_region("BlackBackdoorIsland").add_locations(get_location_names_with_ids([
-        "Black Zone - Chaos Scatter Chest"
-    ]),SDLocation)
+        world.get_region("BlackBackdoorIsland").add_locations(get_location_names_with_ids([
+            "Black Zone - Chaos Scatter Chest"
+        ]),SDLocation)
 
 
 #
@@ -214,13 +219,14 @@ def create_regular_locations(world: SDWorld) -> None:
         "Orange Zone - ReCollection Room Gold Chest","Orange Zone - ReCollection Room Silver Chest","Orange Zone - ReCollection 07 Unlock",
     ]),SDLocation)
 #
-    world.get_region("OrangeBackdoorIsland").add_locations(get_location_names_with_ids([
-        "Orange Zone - Chaos Cyphon Chest",
-    ]),SDLocation)
+    if not (world.options.easylogic):
+        world.get_region("OrangeBackdoorIsland").add_locations(get_location_names_with_ids([
+            "Orange Zone - Chaos Cyphon Chest",
+        ]),SDLocation)
 #
-    world.get_region("GreenBackdoorIsland").add_locations(get_location_names_with_ids([
-        "Green Zone - Chaos Wink Chest"
-    ]),SDLocation)
+        world.get_region("GreenBackdoorIsland").add_locations(get_location_names_with_ids([
+            "Green Zone - Chaos Wink Chest"
+        ]),SDLocation)
 #
     world.get_region("Black1").add_locations(get_location_names_with_ids([
         "Black Zone - First Room Chest Behind Key Bridge","Black Zone - Rot Passageway 1 Gold Chest","Black Zone - Silver Chest Next To First Elevator","Black Zone - Green Chest Past First Elevator",

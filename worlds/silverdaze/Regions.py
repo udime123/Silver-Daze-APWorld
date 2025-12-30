@@ -175,12 +175,13 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
     world.connect_2way(world.get_region("Red1"), world.get_region("KingooseRoom"), lambda state: sd_has_yellow(state, world))
     world.connect_2way(world.get_region("KingooseRoom"), world.get_region("Red2"), lambda state: sd_can_fight_miniboss(state, world))
 
-    #This path leads through the green door in red zone 1
-    world.connect_2way(world.get_region("Red1"), world.get_region("GreyIslandGreenDoor"), lambda state: sd_has_green(state, world))
-    #This path leads through the green door in red zone 2
-    world.connect_2way(world.get_region("Red2"), world.get_region("YellowBackdoorIsland"), lambda state: sd_has_green(state, world))
-    #This path leads through the blue door in red tower
-    world.connect_2way(world.get_region("Red2"), world.get_region("GreyIslandBlueDoor"), lambda state: sd_has_blue(state, world))
+    if not(world.options.easylogic):
+        # This path leads through the green door in red zone 1
+        world.connect_2way(world.get_region("Red1"), world.get_region("GreyIslandGreenDoor"), lambda state: sd_has_green(state, world))
+        #This path leads through the green door in red zone 2
+        world.connect_2way(world.get_region("Red2"), world.get_region("YellowBackdoorIsland"), lambda state: sd_has_green(state, world))
+        #This path leads through the blue door in red tower
+        world.connect_2way(world.get_region("Red2"), world.get_region("GreyIslandBlueDoor"), lambda state: sd_has_blue(state, world))
     #This path leads through the red door in red zone chasm.
     # For all intents and purposes this belongs to Red Zone 2, but I'm diligent.
     world.connect_2way(world.get_region("Red2"), world.get_region("GreyIslandRedDoor"), lambda state: sd_has_red(state, world))
@@ -211,12 +212,13 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
     #Normally I don't connect boss rooms but Scatter is a special case because he demands key items.
     world.connect_2way(world.get_region("Blue5"), world.get_region("ScatterRoom"), (lambda state: sd_party_size_meets(state, world,2)
                                                                                 and sd_has_glitch(state, world)))
-    #This path leads through the blue door in blue zone 1
-    world.connect_2way(world.get_region("Blue1"), world.get_region("RedBackdoorIsland"), lambda state: sd_has_blue(state, world))
-    #This path leads through the blue door in blue zone 3
-    world.connect_2way(world.get_region("Blue3"), world.get_region("GreyIslandBlueDoor"), lambda state: sd_has_blue(state, world))
-    #This path leads through the yellow door in blue zone 4
-    world.connect_2way(world.get_region("Blue4"), world.get_region("PurpleBackdoorIsland"), lambda state: sd_has_yellow(state, world))
+    if not (world.options.easylogic):
+        # This path leads through the blue door in blue zone 1
+        world.connect_2way(world.get_region("Blue1"), world.get_region("RedBackdoorIsland"), lambda state: sd_has_blue(state, world))
+        #This path leads through the blue door in blue zone 3
+        world.connect_2way(world.get_region("Blue3"), world.get_region("GreyIslandBlueDoor"), lambda state: sd_has_blue(state, world))
+        #This path leads through the yellow door in blue zone 4
+        world.connect_2way(world.get_region("Blue4"), world.get_region("PurpleBackdoorIsland"), lambda state: sd_has_yellow(state, world))
     #This path leads through the long path to Purple Hippo's room
     world.connect_2way(world.get_region("Blue3"), world.get_region("PurpleHippoRoom"), lambda state: sd_party_size_meets(state, world,6))
     #This path leads to the Blue Backdoor Island
@@ -231,11 +233,13 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
     #Calling it "Squail Area" because it includes everything behind the Squail such as the chest that requires the green key
     world.connect_2way(world.get_region("Green2"), world.get_region("SquailArea"), lambda state: sd_can_fight_miniboss(state, world))
 
-    #This path is through the Purple Door in the Cyphon Debut area
-    world.connect_2way(world.get_region("Green1"), world.get_region("OrangeBackdoorIsland"), lambda state: sd_has_purple(state, world))
-    #This path is through the Green Door in the left area
-    world.connect_2way(world.get_region("Green2"), world.get_region("GreyIslandGreenDoor"), lambda state: sd_has_green(state, world))
-    #This path is to the Green Backdoor Island
+
+    if not (world.options.easylogic):
+        # This path is through the Purple Door in the Cyphon Debut area
+        world.connect_2way(world.get_region("Green1"), world.get_region("OrangeBackdoorIsland"), lambda state: sd_has_purple(state, world))
+        #This path is through the Green Door in the left area
+        world.connect_2way(world.get_region("Green2"), world.get_region("GreyIslandGreenDoor"), lambda state: sd_has_green(state, world))
+        #This path is to the Green Backdoor Island
     world.connect_2way(world.get_region("Green2"), world.get_region("GreenBackdoorIsland"), lambda state: sd_has_green(state, world))
 
 
@@ -248,10 +252,11 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
 
     #this connects to the purple backdoor
     world.connect_2way(world.get_region("Purple1"), world.get_region("PurpleBackdoorIsland"), lambda state: sd_has_purple(state, world))
-    #this is the path through the black door in purple 2
-    world.connect_2way(world.get_region("Purple2"), world.get_region("GreyIslandBlackDoor"), lambda state: sd_has_black(state, world))
-    #this is the path through the red door in the tower area
-    world.connect_2way(world.get_region("PurpleTower"), world.get_region("BlackBackdoorIsland"), lambda state: sd_has_red(state, world))
+    if not (world.options.easylogic):
+        #this is the path through the black door in purple 2
+        world.connect_2way(world.get_region("Purple2"), world.get_region("GreyIslandBlackDoor"), lambda state: sd_has_black(state, world))
+        #this is the path through the red door in the tower area
+        world.connect_2way(world.get_region("PurpleTower"), world.get_region("BlackBackdoorIsland"), lambda state: sd_has_red(state, world))
 
 
     #On to Orange Zone!
@@ -267,12 +272,14 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
     #Now we are in Orange Zone proper!
     world.connect_2way(world.get_region("Orange1"), world.get_region("Orange2"), lambda state: sd_has_orange(state, world))
 
-    #this is the path through the black door in orange1
-    world.connect_2way(world.get_region("Orange1"), world.get_region("GreyIslandBlackDoor"), lambda state: sd_has_black(state, world))
-    #this is the path to the orange backdoor
+    # this is the path to the orange backdoor
     world.connect_2way(world.get_region("Orange1"), world.get_region("OrangeBackdoorIsland"), lambda state: sd_has_orange(state, world))
-    #this is the path through the orange door in the hub
-    world.connect_2way(world.get_region("Orange1"), world.get_region("GreenBackdoorIsland"), lambda state: sd_has_orange(state, world))
+
+    if not (world.options.easylogic):
+        # this is the path through the black door in orange1
+        world.connect_2way(world.get_region("Orange1"), world.get_region("GreyIslandBlackDoor"), lambda state: sd_has_black(state, world))
+        #this is the path through the orange door in the hub
+        world.connect_2way(world.get_region("Orange1"), world.get_region("GreenBackdoorIsland"), lambda state: sd_has_orange(state, world))
 
 
     #Now we do Black Zone! I'm getting close, I hope.
@@ -296,16 +303,18 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
     #This leads to the backdoor!
     world.connect_2way(world.get_region("Yellow1"), world.get_region("YellowBackdoorIsland"), lambda state: sd_party_size_meets(state, world,1))
     #Here's the black door in Yellow Zone
-    world.connect_2way(world.get_region("Yellow2"), world.get_region("BlueBackdoorIsland"), lambda state: sd_has_black(state, world))
+    if not (world.options.easylogic):
+        world.connect_2way(world.get_region("Yellow2"), world.get_region("BlueBackdoorIsland"), lambda state: sd_has_black(state, world))
 
     #Next up, let's connect the fast travels.
-    world.connect_2way(world.get_region("GeoRoom"), world.get_region("Red2"), lambda state: sd_has_red(state, world) and sd_has_memfinder(state,world))
-    world.connect_2way(world.get_region("GeoRoom"), world.get_region("ScatterRoom"), lambda state: sd_has_blue(state, world) and sd_has_memfinder(state,world))
-    world.connect_2way(world.get_region("GeoRoom"), world.get_region("Green2"), lambda state: sd_has_green(state, world) and sd_has_memfinder(state,world))
-    world.connect_2way(world.get_region("GeoRoom"), world.get_region("PurpleTower"), lambda state: sd_has_purple(state, world) and sd_has_memfinder(state,world))
-    world.connect_2way(world.get_region("GeoRoom"), world.get_region("Orange1"), lambda state: sd_has_orange(state, world) and sd_has_memfinder(state,world))
-    world.connect_2way(world.get_region("GeoRoom"), world.get_region("BlackDungeon"), lambda state: sd_has_black(state, world) and sd_has_memfinder(state,world))
-    world.connect_2way(world.get_region("GeoRoom"), world.get_region("YellowLighthouse"), lambda state: sd_has_yellow(state, world) and sd_has_memfinder(state,world))
+    if not (world.options.easylogic):
+        world.connect_2way(world.get_region("GeoRoom"), world.get_region("Red2"), lambda state: sd_has_red(state, world) and sd_has_memfinder(state,world))
+        world.connect_2way(world.get_region("GeoRoom"), world.get_region("ScatterRoom"), lambda state: sd_has_blue(state, world) and sd_has_memfinder(state,world))
+        world.connect_2way(world.get_region("GeoRoom"), world.get_region("Green2"), lambda state: sd_has_green(state, world) and sd_has_memfinder(state,world))
+        world.connect_2way(world.get_region("GeoRoom"), world.get_region("PurpleTower"), lambda state: sd_has_purple(state, world) and sd_has_memfinder(state,world))
+        world.connect_2way(world.get_region("GeoRoom"), world.get_region("Orange1"), lambda state: sd_has_orange(state, world) and sd_has_memfinder(state,world))
+        world.connect_2way(world.get_region("GeoRoom"), world.get_region("BlackDungeon"), lambda state: sd_has_black(state, world) and sd_has_memfinder(state,world))
+        world.connect_2way(world.get_region("GeoRoom"), world.get_region("YellowLighthouse"), lambda state: sd_has_yellow(state, world) and sd_has_memfinder(state,world))
 
     #Next up, we'll do the big Final Area shit.
     world.connect_2way(world.get_region("Hub1"), world.get_region("FinalLobby"), lambda state: sd_has_black(state, world))
@@ -382,6 +391,9 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
         world.connect_2way(world.get_region("BlackBackdoorIsland"), world.get_region("ChaosScatterItems"), lambda state: sd_can_fight_chaos_warden(state, world))
 
     if world.options.omni:
+        world.connect_2way(world.get_region("OmniRoom"), world.get_region("OmniItems"), lambda state: sd_can_fight_omni(state, world))
+
+    if world.options.goal == 1 and not(world.options.omni):
         world.connect_2way(world.get_region("OmniRoom"), world.get_region("OmniItems"), lambda state: sd_can_fight_omni(state, world))
 
     if world.options.starstuds:
