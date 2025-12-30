@@ -93,6 +93,9 @@ def sd_party_size_meets(state: CollectionState, world: SDWorld, size: int) -> bo
     # keys is just the strings, which are item names
     return state.has_from_list_unique(party_members.keys(), world.player, size)
 
+def sd_emblems_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
+    return state.has("Memory Emblem", world.player, size)
+
 #This is copied from vanilla, I won't bother reconfiguring the logic.
 #Basic gist is that it checks every location where a Starstud could be available and adds it to the pile.
 def sd_stars(state: CollectionState, world: SDWorld, size:int) -> bool:
@@ -294,3 +297,6 @@ def set_completion_condition(world: SDWorld) -> None:
         world.multiworld.completion_condition[world.player] = lambda mystate: sd_party_size_meets(mystate, world,7) and sd_has_black( mystate, world)
     elif world.options.goal == 1:
         world.multiworld.completion_condition[world.player] = lambda mystate: sd_can_fight_omni(mystate, world) and mystate.can_reach_region('OmniItems', player)
+    elif world.options.goal == 2:
+        goal = world.options.emblemcount
+        world.multiworld.completion_condition[world.player] = lambda mystate: sd_emblems_meets(mystate, world,goal)

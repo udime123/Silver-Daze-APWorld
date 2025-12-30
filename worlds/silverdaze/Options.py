@@ -19,6 +19,7 @@ class goal(Choice):
     display_name = "Victory Condition"
     option_entropy = 0
     option_omni = 1
+    option_memory_emblem = 2
 
     default = option_entropy
 
@@ -90,11 +91,24 @@ class omniscaling(Toggle):
     display_name = "Omni Level Scaling"
     default = 1
 
+class emblemcount(Range):
+    """
+    How many Memory Emblems are required to beat the game?
+    (Only affected if your goal is Memory Emblems)
+    """
+    display_name = "Memory Emblem Count"
+    range_start = 0
+    range_end = 100
+    default = 25
+
+
 
 @dataclass
 class SilverDazeOptions(PerGameCommonOptions):
          #starting_party_member: starting_party_member
          goal: goal
+         emblemcount: emblemcount
+
          easylogic: easylogic
          omniscaling: omniscaling
 
@@ -110,7 +124,7 @@ class SilverDazeOptions(PerGameCommonOptions):
 options_groups = [
     OptionGroup(
         "Gameplay",
-        [goal,omniscaling,easylogic]
+        [goal,emblemcount,omniscaling,easylogic]
     ),
     OptionGroup(
         "Excluded Locations",

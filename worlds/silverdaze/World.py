@@ -68,5 +68,6 @@ class SDWorld(World):
     def fill_slot_data(self) -> Mapping[str, Any]:
         # This is just options.
         return self.options.as_dict(
-            "minibosses","wardens","chaoswardens","omni","shops","recollections","starstuds","goal"
+            "minibosses","wardens","chaoswardens","omni","shops","recollections","starstuds","goal",
+            "omniscaling","emblemcount"
         )

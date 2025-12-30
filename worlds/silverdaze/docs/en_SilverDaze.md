@@ -56,6 +56,7 @@ Items that can be shuffled:
 - All Party Members
 - All Keys
 - All Fragments
+- Blue_Zone() and ._locale
 - The MemFinder
 - ReCollection unlocks
 - Exander (this causes Wink to transform into Exander)
