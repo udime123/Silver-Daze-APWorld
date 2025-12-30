@@ -149,6 +149,15 @@ def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
                     and state.has("Pullbie", world.player) and state.has("NoU", world.player) and state.has("Team Player", world.player)
                     and state.has("WeirdSig", world.player) and state.has("Move Along", world.player) and state.has("Freddie Freeloader", world.player)
                 )
+                #Team created by SapphireJester
+                or (
+                     state.has("Kani", world.player) and state.has("Wink", world.player) and state.has("Shane", world.player)
+                     and state.has("TobiasMoor", world.player) and state.has("Microwave", world.player) and state.has("Quick Strike", world.player)
+                     and state.has("Move", world.player) and state.has("BlitzDrive", world.player) and state.has("Team Player", world.player)
+                     and state.has("Underhand", world.player) and state.has("Re:PUNCH", world.player) and state.has("Due Vendetta", world.player)
+                     and state.has("Re:PUNCH", world.player, 2) and state.has("Bubble (Foil)", world.player) and state.has("Softlock", world.player)
+                     and state.has("Hear Me Out", world.player) and state.has("Break Free", world.player)
+                )
         )
 
 def sd_can_status_stun(state: CollectionState, world: SDWorld) -> bool:

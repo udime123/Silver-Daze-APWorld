@@ -161,7 +161,6 @@ orangecards = {
     "Hear Me Out": ItemData(56),
     "Field Guard": ItemData(57),
     "Straight Shot": ItemData(58),
-    "Softlock": ItemData(59),
     "NthngRhyms": ItemData(60),
     "The Right Time": ItemData(61),
     "Unleash (Foil)": ItemData(562),
@@ -196,7 +195,6 @@ yellowcards = {
     "Soft Glow": ItemData(103),
     "Synchlite": ItemData(106, ItemClassification.filler, "Card", 0),
     "Disarm": ItemData(108),
-    "Quick Strike": ItemData(109, ItemClassification.filler, "Card", 0),
     "Overwhelm": ItemData(112),
     "Execute": ItemData(114),
     "Cremation": ItemData(115),
@@ -209,7 +207,6 @@ yellowcards = {
     "WhaleEarly": ItemData(122),
     "Hold It!": ItemData(123, ItemClassification.filler, "Card", 0),
     "PainSplit": ItemData(124),
-    "BlitzDrive": ItemData(125),
     "YellowJacket": ItemData(126),
     "VariaBolt": ItemData(127),
     "Chain Bolt": ItemData(128),
@@ -417,6 +414,13 @@ omni_keys = {
     "FeelingBlue": ItemData(211),
     "Pullbie": ItemData(222),
     "WeirdSig": ItemData(341),
+    "TobiasMoor": ItemData(35),
+    "Quick Strike": ItemData(109),
+    "BlitzDrive": ItemData(125),
+    "Underhand": ItemData(113),
+    "Re:PUNCH": ItemData(208),
+    "Softlock": ItemData(59),
+    "Hear Me Out": ItemData(56),
 }
 
 consumables = {
