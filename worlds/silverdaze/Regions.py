@@ -151,7 +151,7 @@ def create_all_regions(world: SDWorld) -> None:
         regions.append(Region("ChaosWinkItems", world.player, world.multiworld))
         regions.append(Region("ChaosScatterItems", world.player, world.multiworld))
 
-    if world.options.omni:
+    if world.options.omni or world.options.goal == 1:
         regions.append(Region("OmniItems", world.player, world.multiworld))
 
     if world.options.starstuds:
@@ -390,10 +390,7 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
         world.connect_2way(world.get_region("GreenBackdoorIsland"), world.get_region("ChaosWinkItems"), lambda state: sd_can_fight_chaos_warden(state, world))
         world.connect_2way(world.get_region("BlackBackdoorIsland"), world.get_region("ChaosScatterItems"), lambda state: sd_can_fight_chaos_warden(state, world))
 
-    if world.options.omni:
-        world.connect_2way(world.get_region("OmniRoom"), world.get_region("OmniItems"), lambda state: sd_can_fight_omni(state, world))
-
-    if world.options.goal == 1 and not(world.options.omni):
+    if world.options.omni or world.options.goal == 1:
         world.connect_2way(world.get_region("OmniRoom"), world.get_region("OmniItems"), lambda state: sd_can_fight_omni(state, world))
 
     if world.options.starstuds:

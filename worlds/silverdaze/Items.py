@@ -262,7 +262,7 @@ bluecards = {
     "G.D.Break": ItemData(216),
     "D-Buster": ItemData(219),
     "JstDessrts": ItemData(223),
-    "LimitDrive": ItemData(224),
+    "LimitDrive": ItemData(225),
     "VariaDive": ItemData(227),
     "Progress": ItemData(229),
     "Grapevine": ItemData(231),

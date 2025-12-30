@@ -440,7 +440,7 @@ def create_regular_locations(world: SDWorld) -> None:
             "Purple Hippo Reward 1","Purple Hippo Reward 2","Purple Hippo Reward 3"
         ]), SDLocation)
 
-    if world.options.omni:
+    if world.options.omni or world.options.goal == 1:
         world.get_region("OmniItems").add_locations(get_location_names_with_ids([
             "Omni Reward 1","Omni Reward 2","Omni Reward 3",
         ]), SDLocation)
