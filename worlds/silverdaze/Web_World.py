@@ -1,22 +1,23 @@
 from BaseClasses import Tutorial
+from scripts.regsetup import description
 from worlds.AutoWorld import WebWorld
 
 from .Options import option_groups, option_presets
 
 
 
-class APQuestWebWorld(WebWorld):
+class SilverDazeWebWorld(WebWorld):
     game = "Silver Daze"
 
     theme = "ice"
 
     setup_en = Tutorial(
-        "Multiworld Setup Guide",
-        "A guide to setting up APQuest for MultiWorld.",
-        "English",
-        "setup_en.md",
-        "setup/en",
-        ["Sawyer Friend"],
+        tutorial_name = "Setup Guide",
+        description = "A guide to setting up Silver Daze for MultiWorld.",
+        language = "English",
+        file_name = "setup_en.md",
+        link = "setup/en",
+        authors = ["Sawyer Friend"],
     )
 
 
