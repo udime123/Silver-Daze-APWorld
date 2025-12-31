@@ -132,7 +132,7 @@ class SilverDazeOptions(PerGameCommonOptions):
          omni: omni
 
 
-options_groups = [
+option_groups = [
     OptionGroup(
         "Gameplay",
         [goal,emblemcount,emblempool,omniscaling,easylogic]
@@ -141,5 +141,19 @@ options_groups = [
         "Excluded Locations",
         [starstuds,omni,minibosses,wardens,chaoswardens,shops,recollections]
     ),
-
 ]
+
+option_presets = {
+    "Hardcore": {
+        "goal": 2,
+        "minibosses": True,
+        "wardens": True,
+        "chaoswardens": True,
+        "omni": True,
+        "shops": True,
+        "recollections": True,
+        "starstuds": True,
+        "easylogic": False,
+    }
+
+}
