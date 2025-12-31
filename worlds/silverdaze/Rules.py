@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from operator import truediv
 from typing import TYPE_CHECKING
 
 from BaseClasses import CollectionState

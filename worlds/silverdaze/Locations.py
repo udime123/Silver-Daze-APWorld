@@ -12,8 +12,6 @@ from . import Items
 
 if TYPE_CHECKING:
     from .World import SDWorld
-import os
-import json
 from .Location_Table import location_table
 
 #Okay, looks like everything needs an ID. Blehhh it is what it is, I'll just go in order from the default thingy.
