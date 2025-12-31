@@ -10,7 +10,10 @@ from BaseClasses import Entrance, Region, CollectionState
 
 # Imports our files. We use capitals for the paths.
 from . import Items, Locations, Options, Regions, Rules, Web_World
-import warnings
+import logging
+logger = logging.getLogger("Silver Daze")
+logger.setLevel(logging.WARNING)
+
 
 
 
@@ -18,11 +21,13 @@ import warnings
 
 class SDWorld(World):
     """
-    This will describe Silver Daze eventually
+    Silver Daze is a 2025 Coming-of-Age RPG where you collect cards and battle monsters to save a fractured world.
+    The game includes a comprehensive randomizer mode in which the player collects keys and party members to access
+    new locations.
     """
     game = "Silver Daze"
 
-    #Webworld will be important eventually so we might as well add that now.
+    #Sawyer: Webworld will be important eventually so we might as well add that now.
     web = Web_World.SilverDazeWebWorld()
 
     options_dataclass = Options.SilverDazeOptions
@@ -30,9 +35,7 @@ class SDWorld(World):
 
     #Sawyer: We used to define these here but we'll do it in Regions and Items instead.
     location_name_to_id = Locations.LOCATION_NAME_TO_ID
-    #item_name_to_id = Items.ITEM_NAME_TO_ID
     item_name_to_id = {key: item.code for (key, item) in Items.item_table.items()}
-    #item_name_to_id = Items.item_table
 
     @staticmethod
     def connect_2way(r1: Region, r2: Region, rule: Callable[[CollectionState], bool]):
@@ -63,12 +66,16 @@ class SDWorld(World):
     def get_filler_item_name(self) -> str:
         return Items.get_random_filler_item_name(self)
 
-
+    def generate_early(self) -> None:
+        if (self.options.emblempool < self.options.emblemcount and self.options.goal == 2):
+            logger.warning(
+                f"Silver Daze ({self.player_name}): "
+                f"There are fewer emblems in the pool than required to beat the game. "
+                f"The difference will be added to the pool.")
 
     # #Sawyer: Slotdata currently contains Goal.
     def fill_slot_data(self) -> Mapping[str, Any]:
-        if (self.options.emblempool < self.options.emblemcount and self.options.goal == 2):
-            warnings.warn(f"There are fewer emblems in the pool than required to beat the game for {self.player_name}. The difference will be added to the pool.")
+
 
         # This is just options.
         return self.options.as_dict(

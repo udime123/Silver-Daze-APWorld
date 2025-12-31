@@ -4,7 +4,7 @@
 ## What does randomization do to this game?
 
 The game begins in a special state that exists outside of the main story. You begin in Geo's Room and will be given one party member, after which point you will be able to explore the world freely.
-In order to access each Zone, you'll need to collect keys to pass doors and other miscellaneous items to unlock features. Silver Daze Archipelago functions identically to the vanilla Archipelago, but
+In order to access each Zone, you'll need to collect keys to pass doors and other miscellaneous items to unlock features. Silver Daze Archipelago functions identically to the vanilla randomizer, but
 contains additional options and features.
 
 ## What is the goal of Silver Daze when randomized?
