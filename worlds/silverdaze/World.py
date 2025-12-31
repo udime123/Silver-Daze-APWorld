@@ -10,6 +10,7 @@ from BaseClasses import Entrance, Region, CollectionState
 
 # Imports our files. We use capitals for the paths.
 from . import Items, Locations, Options, Regions, Rules
+import warnings
 
 
 
@@ -66,6 +67,9 @@ class SDWorld(World):
 
     # #Sawyer: Slotdata currently contains Goal.
     def fill_slot_data(self) -> Mapping[str, Any]:
+        if (self.options.emblempool < self.options.emblemcount and self.options.goal == 2):
+            warnings.warn(f"There are fewer emblems in the pool than required to beat the game for {self.player_name}. The difference will be added to the pool.")
+
         # This is just options.
         return self.options.as_dict(
             "minibosses","wardens","chaoswardens","omni","shops","recollections","starstuds","goal",
