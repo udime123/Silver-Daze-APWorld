@@ -126,10 +126,11 @@ class SilverDazeOptions(PerGameCommonOptions):
          minibosses: minibosses
          wardens: wardens
          chaoswardens: chaoswardens
+         omni: omni
          shops: shops
          recollections: recollections
          starstuds: starstuds
-         omni: omni
+
 
 
 option_groups = [
@@ -144,8 +145,8 @@ option_groups = [
 ]
 
 option_presets = {
-    "Hardcore": {
-        "goal": 2,
+    "Spinel": {
+        "goal": 1,
         "minibosses": True,
         "wardens": True,
         "chaoswardens": True,
@@ -153,7 +154,21 @@ option_presets = {
         "shops": True,
         "recollections": True,
         "starstuds": True,
+        "omniscaling": True,
         "easylogic": False,
-    }
+    },
+    "Breezy": {
+        "goal": 2,
+        "minibosses": False,
+        "wardens": False,
+        "chaoswardens": False,
+        "omni": False,
+        "shops": False,
+        "recollections": False,
+        "starstuds": False,
+        "easylogic": True,
+        "emblemcount": 25,
+        "emblempool": 50,
 
+    }
 }

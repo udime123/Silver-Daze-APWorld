@@ -9,7 +9,7 @@ from worlds.AutoWorld import World
 from BaseClasses import Entrance, Region, CollectionState
 
 # Imports our files. We use capitals for the paths.
-from . import Items, Locations, Options, Regions, Rules
+from . import Items, Locations, Options, Regions, Rules, Web_World
 import warnings
 
 
@@ -23,7 +23,7 @@ class SDWorld(World):
     game = "Silver Daze"
 
     #Webworld will be important eventually so we might as well add that now.
-    #web = WebWorld.SilverDazeWebWorld()
+    web = Web_World.SilverDazeWebWorld()
 
     options_dataclass = Options.SilverDazeOptions
     options: Options.SilverDazeOptions
