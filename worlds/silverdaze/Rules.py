@@ -116,81 +116,82 @@ def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
         return (
             # First team to defeat Omni
                 (
-                        state.has("Jeff", world.player) and state.has("Kani", world.player) and state.has("Pinn",
-                                                                                                          world.player)
-                        and state.has("Reflect", world.player) and state.has("Shoto", world.player) and state.has(
-                    "Team Player", world.player)
-                        and state.has("Bubble (Foil)", world.player) and state.has("Second Chance",
-                                                                                   world.player) and state.has(
-                    "Microwave", world.player)
-                        and state.has("RE:Move", world.player) and state.has("Bloody Heck", world.player,
-                                                                             2) and state.has("FirstCut", world.player)
-                        and state.has("I'm So Tired", world.player) and state.has("Mono No Aware",
-                                                                                  world.player) and state.has("Storm",
-                                                                                                              world.player)
+                        state.has("Jeff", world.player) and state.has("Kani", world.player)
+                        and state.has("Pinn", world.player)
+                        and state.has("Reflect", world.player) and state.has("Shoto", world.player)
+                        and state.has("Team Player", world.player)
+                        and state.has("Bubble (Foil)", world.player)
+                        and state.has("Second Chance", world.player) and state.has("Microwave", world.player)
+                        and state.has("RE:Move", world.player)
+                        and state.has("Bloody Heck", world.player, 2)
+                        and state.has("FirstCut", world.player)
+                        and state.has("I'm So Tired", world.player)
+                        and state.has("Mono No Aware",world.player)
+                        and state.has("Storm", world.player)
                         and state.has("Pep Talk", world.player) and state.has("Someday", world.player)
                 )
                 # Second team to defeat Omni
                 or (
-                        state.has("Kani", world.player) and state.has("Liza", world.player) and state.has("Wink",
-                                                                                                          world.player)
-                        and state.has("Microwave", world.player) and state.has("Voxel Generation",
-                                                                               world.player) and state.has("FirstCut",
-                                                                                                           world.player)
-                        and state.has("Momentum", world.player) and state.has("SmokeBreak", world.player) and state.has(
-                    "GoMode", world.player)
-                        and state.has("Exception", world.player) and state.has("Bubble (Foil)",
-                                                                               world.player) and state.has(
-                    "Wall (Foil)", world.player)
-                        and state.has("Revolution 1", world.player) and state.has("Footstool",
-                                                                                  world.player) and state.has("Amp Up",
-                                                                                                              world.player)
+                        state.has("Kani", world.player) and state.has("Liza", world.player)
+                        and state.has("Wink", world.player)
+                        and state.has("Microwave", world.player)
+                        and state.has("Voxel Generation",world.player)
+                        and state.has("FirstCut", world.player)
+                        and state.has("Momentum", world.player)
+                        and state.has("SmokeBreak", world.player)
+                        and state.has("GoMode", world.player)
+                        and state.has("Exception", world.player)
+                        and state.has("Bubble (Foil)", world.player)
+                        and state.has("Wall (Foil)", world.player)
+                        and state.has("Revolution 1", world.player)
+                        and state.has("Footstool",world.player)
+                        and state.has("Amp Up",world.player)
                         and state.has("Chain Bolt", world.player) and state.has("Nightvision", world.player)
                 )
                 # Third team to defeat Omni
                 or (
-                        state.has("Geo", world.player) and state.has("Liza", world.player) and state.has("Pinn",
-                                                                                                         world.player)
-                        and state.has("Bubble (Foil)", world.player, 2) and state.has("Team Player", world.player)
-                        and state.has("NoU", world.player, 2) and state.has("I'm So Tired", world.player)
-                        and state.has("GoMode", world.player) and state.has("Exception", world.player) and state.has(
-                    "Wall (Foil)", world.player)
-                        and state.has("Revolution 1", world.player) and state.has("Mono No Aware",
-                                                                                  world.player) and state.has("Exploit",
-                                                                                                              world.player)
-                        and state.has("ZoneSlice", world.player) and state.has("Pep Talk", world.player) and state.has(
-                    "Move Along", world.player)
+                        state.has("Geo", world.player) and state.has("Liza", world.player)
+                        and state.has("Pinn",world.player)
+                        and state.has("Bubble (Foil)", world.player, 2)
+                        and state.has("Team Player", world.player)
+                        and state.has("NoU", world.player, 2)
+                        and state.has("I'm So Tired", world.player)
+                        and state.has("GoMode", world.player)
+                        and state.has("Exception", world.player) and state.has("Wall (Foil)", world.player)
+                        and state.has("Revolution 1", world.player)
+                        and state.has("Mono No Aware",world.player)
+                        and state.has("Exploit", world.player)
+                        and state.has("ZoneSlice", world.player)
+                        and state.has("Pep Talk", world.player)
+                        and state.has("Move Along", world.player)
                 )
                 # Team that defeated Omni without taking damage
                 or (
-                        state.has("Geo", world.player) and state.has("Kani", world.player) and state.has("Pinn",
-                                                                                                         world.player)
-                        and state.has("Wet Hands", world.player) and state.has("Pushbie", world.player) and state.has(
-                    "Wall (Foil)", world.player)
-                        and state.has("Mono No Aware", world.player) and state.has("ZoneSlice",
-                                                                                   world.player) and state.has("MOTS",
-                                                                                                               world.player)
-                        and state.has("Shoto", world.player) and state.has("Bubble (Foil)", world.player) and state.has(
-                    "FeelingBlue", world.player)
-                        and state.has("Pullbie", world.player) and state.has("NoU", world.player) and state.has(
-                    "Team Player", world.player)
-                        and state.has("WeirdSig", world.player) and state.has("Move Along", world.player) and state.has(
-                    "Freddie Freeloader", world.player)
+                        state.has("Geo", world.player) and state.has("Kani", world.player)
+                        and state.has("Pinn", world.player)
+                        and state.has("Wet Hands", world.player) and state.has("Pushbie", world.player)
+                        and state.has("Wall (Foil)", world.player)
+                        and state.has("Mono No Aware", world.player)
+                        and state.has("ZoneSlice",world.player) and state.has("MOTS", world.player)
+                        and state.has("Shoto", world.player) and state.has("Bubble (Foil)", world.player)
+                        and state.has("FeelingBlue", world.player)
+                        and state.has("Pullbie", world.player) and state.has("NoU", world.player)
+                        and state.has("Team Player", world.player)
+                        and state.has("WeirdSig", world.player) and state.has("Move Along", world.player)
+                        and state.has("Freddie Freeloader", world.player)
                 )
                 # Team created by SapphireJester
                 or (
-                        state.has("Kani", world.player) and state.has("Wink", world.player) and state.has("Shane",
-                                                                                                          world.player)
-                        and state.has("TobiasMoor", world.player) and state.has("Microwave",
-                                                                                world.player) and state.has(
-                    "Quick Strike", world.player)
-                        and state.has("Move", world.player) and state.has("BlitzDrive", world.player) and state.has(
-                    "Team Player", world.player)
-                        and state.has("Underhand", world.player) and state.has(
-                    "Due Vendetta", world.player)
-                        and state.has("Re:PUNCH", world.player, 2) and state.has("Bubble (Foil)",
-                                                                                 world.player) and state.has("Softlock",
-                                                                                                             world.player)
+                        state.has("Kani", world.player) and state.has("Wink", world.player)
+                        and state.has("Shane", world.player)
+                        and state.has("TobiasMoor", world.player)
+                        and state.has("Microwave",world.player) and state.has("Quick Strike", world.player)
+                        and state.has("Move", world.player) and state.has("BlitzDrive", world.player)
+                        and state.has("Team Player", world.player)
+                        and state.has("Underhand", world.player)
+                        and state.has("Due Vendetta", world.player)
+                        and state.has("Re:PUNCH", world.player, 2)
+                        and state.has("Bubble (Foil)", world.player) and state.has("Softlock",world.player)
                         and state.has("Hear Me Out", world.player) and state.has("Break Free", world.player)
                 )
         )
@@ -199,22 +200,40 @@ def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
 
 
 def sd_can_status_stun(state: CollectionState, world: SDWorld) -> bool:
-    return (state.has("Stungun", world.player) or state.has("FRAGSTUN", world.player) or state.has("Kappa", world.player)
-            or state.has("Kappa+", world.player) or state.has("Floodgate", world.player) or state.has("Smokebreak", world.player)
-            or state.has("Disruption", world.player) or (state.has("Voxel Generation", world.player) and state.has("Kani", world.player)))
+    return (state.has("Stungun", world.player) or state.has("FRAGSTUN", world.player)
+            or state.has("Kappa", world.player)
+            or state.has("Kappa+", world.player) or state.has("Floodgate", world.player)
+            or state.has("Smokebreak", world.player)
+            or state.has("Disruption", world.player) or (state.has("Voxel Generation", world.player)
+            and state.has("Kani", world.player)))
 
 def sd_can_status_depression(state: CollectionState, world: SDWorld) -> bool:
     return state.has("Irritate", world.player)
 
 def sd_can_use_all_colors(state: CollectionState, world: SDWorld) -> bool:
-    return  (state.has("Pinn", world.player) or state.has("Kani", world.player) or state.has("Wink", world.player) and
-            (state.has_from_list_unique(redcards.keys(), world.player, 1) or state.has("Kani", world.player)) and
-            (state.has_from_list_unique(orangecards.keys(), world.player, 1) or state.has("Shane", world.player)) and
-            (state.has_from_list_unique(yellowcards.keys(), world.player, 1) or state.has("Wink", world.player)) and
-            (state.has_from_list_unique(greencards.keys(), world.player, 1) or state.has("Liza", world.player)) and
-            (state.has_from_list_unique(bluecards.keys(), world.player, 1) or state.has("Pinn", world.player)) and
-            (state.has_from_list_unique(purplecards.keys(), world.player, 1) or state.has("Jeff", world.player)) and
-            (state.has_from_list_unique(blackcards.keys(), world.player, 1) or state.has("Geo", world.player))
+    return  (state.has("Pinn", world.player) or state.has("Kani", world.player)
+             or state.has("Wink", world.player)
+             and (state.has_from_list_unique(redcards.keys(), world.player, 1)
+
+             or state.has("Kani", world.player))
+             and (state.has_from_list_unique(orangecards.keys(), world.player, 1)
+
+             or state.has("Shane", world.player))
+             and (state.has_from_list_unique(yellowcards.keys(), world.player, 1)
+
+             or state.has("Wink", world.player))
+             and (state.has_from_list_unique(greencards.keys(), world.player, 1)
+
+             or state.has("Liza", world.player))
+             and (state.has_from_list_unique(bluecards.keys(), world.player, 1)
+
+             or state.has("Pinn", world.player))
+             and (state.has_from_list_unique(purplecards.keys(), world.player, 1)
+
+             or state.has("Jeff", world.player))
+             and (state.has_from_list_unique(blackcards.keys(), world.player, 1)
+
+             or state.has("Geo", world.player))
             )
 
 #End of helpers
@@ -236,27 +255,48 @@ def set_all_location_rules(world: SDWorld) -> None:
     multiworld = world.multiworld
 
     #Sawyer: Don't forget to define the locations we're adding rules to here.
-    add_rule(world.get_location("Blue Zone - Glitch Bridge 1 Silver Chest"), lambda mystate: sd_party_size_meets(mystate, world,3))
-    add_rule(world.get_location("Blue Cavern - Right Side Glitch Chest"), lambda mystate: sd_party_size_meets(mystate, world,3))
-    add_rule(world.get_location("Blue Cavern - Left Side Glitch Chest"), lambda mystate: sd_party_size_meets(mystate, world,2))
-    add_rule(world.get_location("Blue Zone - Wink Area Silver Chest"), lambda mystate: sd_party_size_meets(mystate, world,4))
-    add_rule(world.get_location("Blue Cavern - Left Side Silver Chest"), lambda mystate: sd_has_blue(mystate, world))
-    add_rule(world.get_location("Green Zone - Cyphon's Debut Silver Chest"), lambda mystate: sd_has_green(mystate, world))
-    add_rule(world.get_location("Red Zone - Green Chest Behind Key Bridge"), lambda mystate: sd_has_red( mystate, world))
-    add_rule(world.get_location("Red Zone Chasm - Silver Chest Behind Key Bridge"), lambda mystate: sd_has_red( mystate, world))
-    add_rule(world.get_location("Green Zone - Squail Theatre Chest"), lambda mystate: sd_has_green( mystate, world))
-    add_rule(world.get_location("Purple Zone - First Room Silver Chest"), lambda mystate: sd_has_purple( mystate, world))
-    add_rule(world.get_location("Purple Zone - Left Path Silver Chest"), lambda mystate: sd_has_purple( mystate, world))
-    add_rule(world.get_location("Purple Zone - Before Scaventure Gold Chest"), lambda mystate: sd_has_purple(mystate, world))
-    add_rule(world.get_location("Orange Zone - Center Room Silver Chest"), lambda mystate: sd_has_orange( mystate, world))
-    add_rule(world.get_location("Black Zone - First Room Chest Behind Key Bridge"), lambda mystate: sd_has_black( mystate, world))
-    add_rule(world.get_location("Black Zone - Rot Passageway 1 Gold Chest"), lambda mystate: sd_has_black( mystate, world))
-    add_rule(world.get_location("Black Zone - Second Elevator Room Behind Key Bridge"), lambda mystate: sd_has_black( mystate, world))
-    add_rule(world.get_location("Black Zone - Rot Passageway 2 Gold Chest"), lambda mystate: sd_has_black( mystate, world))
-    add_rule(world.get_location("Yellow Zone - Green Chest Behind Early Key Bridge"), lambda mystate: sd_has_yellow( mystate, world))
-    add_rule(world.get_location("Yellow Zone - ReCollection Room Chest"), lambda mystate: sd_has_yellow( mystate, world))
-    add_rule(world.get_location("Forge Chaotic Dance"), lambda mystate: sd_has_chaotic( mystate, world))
-    add_rule(world.get_location("Yellow Zone - ReCollection 06 Unlock"), lambda mystate: sd_has_yellow( mystate, world))
+    add_rule(world.get_location("Blue Zone - Glitch Bridge 1 Silver Chest"),
+             lambda mystate: sd_party_size_meets(mystate, world,3))
+    add_rule(world.get_location("Blue Cavern - Right Side Glitch Chest"),
+             lambda mystate: sd_party_size_meets(mystate, world,3))
+    add_rule(world.get_location("Blue Cavern - Left Side Glitch Chest"),
+             lambda mystate: sd_party_size_meets(mystate, world,2))
+    add_rule(world.get_location("Blue Zone - Wink Area Silver Chest"),
+             lambda mystate: sd_party_size_meets(mystate, world,4))
+    add_rule(world.get_location("Blue Cavern - Left Side Silver Chest"),
+             lambda mystate: sd_has_blue(mystate, world))
+    add_rule(world.get_location("Green Zone - Cyphon's Debut Silver Chest"),
+             lambda mystate: sd_has_green(mystate, world))
+    add_rule(world.get_location("Red Zone - Green Chest Behind Key Bridge"),
+             lambda mystate: sd_has_red( mystate, world))
+    add_rule(world.get_location("Red Zone Chasm - Silver Chest Behind Key Bridge"),
+             lambda mystate: sd_has_red( mystate, world))
+    add_rule(world.get_location("Green Zone - Squail Theatre Chest"),
+             lambda mystate: sd_has_green( mystate, world))
+    add_rule(world.get_location("Purple Zone - First Room Silver Chest"),
+             lambda mystate: sd_has_purple( mystate, world))
+    add_rule(world.get_location("Purple Zone - Left Path Silver Chest"),
+             lambda mystate: sd_has_purple( mystate, world))
+    add_rule(world.get_location("Purple Zone - Before Scaventure Gold Chest"),
+             lambda mystate: sd_has_purple(mystate, world))
+    add_rule(world.get_location("Orange Zone - Center Room Silver Chest"),
+             lambda mystate: sd_has_orange( mystate, world))
+    add_rule(world.get_location("Black Zone - First Room Chest Behind Key Bridge"),
+             lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("Black Zone - Rot Passageway 1 Gold Chest"),
+             lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("Black Zone - Second Elevator Room Behind Key Bridge"),
+             lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("Black Zone - Rot Passageway 2 Gold Chest"),
+             lambda mystate: sd_has_black( mystate, world))
+    add_rule(world.get_location("Yellow Zone - Green Chest Behind Early Key Bridge"),
+             lambda mystate: sd_has_yellow( mystate, world))
+    add_rule(world.get_location("Yellow Zone - ReCollection Room Chest"),
+             lambda mystate: sd_has_yellow( mystate, world))
+    add_rule(world.get_location("Forge Chaotic Dance"),
+             lambda mystate: sd_has_chaotic( mystate, world))
+    add_rule(world.get_location("Yellow Zone - ReCollection 06 Unlock"),
+             lambda mystate: sd_has_yellow( mystate, world))
 
 
     #Sawyer: Put the Starstud Rules here.

@@ -48,7 +48,8 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("Hub1").add_locations(get_location_names_with_ids([
-        "Grey Zone - Yellow Key Pickup","Cotton Street - Geo Join Reward 1","Cotton Street - Geo Join Reward 2","Cotton Street - Geo Join Reward 3","Cotton Street Green Chest","Cotton Street Silver Chest",
+        "Grey Zone - Yellow Key Pickup","Cotton Street - Geo Join Reward 1","Cotton Street - Geo Join Reward 2",
+        "Cotton Street - Geo Join Reward 3","Cotton Street Green Chest","Cotton Street Silver Chest",
     ]),SDLocation)
 #
     world.get_region("Hub2").add_locations(get_location_names_with_ids([
@@ -64,12 +65,16 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("KingooseRoom").add_locations(get_location_names_with_ids([
-        "Kingoose Memo 1","Kingoose Memo 2","Red Zone - Kani Join Reward 1","Red Zone - Kani Join Reward 2","Red Zone - Kani Join Reward 3","Red Zone - Kani Join Reward 4","Red Zone - Kani Join Reward 5",
+        "Kingoose Memo 1","Kingoose Memo 2","Red Zone - Kani Join Reward 1","Red Zone - Kani Join Reward 2",
+        "Red Zone - Kani Join Reward 3","Red Zone - Kani Join Reward 4","Red Zone - Kani Join Reward 5",
     ]),SDLocation)
 #
     world.get_region("Red2").add_locations(get_location_names_with_ids([
-        "Red Zone - Green Chest 1 After Kingoose","Red Zone - Green Chest 2 After Kingoose","Red Zone - Silver Chest","Red Tower - Silver Chest","Red Tower - Gold Chest","Red Zone Chasm - Silver Chest Near Bridge","Red Zone Chasm - Gold Chest",
-        "Red Zone Chasm - Silver Chest Behind Key Bridge","Red Zone Chasm - Green Chest","Red Zone - ReCollection 02 Unlock"
+        "Red Zone - Green Chest 1 After Kingoose","Red Zone - Green Chest 2 After Kingoose","Red Zone - Silver Chest",
+        "Red Tower - Silver Chest","Red Tower - Gold Chest","Red Zone Chasm - Silver Chest Near Bridge",
+        "Red Zone Chasm - Gold Chest",
+        "Red Zone Chasm - Silver Chest Behind Key Bridge","Red Zone Chasm - Green Chest",
+        "Red Zone - ReCollection 02 Unlock"
     ]),SDLocation)
 #
     if not (world.options.easylogic):
@@ -111,7 +116,8 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("DiggerRoom").add_locations(get_location_names_with_ids([
-        "Blue Zone - Digger Room Chest","Digger Memo 1","Digger Memo 2","Blue Zone - Shane Join Reward 1","Blue Zone - Shane Join Reward 2","Blue Zone - Shane Join Reward 4","Blue Zone - Shane Join Reward 3",
+        "Blue Zone - Digger Room Chest","Digger Memo 1","Digger Memo 2","Blue Zone - Shane Join Reward 1",
+        "Blue Zone - Shane Join Reward 2","Blue Zone - Shane Join Reward 4","Blue Zone - Shane Join Reward 3",
     ]),SDLocation)
 #
     world.get_region("Blue3").add_locations(get_location_names_with_ids([
@@ -119,11 +125,15 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("Blue4").add_locations(get_location_names_with_ids([
-        "Blue Zone - Wink Area Silver Chest","Blue Zone - ReCollection 05 Unlock","Blue Zone - Wink Area Green Chest 1","Blue Zone - Wink Area Green Chest 2","Blue Zone - Wink Join Reward 4","Blue Zone - Wink Join Reward 3","Blue Zone - Wink Join Reward 2","Blue Zone - Wink Join Reward 1"
+        "Blue Zone - Wink Area Silver Chest","Blue Zone - ReCollection 05 Unlock",
+        "Blue Zone - Wink Area Green Chest 1","Blue Zone - Wink Area Green Chest 2",
+        "Blue Zone - Wink Join Reward 4","Blue Zone - Wink Join Reward 3","Blue Zone - Wink Join Reward 2",
+        "Blue Zone - Wink Join Reward 1"
     ]),SDLocation)
 #
     world.get_region("Blue5").add_locations(get_location_names_with_ids([
-        "Blue Cavern - Left Side Glitch Chest","Blue Cavern - Left Side Silver Chest","Blue Cavern - Right Side Glitch Chest","Blue Cavern - Right Side Gold Chest",
+        "Blue Cavern - Left Side Glitch Chest","Blue Cavern - Left Side Silver Chest",
+        "Blue Cavern - Right Side Glitch Chest","Blue Cavern - Right Side Gold Chest",
     ]),SDLocation)
 #
 #    world.get_region("Scatter").add_locations(get_location_names_with_ids([
@@ -147,7 +157,10 @@ def create_regular_locations(world: SDWorld) -> None:
 
 #
     world.get_region("Green1").add_locations(get_location_names_with_ids([
-        "Grey Zone - Path To Green Zone Chest","Green Zone - ReCollection 03 Unlock","Green Zone - Jeff Join Reward 5","Green Zone - Jeff Join Reward 4","Green Zone - Jeff Join Reward 3","Green Zone - Jeff Join Reward 2","Green Zone - Jeff Join Reward 1","Green Zone - Cyphon's Debut Silver Chest","Green Zone - First Room Silver Chest",
+        "Grey Zone - Path To Green Zone Chest","Green Zone - ReCollection 03 Unlock","Green Zone - Jeff Join Reward 5",
+        "Green Zone - Jeff Join Reward 4","Green Zone - Jeff Join Reward 3","Green Zone - Jeff Join Reward 2",
+        "Green Zone - Jeff Join Reward 1","Green Zone - Cyphon's Debut Silver Chest",
+        "Green Zone - First Room Silver Chest",
     ]),SDLocation)
 #
     world.get_region("DesmodusRoom").add_locations(get_location_names_with_ids([
@@ -171,7 +184,10 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("Purple2").add_locations(get_location_names_with_ids([
-        "Purple Zone - After Swordmole Gold Chest","Purple Zone - After Swordmole Green Chest","Purple Zone - Sniper Long Bridge Chest","Purple Zone - Before Scaventure Gold Chest","Purple Zone - Before Scaventure Silver Chest","Purple Zone - Liza Join Reward 1","Purple Zone - Liza Join Reward 2","Purple Zone - Liza Join Reward 3",
+        "Purple Zone - After Swordmole Gold Chest","Purple Zone - After Swordmole Green Chest",
+        "Purple Zone - Sniper Long Bridge Chest","Purple Zone - Before Scaventure Gold Chest",
+        "Purple Zone - Before Scaventure Silver Chest","Purple Zone - Liza Join Reward 1",
+        "Purple Zone - Liza Join Reward 2","Purple Zone - Liza Join Reward 3",
         "Purple Zone - Liza Join Reward 4","Purple Zone - Liza Join Reward 5",
     ]),SDLocation)
 #
@@ -180,7 +196,8 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("PurpleTower").add_locations(get_location_names_with_ids([
-        "Purple Zone - Tower Entrance Gold Chest","Purple Zone - Left Path Silver Chest","Purple Zone - ReCollection 04 Unlock","Purple Tower - Silver Chest Before Enri",
+        "Purple Zone - Tower Entrance Gold Chest","Purple Zone - Left Path Silver Chest",
+        "Purple Zone - ReCollection 04 Unlock","Purple Tower - Silver Chest Before Enri",
     ]),SDLocation)
 
 #
@@ -204,7 +221,8 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("Orange1").add_locations(get_location_names_with_ids([
-        "Orange Zone - Right Room 1","Orange Zone - Left Room Chest","Orange Zone - Center Room Silver Chest","Orange Zone - Center Room Green Chest"
+        "Orange Zone - Right Room 1","Orange Zone - Left Room Chest","Orange Zone - Center Room Silver Chest",
+        "Orange Zone - Center Room Green Chest"
     ]),SDLocation)
 #
     world.get_region("DualistsRoom").add_locations(get_location_names_with_ids([
@@ -216,7 +234,8 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("Orange2").add_locations(get_location_names_with_ids([
-        "Orange Zone - ReCollection Room Gold Chest","Orange Zone - ReCollection Room Silver Chest","Orange Zone - ReCollection 07 Unlock",
+        "Orange Zone - ReCollection Room Gold Chest","Orange Zone - ReCollection Room Silver Chest",
+        "Orange Zone - ReCollection 07 Unlock",
     ]),SDLocation)
 #
     if not (world.options.easylogic):
@@ -229,7 +248,8 @@ def create_regular_locations(world: SDWorld) -> None:
         ]),SDLocation)
 #
     world.get_region("Black1").add_locations(get_location_names_with_ids([
-        "Black Zone - First Room Chest Behind Key Bridge","Black Zone - Rot Passageway 1 Gold Chest","Black Zone - Silver Chest Next To First Elevator","Black Zone - Green Chest Past First Elevator",
+        "Black Zone - First Room Chest Behind Key Bridge","Black Zone - Rot Passageway 1 Gold Chest",
+        "Black Zone - Silver Chest Next To First Elevator","Black Zone - Green Chest Past First Elevator",
     ]),SDLocation)
 #
     world.get_region("KisaijuRoom").add_locations(get_location_names_with_ids([
@@ -257,7 +277,8 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("Yellow2").add_locations(get_location_names_with_ids([
-        "Yellow Zone - Silver Chest Atop Waterfall","Yellow Zone - Green Chest Approaching Mothership","Yellow Zone - Gold Chest At Bottom of Waterfall",
+        "Yellow Zone - Silver Chest Atop Waterfall","Yellow Zone - Green Chest Approaching Mothership",
+        "Yellow Zone - Gold Chest At Bottom of Waterfall",
     ]),SDLocation)
 #
     world.get_region("MothershipRoom").add_locations(get_location_names_with_ids([
@@ -265,7 +286,9 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("YellowLighthouse").add_locations(get_location_names_with_ids([
-        "Yellow Zone - ReCollection Room Chest","Yellow Zone - East of Tower Gold Chest","Yellow Zone - East of Tower Green Chest","Yellow Zone - East of Tower Silver Chest","Yellow Tower - Green Chest","Yellow Tower - Gold Chest","Yellow Zone - ReCollection 06 Unlock",
+        "Yellow Zone - ReCollection Room Chest","Yellow Zone - East of Tower Gold Chest",
+        "Yellow Zone - East of Tower Green Chest","Yellow Zone - East of Tower Silver Chest",
+        "Yellow Tower - Green Chest","Yellow Tower - Gold Chest","Yellow Zone - ReCollection 06 Unlock",
     ]),SDLocation)
 #
     world.get_region("FinalLobby").add_locations(get_location_names_with_ids([
@@ -273,7 +296,9 @@ def create_regular_locations(world: SDWorld) -> None:
     ]),SDLocation)
 #
     world.get_region("ExanderZone").add_locations(get_location_names_with_ids([
-        "Final Zone - Silver Chest","Final Zone - Green Chest","Final Zone - Gold Chest","Final Zone Festival - Green Chest","Final Zone Festival - Silver Chest","Final Zone Festival - Gold Chest","Final Zone - ReCollection 09 Unlock",
+        "Final Zone - Silver Chest","Final Zone - Green Chest","Final Zone - Gold Chest",
+        "Final Zone Festival - Green Chest","Final Zone Festival - Silver Chest","Final Zone Festival - Gold Chest",
+        "Final Zone - ReCollection 09 Unlock",
         "Final Zone - Gold Chest Before Exander","Final Zone - Exander Location",
     ]),SDLocation)
 #
@@ -447,8 +472,10 @@ def create_regular_locations(world: SDWorld) -> None:
 
     if world.options.starstuds:
         world.get_region("Starstuds").add_locations(get_location_names_with_ids([
-            "Starstud 1","Starstud 2","Starstud 3","Starstud 4","Starstud 5","Starstud 6","Starstud 7","Starstud 8","Starstud 9",
-            "Starstud 10","Starstud 11","Starstud 12","Starstud 13","Starstud 14","Starstud 15","Starstud 16","Starstud 17",
+            "Starstud 1","Starstud 2","Starstud 3","Starstud 4","Starstud 5","Starstud 6","Starstud 7","Starstud 8",
+            "Starstud 9",
+            "Starstud 10","Starstud 11","Starstud 12","Starstud 13","Starstud 14","Starstud 15","Starstud 16",
+            "Starstud 17",
             "Starstud 18","Starstud 19",
             "Starstud 20","Starstud 21","Starstud 22","Starstud 23","Starstud 24","Starstud 25",
         ]), SDLocation)
@@ -462,37 +489,49 @@ def create_regular_locations(world: SDWorld) -> None:
 #         ]), SDLocation)
 #
         world.get_region("Shop1").add_locations(get_location_names_with_ids([
-            "Shop 1 (Req 1 Party Member)", "Shop 2 (Req 1 Party Member)","Shop 3 (Req 1 Party Member)", "Shop 4 (Req 1 Party Member)",
-            "Shop 5 (Req 1 Party Member)", "Shop 6 (Req 1 Party Member)", "Shop 7 (Req 1 Party Member)", "Shop 8 (Req 1 Party Member)",
-            "Shop 9 (Req 1 Party Member)", "Shop 10 (Req 1 Party Member)", "Shop 11 (Req 1 Party Member)", "Shop 12 (Req 1 Party Member)",
-            "Shop 13 (Req 1 Party Member)","Shop 14 (Req 1 Party Member)", "Shop 15 (Req 1 Party Member)", "Shop 16 (Req 1 Party Member)",
+            "Shop 1 (Req 1 Party Member)", "Shop 2 (Req 1 Party Member)","Shop 3 (Req 1 Party Member)",
+            "Shop 4 (Req 1 Party Member)",
+            "Shop 5 (Req 1 Party Member)", "Shop 6 (Req 1 Party Member)", "Shop 7 (Req 1 Party Member)",
+            "Shop 8 (Req 1 Party Member)",
+            "Shop 9 (Req 1 Party Member)", "Shop 10 (Req 1 Party Member)", "Shop 11 (Req 1 Party Member)",
+            "Shop 12 (Req 1 Party Member)",
+            "Shop 13 (Req 1 Party Member)","Shop 14 (Req 1 Party Member)", "Shop 15 (Req 1 Party Member)",
+            "Shop 16 (Req 1 Party Member)",
             "Shop 17 (Req 1 Party Member)",
         ]), SDLocation)
 #
         world.get_region("Shop2").add_locations(get_location_names_with_ids([
-            "Shop 18 (Req 2 Party Members)","Shop 19 (Req 2 Party Members)","Shop 20 (Req 2 Party Members)","Shop 21 (Req 2 Party Members)","Shop 22 (Req 2 Party Members)",
+            "Shop 18 (Req 2 Party Members)","Shop 19 (Req 2 Party Members)","Shop 20 (Req 2 Party Members)",
+            "Shop 21 (Req 2 Party Members)","Shop 22 (Req 2 Party Members)",
         ]), SDLocation)
 #
         world.get_region("Shop3").add_locations(get_location_names_with_ids([
-            "Shop 23 (Req 3 Party Members)","Shop 24 (Req 3 Party Members)","Shop 25 (Req 3 Party Members)","Shop 26 (Req 3 Party Members)","Shop 27 (Req 3 Party Members)","Shop 28 (Req 3 Party Members)",
+            "Shop 23 (Req 3 Party Members)","Shop 24 (Req 3 Party Members)","Shop 25 (Req 3 Party Members)",
+            "Shop 26 (Req 3 Party Members)","Shop 27 (Req 3 Party Members)","Shop 28 (Req 3 Party Members)",
         ]), SDLocation)
 #
         world.get_region("Shop4").add_locations(get_location_names_with_ids([
-            "Shop 29 (Req 4 Party Members)","Shop 30 (Req 4 Party Members)","Shop 31 (Req 4 Party Members)","Shop 32 (Req 4 Party Members)","Shop 33 (Req 4 Party Members)",
+            "Shop 29 (Req 4 Party Members)","Shop 30 (Req 4 Party Members)","Shop 31 (Req 4 Party Members)",
+            "Shop 32 (Req 4 Party Members)","Shop 33 (Req 4 Party Members)",
         ]), SDLocation)
 #
         world.get_region("Shop5").add_locations(get_location_names_with_ids([
-            "Shop 34 (Req 5 Party Members)","Shop 35 (Req 5 Party Members)","Shop 36 (Req 5 Party Members)","Shop 37 (Req 5 Party Members)","Shop 38 (Req 5 Party Members)","Shop 39 (Req 5 Party Members)",
+            "Shop 34 (Req 5 Party Members)","Shop 35 (Req 5 Party Members)","Shop 36 (Req 5 Party Members)",
+            "Shop 37 (Req 5 Party Members)","Shop 38 (Req 5 Party Members)","Shop 39 (Req 5 Party Members)",
         ]), SDLocation)
 #
         world.get_region("Shop6").add_locations(get_location_names_with_ids([
-            "Shop 40 (Req 6 Party Members)","Shop 41 (Req 6 Party Members)", "Shop 42 (Req 6 Party Members)", "Shop 43 (Req 6 Party Members)", "Shop 44 (Req 6 Party Members)", "Shop 45 (Req 6 Party Members)",
+            "Shop 40 (Req 6 Party Members)","Shop 41 (Req 6 Party Members)", "Shop 42 (Req 6 Party Members)",
+            "Shop 43 (Req 6 Party Members)", "Shop 44 (Req 6 Party Members)", "Shop 45 (Req 6 Party Members)",
         ]), SDLocation)
 #
         world.get_region("Shop7").add_locations(get_location_names_with_ids([
-             "Shop 46 (Req 7 Party Members)","Shop 47 (Req 7 Party Members)","Shop 48 (Req 7 Party Members)","Shop 49 (Req 7 Party Members)",
-            "Shop 50 (Req 7 Party Members)","Shop 51 (Req 7 Party Members)","Shop 52 (Req 7 Party Members)","Shop 53 (Req 7 Party Members)",
-            "Shop 54 (Req 7 Party Members)","Shop 55 (Req 7 Party Members)","Shop 56 (Req 7 Party Members)","Shop 57 (Req 7 Party Members)",
+            "Shop 46 (Req 7 Party Members)","Shop 47 (Req 7 Party Members)","Shop 48 (Req 7 Party Members)",
+            "Shop 49 (Req 7 Party Members)",
+            "Shop 50 (Req 7 Party Members)","Shop 51 (Req 7 Party Members)","Shop 52 (Req 7 Party Members)",
+            "Shop 53 (Req 7 Party Members)",
+            "Shop 54 (Req 7 Party Members)","Shop 55 (Req 7 Party Members)","Shop 56 (Req 7 Party Members)",
+            "Shop 57 (Req 7 Party Members)",
             "Shop 58 (Req 7 Party Members)","Shop 59 (Req 7 Party Members)",
         ]), SDLocation)
 
@@ -539,8 +578,10 @@ def create_regular_locations(world: SDWorld) -> None:
         ]), SDLocation)
 #
         world.get_region("ReCollectionExander").add_locations(get_location_names_with_ids([
-            "ReCollection 9 (Exander) Reward 1", "ReCollection 9 (Exander) Reward 2", "ReCollection 9 (Exander) Reward 3",
-            "ReCollection 9 (Exander) Reward 4", "ReCollection 9 (Exander) Reward 5", "ReCollection 9 (Exander) Reward 6",
+            "ReCollection 9 (Exander) Reward 1", "ReCollection 9 (Exander) Reward 2",
+            "ReCollection 9 (Exander) Reward 3",
+            "ReCollection 9 (Exander) Reward 4", "ReCollection 9 (Exander) Reward 5",
+            "ReCollection 9 (Exander) Reward 6",
         ]), SDLocation)
 #
         world.get_region("ReCollectionWhite").add_locations(get_location_names_with_ids([
@@ -550,31 +591,56 @@ def create_regular_locations(world: SDWorld) -> None:
 
 
 def create_events(world: SDWorld) -> None:
-    world.get_region("Hub1").locations.append(SDLocation(world.player, "Starstud1Empty", None, world.get_region("Hub1")))
-    world.get_region("Hub2").locations.append(SDLocation(world.player, "Starstud2Empty", None, world.get_region("Hub2")))
-    world.get_region("Red1").locations.append(SDLocation(world.player, "Starstud3Empty", None, world.get_region("Red1")))
-    world.get_region("Red2").locations.append(SDLocation(world.player, "Starstud4Empty", None, world.get_region("Red2")))
-    world.get_region("Red2").locations.append(SDLocation(world.player, "Starstud5Empty", None, world.get_region("Red2")))
-    world.get_region("Orange1").locations.append(SDLocation(world.player, "Starstud6Empty", None, world.get_region("Orange1")))
-    world.get_region("Orange1").locations.append(SDLocation(world.player, "Starstud24Empty", None, world.get_region("Orange1")))
-    world.get_region("Orange2").locations.append(SDLocation(world.player, "Starstud7Empty", None, world.get_region("Orange2")))
-    world.get_region("Hub3GreenSide").locations.append(SDLocation(world.player, "Starstud8Empty", None, world.get_region("Hub3GreenSide")))
-    world.get_region("EsquireRoom").locations.append(SDLocation(world.player, "Starstud9Empty", None, world.get_region("EsquireRoom")))
-    world.get_region("Yellow2").locations.append(SDLocation(world.player, "Starstud10Empty", None, world.get_region("Yellow2")))
-    world.get_region("YellowLighthouse").locations.append(SDLocation(world.player, "Starstud11Empty", None, world.get_region("YellowLighthouse")))
-    world.get_region("Green1").locations.append(SDLocation(world.player, "Starstud12Empty", None, world.get_region("Green1")))
-    world.get_region("Green2").locations.append(SDLocation(world.player, "Starstud13Empty", None, world.get_region("Green2")))
-    world.get_region("Green2").locations.append(SDLocation(world.player, "Starstud14Empty", None, world.get_region("Green2")))
-    world.get_region("Blue1").locations.append(SDLocation(world.player, "Starstud15Empty", None, world.get_region("Blue1")))
-    world.get_region("Blue4").locations.append(SDLocation(world.player, "Starstud16Empty", None, world.get_region("Blue4")))
-    world.get_region("Blue5").locations.append(SDLocation(world.player, "Starstud17Empty", None, world.get_region("Blue5")))
-    world.get_region("Purple1").locations.append(SDLocation(world.player, "Starstud18Empty", None, world.get_region("Purple1")))
-    world.get_region("PurpleTower").locations.append(SDLocation(world.player, "Starstud19Empty", None, world.get_region("PurpleTower")))
-    world.get_region("PurpleTower").locations.append(SDLocation(world.player, "Starstud20Empty", None, world.get_region("PurpleTower")))
-    world.get_region("Black1").locations.append(SDLocation(world.player, "Starstud21Empty", None, world.get_region("Black1")))
-    world.get_region("Black2").locations.append(SDLocation(world.player, "Starstud22Empty", None, world.get_region("Black2")))
-    world.get_region("BlackDungeon").locations.append(SDLocation(world.player, "Starstud23Empty", None, world.get_region("BlackDungeon")))
-    world.get_region("OmniZone1").locations.append(SDLocation(world.player, "Starstud25Empty", None, world.get_region("OmniZone1")))
+    world.get_region("Hub1").locations.append(
+        SDLocation(world.player, "Starstud1Empty", None, world.get_region("Hub1")))
+    world.get_region("Hub2").locations.append(
+        SDLocation(world.player, "Starstud2Empty", None, world.get_region("Hub2")))
+    world.get_region("Red1").locations.append(
+        SDLocation(world.player, "Starstud3Empty", None, world.get_region("Red1")))
+    world.get_region("Red2").locations.append(
+        SDLocation(world.player, "Starstud4Empty", None, world.get_region("Red2")))
+    world.get_region("Red2").locations.append(
+        SDLocation(world.player, "Starstud5Empty", None, world.get_region("Red2")))
+    world.get_region("Orange1").locations.append(
+        SDLocation(world.player, "Starstud6Empty", None, world.get_region("Orange1")))
+    world.get_region("Orange1").locations.append(
+        SDLocation(world.player, "Starstud24Empty", None, world.get_region("Orange1")))
+    world.get_region("Orange2").locations.append(
+        SDLocation(world.player, "Starstud7Empty", None, world.get_region("Orange2")))
+    world.get_region("Hub3GreenSide").locations.append(
+        SDLocation(world.player, "Starstud8Empty", None, world.get_region("Hub3GreenSide")))
+    world.get_region("EsquireRoom").locations.append(
+        SDLocation(world.player, "Starstud9Empty", None, world.get_region("EsquireRoom")))
+    world.get_region("Yellow2").locations.append(
+        SDLocation(world.player, "Starstud10Empty", None, world.get_region("Yellow2")))
+    world.get_region("YellowLighthouse").locations.append(
+        SDLocation(world.player, "Starstud11Empty", None, world.get_region("YellowLighthouse")))
+    world.get_region("Green1").locations.append(
+        SDLocation(world.player, "Starstud12Empty", None, world.get_region("Green1")))
+    world.get_region("Green2").locations.append(
+        SDLocation(world.player, "Starstud13Empty", None, world.get_region("Green2")))
+    world.get_region("Green2").locations.append(
+        SDLocation(world.player, "Starstud14Empty", None, world.get_region("Green2")))
+    world.get_region("Blue1").locations.append(
+        SDLocation(world.player, "Starstud15Empty", None, world.get_region("Blue1")))
+    world.get_region("Blue4").locations.append(
+        SDLocation(world.player, "Starstud16Empty", None, world.get_region("Blue4")))
+    world.get_region("Blue5").locations.append(
+        SDLocation(world.player, "Starstud17Empty", None, world.get_region("Blue5")))
+    world.get_region("Purple1").locations.append(
+        SDLocation(world.player, "Starstud18Empty", None, world.get_region("Purple1")))
+    world.get_region("PurpleTower").locations.append(
+        SDLocation(world.player, "Starstud19Empty", None, world.get_region("PurpleTower")))
+    world.get_region("PurpleTower").locations.append(
+        SDLocation(world.player, "Starstud20Empty", None, world.get_region("PurpleTower")))
+    world.get_region("Black1").locations.append(
+        SDLocation(world.player, "Starstud21Empty", None, world.get_region("Black1")))
+    world.get_region("Black2").locations.append(
+        SDLocation(world.player, "Starstud22Empty", None, world.get_region("Black2")))
+    world.get_region("BlackDungeon").locations.append(
+        SDLocation(world.player, "Starstud23Empty", None, world.get_region("BlackDungeon")))
+    world.get_region("OmniZone1").locations.append(
+        SDLocation(world.player, "Starstud25Empty", None, world.get_region("OmniZone1")))
 
     for i in range(25):
         location_name = f"Starstud{i + 1}Empty"
