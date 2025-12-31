@@ -268,7 +268,7 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
     #Now Purple Side
     world.connect_2way(world.get_region("Hub2"), world.get_region("DualistsRoom"), lambda state: sd_has_purple(state, world))
     world.connect_2way(world.get_region("DualistsRoom"), world.get_region("Hub3PurpleSide"), lambda state: sd_can_fight_miniboss(state, world))
-    world.connect_2way(world.get_region("Hub3PurpleSide"), world.get_region("Orange1"), lambda state: sd_has_purple(state, world))
+    world.connect_2way(world.get_region("Hub3PurpleSide"), world.get_region("Orange1"), lambda state: sd_has_green(state, world))
     #Now we are in Orange Zone proper!
     world.connect_2way(world.get_region("Orange1"), world.get_region("Orange2"), lambda state: sd_has_orange(state, world))
 

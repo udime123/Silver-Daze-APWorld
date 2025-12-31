@@ -186,7 +186,7 @@ def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
                     "Quick Strike", world.player)
                         and state.has("Move", world.player) and state.has("BlitzDrive", world.player) and state.has(
                     "Team Player", world.player)
-                        and state.has("Underhand", world.player) and state.has("Re:PUNCH", world.player) and state.has(
+                        and state.has("Underhand", world.player) and state.has(
                     "Due Vendetta", world.player)
                         and state.has("Re:PUNCH", world.player, 2) and state.has("Bubble (Foil)",
                                                                                  world.player) and state.has("Softlock",

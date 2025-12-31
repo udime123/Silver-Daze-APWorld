@@ -515,6 +515,9 @@ def create_all_items(world: SDWorld):
     if world.options.goal == 2:
         goal = world.options.emblemcount
         emblems_added = 0
+        while emblems_added < world.options.emblempool:
+            emblems_added += 1
+            itempool.append(world.create_item("Memory Emblem"))
         while emblems_added < goal:
             emblems_added += 1
             itempool.append(world.create_item("Memory Emblem"))

@@ -96,7 +96,17 @@ class emblemcount(Range):
     How many Memory Emblems are required to beat the game?
     (Only affected if your goal is Memory Emblems)
     """
-    display_name = "Memory Emblem Count"
+    display_name = "Memory Emblem Requirement"
+    range_start = 0
+    range_end = 100
+    default = 25
+
+class emblempool(Range):
+    """
+    How many Memory Emblems are added to the item pool?
+    (Only affected if your goal is Memory Emblems)
+    """
+    display_name = "Memory Emblem Pool"
     range_start = 0
     range_end = 100
     default = 25
@@ -108,6 +118,7 @@ class SilverDazeOptions(PerGameCommonOptions):
          #starting_party_member: starting_party_member
          goal: goal
          emblemcount: emblemcount
+         emblempool: emblempool
 
          easylogic: easylogic
          omniscaling: omniscaling
@@ -124,7 +135,7 @@ class SilverDazeOptions(PerGameCommonOptions):
 options_groups = [
     OptionGroup(
         "Gameplay",
-        [goal,emblemcount,omniscaling,easylogic]
+        [goal,emblemcount,emblempool,omniscaling,easylogic]
     ),
     OptionGroup(
         "Excluded Locations",
