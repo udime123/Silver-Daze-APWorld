@@ -69,7 +69,6 @@ class SDWorld(World):
 
 
     def generate_early(self) -> None:
-        avail_locations = len(list(self.multiworld.get_locations(self.player)))
         emblempool = self.options.emblempool
         if (emblempool < self.options.emblemcount and self.options.goal == 2):
             logger.warning(
