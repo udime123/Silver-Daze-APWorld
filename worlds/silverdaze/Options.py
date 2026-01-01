@@ -20,6 +20,7 @@ class goal(Choice):
     option_entropy = 0
     option_omni = 1
     option_memory_emblem = 2
+    option_chaos_chip = 3
 
     default = option_entropy
 
@@ -97,7 +98,7 @@ class emblemcount(Range):
     (Only affected if your goal is Memory Emblems)
     """
     display_name = "Memory Emblem Requirement"
-    range_start = 0
+    range_start = 1
     range_end = 100
     default = 25
 
@@ -107,10 +108,32 @@ class emblempool(Range):
     (Only affected if your goal is Memory Emblems)
     """
     display_name = "Memory Emblem Pool"
-    range_start = 0
+    range_start = 1
     range_end = 100
     default = 25
 
+class chipcount(Range):
+    """
+    How many Chaos Chips are required to beat the game?
+    (Only affected if your goal is Chaos Chips)
+
+    Chaos Chips will only spawn on bosses dictated by your
+    settings.
+    """
+    display_name = "Chaos Chip Requirement"
+    range_start = 1
+    range_end = 15
+    default = 4
+
+class chippool(Range):
+    """
+    How many Chaos Chips are added to the item pool?
+    (Only affected if your goal is Chaos Chips)
+    """
+    display_name = "Chaos Chip Pool"
+    range_start = 1
+    range_end = 15
+    default = 4
 
 
 @dataclass
@@ -119,6 +142,8 @@ class SilverDazeOptions(PerGameCommonOptions):
          goal: goal
          emblemcount: emblemcount
          emblempool: emblempool
+         chipcount: chipcount
+         chippool: chippool
 
          easylogic: easylogic
          omniscaling: omniscaling
@@ -135,8 +160,12 @@ class SilverDazeOptions(PerGameCommonOptions):
 
 option_groups = [
     OptionGroup(
+        "Goals",
+        [goal,emblemcount,emblempool,chipcount,chippool]
+    ),
+    OptionGroup(
         "Gameplay",
-        [goal,emblemcount,emblempool,omniscaling,easylogic]
+        [omniscaling,easylogic]
     ),
     OptionGroup(
         "Excluded Locations",

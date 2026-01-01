@@ -32,6 +32,19 @@ Once you have reached Omni, you will need to defeat them, which can require stra
 is preset to ensure that you have access to at least one build that can provably defeat Omni, but this logic is extremely soft and
 any strategy can be utilized.
 
+
+### Memory Emblems
+This goal requires you seek out a specific number of Memory Emblems as specified by your options.
+You can select the Required Emblems amount (the number needed to finish the game), as well as the amount added to the pool.
+For example, if your required amount is 10 and the amount in the pool is 20, then you will need to find any 10 of those 20 items to finish.
+If your required amount exceeds the pool amount, the difference will be added to ensure the game is always beatable.
+
+
+### Chaos Seeds
+This goal requires you seek out a specific number of Chaos Seeds as specified by your options.
+The goal is very similar to Memory Emblems, however the Chaos Seeds will only be placed in locations dropped by bosses; in other words, this is a boss rush mode.
+Your settings will enable you to influence which bosses are able to drop Chaos Seeds.
+
 ## What items and locations can get shuffled?
 
 Locations in which items can be found:

@@ -66,12 +66,24 @@ class SDWorld(World):
     def get_filler_item_name(self) -> str:
         return Items.get_random_filler_item_name(self)
 
+
+
     def generate_early(self) -> None:
-        if (self.options.emblempool < self.options.emblemcount and self.options.goal == 2):
+        avail_locations = len(list(self.multiworld.get_locations(self.player)))
+        emblempool = self.options.emblempool
+        if (emblempool < self.options.emblemcount and self.options.goal == 2):
             logger.warning(
                 f"Silver Daze ({self.player_name}): "
                 f"There are fewer emblems in the pool than required to beat the game. "
-                f"The difference will be added to the pool.")
+                f"The difference will be added to the pool."
+            )
+
+        if (self.options.chippool < self.options.chipcount and self.options.goal == 3):
+            logger.warning(
+                f"Silver Daze ({self.player_name}): "
+                f"There are fewer Chaos Chips in the pool than required to beat the game. "
+                f"The difference will be added to the pool."
+            )
 
     # #Sawyer: Slotdata currently contains Goal.
     def fill_slot_data(self) -> Mapping[str, Any]:
@@ -80,5 +92,5 @@ class SDWorld(World):
         # This is just options.
         return self.options.as_dict(
             "minibosses","wardens","chaoswardens","omni","shops","recollections","starstuds","goal",
-            "omniscaling","emblemcount"
+            "omniscaling","emblemcount","chipcount"
         )

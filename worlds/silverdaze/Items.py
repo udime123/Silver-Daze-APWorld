@@ -6,6 +6,10 @@ import typing
 from BaseClasses import Item, ItemClassification
 
 from worlds.AutoWorld import World, WebWorld
+import logging
+
+logger = logging.getLogger("Silver Daze")
+logger.setLevel(logging.WARNING)
 
 if TYPE_CHECKING:
     from .World import SDWorld
@@ -433,11 +437,12 @@ consumables = {
 }
 
 starstuds = {
-    "Starstud": ItemData(None, ItemClassification.progression, "Event", 25)
+    "Starstud": ItemData(None, ItemClassification.progression, "Event", 25),
 }
 
 emblems = {
-    "Memory Emblem": ItemData(2040, ItemClassification.progression, "Progression", 0)
+    "Memory Emblem": ItemData(2040, ItemClassification.progression, "Progression", 0),
+    "Chaos Chip": ItemData(2041, ItemClassification.progression, "Progression", 0),
 }
 
 
@@ -509,6 +514,77 @@ def get_random_member(world: SDWorld) -> SDItem:
     return starty_member
     #members.remove(starty_member)
 
+
+
+def initialize_chaos_chips(world: SDWorld) -> list[str]:
+    chaos_pool = []
+    if world.options.chaoswardens:
+        chaos_pool.extend(
+            [
+                "Chaos Nyx Reward Fragment","Chaos Scatter Reward Fragment","Chaos Enri Reward Fragment",
+                "Chaos Cyphon Reward Fragment","Chaos Ruda Reward Fragment","Chaos Rot Reward Fragment",
+                "Chaos Wink Reward Fragment","Purple Hippo Reward 1",
+            ]
+        )
+
+    if world.options.wardens:
+        chaos_pool.extend(
+            [
+                "Nyx Reward Key", "Scatter Reward Key", "Enri Reward Key", "Cyphon Reward Key", "Ruda Reward Key",
+                "Rot Reward Key", "Wink Reward 1", "Griffin (Final) Reward 4",
+            ]
+        )
+
+    if world.options.minibosses:
+        chaos_pool.extend(
+            [
+                "Quo Defender Reward 1", "Kingoose Reward 1", "Griffin (Blue Zone) Reward 1", "Digger Reward 1",
+                "Desmodus Reward 1", "Squail Reward 1", "Swordmole Reward 1", "Scaventure Reward 1", "Ongard Reward 1",
+                "Dualists Reward 1","Kisaiju Reward 1", "Griffin (Black Zone) Reward 1", "Esquire Reward 1",
+                "Mothership Reward 1",
+            ]
+        )
+
+    if world.options.omni:
+        chaos_pool.extend(
+            [
+                "Omni Reward 1", "White Zone - Omni Chest"
+            ]
+        )
+
+    world.random.shuffle(chaos_pool)
+    world.chaos_pool = chaos_pool
+    return chaos_pool
+
+def get_random_chaos_chips(world: SDWorld):
+    #Sawyer: Shuffle the pool of eligible places we can put Chaos Chips.
+    initialize_chaos_chips(world)
+    pool = world.options.chippool
+    chaos_chip = world.create_item("Chaos Chip")
+
+    #Sawyer: If chippool is less than required chips, make required chips the pool.
+    if world.options.chippool < world.options.chipcount:
+        pool = world.options.chipcount
+
+    #If they don't have enough bosses due to settings, this will set their max chips to the number of bosses.
+    if pool > len(world.chaos_pool):
+        pool = len(world.chaos_pool)
+        logger.warning(
+            f"Silver Daze ({world.player_name}): "
+            f"There are fewer bosses in your settings than Chaos Chips required to beat the game. "
+            f"The difference will be subtracted from your Chips."
+        )
+
+    #Sawyer: Go through the shuffled Chaos Chip pool, and if we don't have enough chips yet, place a chip.
+    chips_added = 0
+    for name in world.chaos_pool:
+        location = world.multiworld.get_location(name, world.player)
+        if chips_added < pool:
+            chips_added += 1
+            location.place_locked_item(chaos_chip)
+        else:
+            break
+
 def create_all_items(world: SDWorld):
     itempool = []
 
@@ -521,6 +597,9 @@ def create_all_items(world: SDWorld):
         while emblems_added < goal:
             emblems_added += 1
             itempool.append(world.create_item("Memory Emblem"))
+    if world.options.goal == 3:
+        get_random_chaos_chips(world)
+
 
 
     # for name in item_table:

@@ -6,7 +6,7 @@ from BaseClasses import CollectionState
 from worlds.generic.Rules import add_rule, set_rule
 
 import Options
-from .Items import party_members, redcards, orangecards, yellowcards, greencards, bluecards, purplecards, blackcards
+from .Items import (party_members, redcards, orangecards, yellowcards, greencards, bluecards, purplecards, blackcards)
 
 if TYPE_CHECKING:
     from .World import SDWorld
@@ -94,6 +94,8 @@ def sd_party_size_meets(state: CollectionState, world: SDWorld, size: int) -> bo
 
 def sd_emblems_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
     return state.has("Memory Emblem", world.player, size)
+def sd_chips_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
+    return state.has("Chaos Chip", world.player, size)
 
 #This is copied from vanilla, I won't bother reconfiguring the logic.
 #Basic gist is that it checks every location where a Starstud could be available and adds it to the pile.
@@ -326,16 +328,23 @@ def set_all_location_rules(world: SDWorld) -> None:
         add_rule(world.get_location("Starstud 24"), lambda mystate: sd_stars(mystate, world, 24))
         add_rule(world.get_location("Starstud 25"), lambda mystate: sd_stars(mystate, world, 25))
 
-#Sawyer: Time for the wincon! For now, it'll just be three party members but once the demo works it should be Entropy
+#Sawyer: Time for the wincon!
 def set_completion_condition(world: SDWorld) -> None:
     player = world.player
-    multiworld = world.multiworld
-    mystate = CollectionState
 
+    # Goal 0 is Entropy.
     if world.options.goal == 0:
         world.multiworld.completion_condition[world.player] = lambda mystate: sd_party_size_meets(mystate, world,7) and sd_has_black( mystate, world)
+    # Goal 1 is Omni
     elif world.options.goal == 1:
         world.multiworld.completion_condition[world.player] = lambda mystate: sd_can_fight_omni(mystate, world) and mystate.can_reach_region('OmniItems', player)
+    # Goal 2 is Memory Emblems
     elif world.options.goal == 2:
         goal = world.options.emblemcount
         world.multiworld.completion_condition[world.player] = lambda mystate: sd_emblems_meets(mystate, world,goal)
+    # Goal 3 is Chaos Chips
+    elif world.options.goal == 3:
+        goal = world.options.chipcount
+        if (len(world.chaos_pool) < goal):
+            goal = len(world.chaos_pool)
+        world.multiworld.completion_condition[world.player] = lambda mystate: sd_chips_meets(mystate, world,goal)
