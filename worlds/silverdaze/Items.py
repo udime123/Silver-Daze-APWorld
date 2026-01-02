@@ -623,6 +623,8 @@ def create_all_items(world: SDWorld):
     # Starting Party Member given at game start
     #if world.options.starting_party_member:
     itempool.remove(get_random_member(world))
+    #This adds in the second Wink slot.
+    itempool.append(world.create_item("Progressive Wink"))
 
 
     #The following block will give us random cards but will *not* give us duplicate cards.
