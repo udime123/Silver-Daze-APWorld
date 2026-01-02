@@ -37,7 +37,8 @@ party_members = {
     "Kani": ItemData(3003, ItemClassification.progression, "Party"),
     "Shane": ItemData(3004, ItemClassification.progression, "Party"),
     "Jeff": ItemData(3005, ItemClassification.progression, "Party"),
-    "Wink": ItemData(3006, ItemClassification.progression, "Party"),
+    #"Wink": ItemData(3006, ItemClassification.progression, "Party"),
+    "Progressive Wink": ItemData(4247, ItemClassification.progression, "Party", 2),
     "Liza": ItemData(3007, ItemClassification.progression, "Party"),
 }
 
@@ -362,7 +363,7 @@ keys = {
     "Purple Fragment": ItemData(2027, ItemClassification.progression, "Fragment"),
     "Black Fragment": ItemData(2028, ItemClassification.progression, "Fragment"),
 
-    "Exander": ItemData(4247, ItemClassification.useful, "Party"),
+    #"Exander": ItemData(4247, ItemClassification.useful, "Party"),
 }
 
 reco_keys = {

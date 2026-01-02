@@ -134,7 +134,7 @@ def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
                 # Second team to defeat Omni
                 or (
                         state.has("Kani", world.player) and state.has("Liza", world.player)
-                        and state.has("Wink", world.player)
+                        and state.has("Progressive Wink", world.player)
                         and state.has("Microwave", world.player)
                         and state.has("Voxel Generation",world.player)
                         and state.has("FirstCut", world.player)
@@ -183,7 +183,7 @@ def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
                 )
                 # Team created by SapphireJester
                 or (
-                        state.has("Kani", world.player) and state.has("Wink", world.player)
+                        state.has("Kani", world.player) and state.has("Progressive Wink", world.player)
                         and state.has("Shane", world.player)
                         and state.has("TobiasMoor", world.player)
                         and state.has("Microwave",world.player) and state.has("Quick Strike", world.player)
@@ -213,7 +213,7 @@ def sd_can_status_depression(state: CollectionState, world: SDWorld) -> bool:
 
 def sd_can_use_all_colors(state: CollectionState, world: SDWorld) -> bool:
     return  (state.has("Pinn", world.player) or state.has("Kani", world.player)
-             or state.has("Wink", world.player)
+             or state.has("Progressive Wink", world.player)
              and (state.has_from_list_unique(redcards.keys(), world.player, 1)
 
              or state.has("Kani", world.player))
@@ -222,7 +222,7 @@ def sd_can_use_all_colors(state: CollectionState, world: SDWorld) -> bool:
              or state.has("Shane", world.player))
              and (state.has_from_list_unique(yellowcards.keys(), world.player, 1)
 
-             or state.has("Wink", world.player))
+             or state.has("Progressive Wink", world.player))
              and (state.has_from_list_unique(greencards.keys(), world.player, 1)
 
              or state.has("Liza", world.player))
