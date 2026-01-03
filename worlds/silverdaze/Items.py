@@ -28,6 +28,11 @@ class ItemData(typing.NamedTuple):
     max_quantity: int = 1
     weight: int = 1
 
+def decide_omni_progression_status(world: SDWorld) -> ItemClassification:
+    if world.options.goal == 1 or world.options.omni:
+        return ItemClassification.progression
+    else:
+        return ItemClassification.useful
 
 # Item groups for easy management
 
@@ -379,53 +384,53 @@ card_keys = {
 
 omni_keys = {
 #These are progression because they can be used to defeat Omni.
-    "Shoto": ItemData(9, ItemClassification.progression, "Card"),
-    "Team Player": ItemData(346, ItemClassification.progression, "Card"),
-    "Reflect": ItemData(287, ItemClassification.progression, "Card"),
-    "Bubble (Foil)": ItemData(573, ItemClassification.progression, "Card", 2),
-    "Microwave": ItemData(214, ItemClassification.progression, "Card"),
-    "Momentum": ItemData(22, ItemClassification.progression, "Card"),
-    "Re:Move": ItemData(43, ItemClassification.progression, "Card"),
-    "Bloody Heck": ItemData(38, ItemClassification.progression, "Card", 2),
-    "FirstCut": ItemData(27, ItemClassification.progression, "Card"),
-    "Mono No Aware": ItemData(244, ItemClassification.progression, "Card"),
-    "Storm": ItemData(217, ItemClassification.progression, "Card"),
-    "Pep Talk": ItemData(204, ItemClassification.progression, "Card"),
-    "SmokeBreak": ItemData(311, ItemClassification.progression, "Card"),
-    "GoMode": ItemData(194, ItemClassification.progression, "Card"),
-    "Exception": ItemData(221, ItemClassification.progression, "Card"),
-    "Wall (Foil)": ItemData(674, ItemClassification.progression, "Card"),
-    "Footstool": ItemData(138, ItemClassification.progression, "Card"),
-    "Amp Up": ItemData(105, ItemClassification.progression, "Card"),
-    "NoU": ItemData(323, ItemClassification.progression, "Card"),
-    "Exploit": ItemData(239, ItemClassification.progression, "Card"),
-    "ZoneSlice": ItemData(224, ItemClassification.progression, "Card"),
-    "Pushbie": ItemData(24, ItemClassification.progression, "Card"),
-    "MOTS": ItemData(8, ItemClassification.progression, "Card"),
-    "FeelingBlue": ItemData(211, ItemClassification.progression, "Card"),
-    "Pullbie": ItemData(222, ItemClassification.progression, "Card"),
-    "WeirdSig": ItemData(341, ItemClassification.progression, "Card"),
-    "TobiasMoor": ItemData(35, ItemClassification.progression, "Card"),
-    "Quick Strike": ItemData(109, ItemClassification.progression, "Card"),
-    "BlitzDrive": ItemData(125, ItemClassification.progression, "Card"),
-    "Underhand": ItemData(113, ItemClassification.progression, "Card"),
-    "Re:PUNCH": ItemData(208, ItemClassification.progression, "Card", 2),
-    "Softlock": ItemData(59, ItemClassification.progression, "Card"),
-    "Chain Bolt": ItemData(128, ItemClassification.progression, "Card"),
-    "Hear Me Out": ItemData(56, ItemClassification.progression, "Card"),
+    "Shoto": ItemData(9, ItemClassification.useful, "Card"),
+    "Team Player": ItemData(346, ItemClassification.useful, "Card"),
+    "Reflect": ItemData(287, ItemClassification.useful, "Card"),
+    "Bubble (Foil)": ItemData(573, ItemClassification.useful, "Card", 2),
+    "Microwave": ItemData(214, ItemClassification.useful, "Card"),
+    "Momentum": ItemData(22, ItemClassification.useful, "Card"),
+    "Re:Move": ItemData(43, ItemClassification.useful, "Card"),
+    "Bloody Heck": ItemData(38, ItemClassification.useful, "Card", 2),
+    "FirstCut": ItemData(27, ItemClassification.useful, "Card"),
+    "Mono No Aware": ItemData(244, ItemClassification.useful, "Card"),
+    "Storm": ItemData(217, ItemClassification.useful, "Card"),
+    "Pep Talk": ItemData(204, ItemClassification.useful, "Card"),
+    "SmokeBreak": ItemData(311, ItemClassification.useful, "Card"),
+    "GoMode": ItemData(194, ItemClassification.useful, "Card"),
+    "Exception": ItemData(221, ItemClassification.useful, "Card"),
+    "Wall (Foil)": ItemData(674, ItemClassification.useful, "Card"),
+    "Footstool": ItemData(138, ItemClassification.useful, "Card"),
+    "Amp Up": ItemData(105, ItemClassification.useful, "Card"),
+    "NoU": ItemData(323, ItemClassification.useful, "Card"),
+    "Exploit": ItemData(239, ItemClassification.useful, "Card"),
+    "ZoneSlice": ItemData(224, ItemClassification.useful, "Card"),
+    "Pushbie": ItemData(24, ItemClassification.useful, "Card"),
+    "MOTS": ItemData(8, ItemClassification.useful, "Card"),
+    "FeelingBlue": ItemData(211, ItemClassification.useful, "Card"),
+    "Pullbie": ItemData(222, ItemClassification.useful, "Card"),
+    "WeirdSig": ItemData(341, ItemClassification.useful, "Card"),
+    "TobiasMoor": ItemData(35, ItemClassification.useful, "Card"),
+    "Quick Strike": ItemData(109, ItemClassification.useful, "Card"),
+    "BlitzDrive": ItemData(125, ItemClassification.useful, "Card"),
+    "Underhand": ItemData(113, ItemClassification.useful, "Card"),
+    "Re:PUNCH": ItemData(208, ItemClassification.useful, "Card", 2),
+    "Softlock": ItemData(59, ItemClassification.useful, "Card"),
+    "Chain Bolt": ItemData(128, ItemClassification.useful, "Card"),
+    "Hear Me Out": ItemData(56, ItemClassification.useful, "Card"),
 
-    "I'm So Tired": ItemData(1074, ItemClassification.progression, "MP3"),
-    "Someday": ItemData(1047, ItemClassification.progression, "MP3"),
-    "Second Chance": ItemData(1056, ItemClassification.progression, "MP3"),
-    "Nightvision": ItemData(1029, ItemClassification.progression, "MP3"),
-    "Revolution 1": ItemData(1073, ItemClassification.progression, "MP3"),
-    "Voxel Generation": ItemData(1007, ItemClassification.progression, "MP3"),
-    "Move Along": ItemData(1049, ItemClassification.progression, "MP3"),
-    "Freddie Freeloader": ItemData(1063, ItemClassification.progression, "MP3"),
-    "Wet Hands": ItemData(1010, ItemClassification.progression, "MP3"),
-    "Move": ItemData(1001, ItemClassification.progression, "MP3"),
-    "Due Vendetta": ItemData(1025, ItemClassification.progression, "MP3"),
-    "Break Free": ItemData(1015, ItemClassification.progression, "MP3"),
+    "I'm So Tired": ItemData(1074, ItemClassification.useful, "MP3"),
+    "Someday": ItemData(1047, ItemClassification.useful, "MP3"),
+    "Second Chance": ItemData(1056, ItemClassification.useful, "MP3"),
+    "Nightvision": ItemData(1029, ItemClassification.useful, "MP3"),
+    "Revolution 1": ItemData(1073, ItemClassification.useful, "MP3"),
+    "Voxel Generation": ItemData(1007, ItemClassification.useful, "MP3"),
+    "Move Along": ItemData(1049, ItemClassification.useful, "MP3"),
+    "Freddie Freeloader": ItemData(1063, ItemClassification.useful, "MP3"),
+    "Wet Hands": ItemData(1010, ItemClassification.useful, "MP3"),
+    "Move": ItemData(1001, ItemClassification.useful, "MP3"),
+    "Due Vendetta": ItemData(1025, ItemClassification.useful, "MP3"),
+    "Break Free": ItemData(1015, ItemClassification.useful, "MP3"),
 }
 
 consumables = {
@@ -457,24 +462,6 @@ cards = {
     **blackcards
 }
 
-fillercards = list(cards.keys())
-
-#Sawyer: This should give us some random fillers. Let's look into adding traps later.
-def get_random_filler_item_name(world: SDWorld) -> str:
-    fillers = [
-        "Evade Token", "Tent Token","Sneak Token","Heal Token","Hi-Heal Token",
-        "ChaoticDance", "Backup", "Counter", "Disruption", "Switchblade", "Cellik", "Play It Loud",
-        "Zoner", "CRT", "Floodgate", "Reflect", "Improvise", "LSDJ", "Lydian Scale", "Speed Mode", "Defender", "Storm",
-        "Rushdown",
-        "Drive Bit", "Schema", "BargainBin", "Deep Breath", "Mudsling", "Somewhen", "Setback", "Hold It!", "Screen",
-        "Quick Strike", "Synchlite", "Flash", "Brightslice", "Pilfer", "Warm Glow", "Gyro", "Motivate", "Blaze",
-        "Slug Shot",
-        "RATD", "Morning Ray", "Cold As Ice", "Strife",
-    ]
-
-    randomResult = world.random.randint(0, len(fillers) - 1)
-    return fillers[randomResult]
-
 item_table = {
     # This includes all entries in those other dicts in this one
     **party_members,
@@ -482,7 +469,7 @@ item_table = {
     **keys,
     **reco_keys,
     **card_keys,
-    **omni_keys,
+    #**omni_keys,
     **consumables,
     **redcards,
     **orangecards,
@@ -498,6 +485,26 @@ item_table = {
     # Other Items
     #  "Sneak Token":          ItemData(2006,       ItemClassification.filler, "Filler",   1),
 }
+
+fillercards = list(cards.keys())
+
+
+#Sawyer: This should give us some random fillers. Let's look into adding traps later.
+def get_random_filler_item_name(world: SDWorld) -> str:
+    fillers = [
+        "Evade Token", "Tent Token","Sneak Token","Heal Token","Hi-Heal Token",
+        "ChaoticDance", "Backup", "Counter", "Disruption", "Switchblade", "Cellik", "Play It Loud",
+        "Zoner", "CRT", "Floodgate", "Improvise", "LSDJ", "Lydian Scale", "Speed Mode", "Defender",
+        "Rushdown",
+        "Drive Bit", "Schema", "BargainBin", "Deep Breath", "Mudsling", "Somewhen", "Setback", "Hold It!", "Screen",
+        "Synchlite", "Flash", "Brightslice", "Pilfer", "Warm Glow", "Gyro", "Motivate", "Blaze",
+        "Slug Shot",
+        "RATD", "Morning Ray", "Cold As Ice", "Strife",
+    ]
+
+    randomResult = world.random.randint(0, len(fillers) - 1)
+    return fillers[randomResult]
+
 
 #Sawyer: Make a random starting member.
 def get_random_member(world: SDWorld) -> SDItem:
@@ -619,7 +626,7 @@ def create_all_items(world: SDWorld):
             itempool.append(world.create_item(name))
     for name in omni_keys:
         for x in range (0, omni_keys[name].max_quantity):
-            itempool.append(world.create_item(name))
+            itempool.append(SDItem(name, decide_omni_progression_status(world), omni_keys[name].code, world.player))
     if world.options.recollections:
         for name in reco_keys:
             for x in range(0, reco_keys[name].max_quantity):

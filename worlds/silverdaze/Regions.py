@@ -513,10 +513,8 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
         world.connect_2way(world.get_region("GreenBackdoorIsland"), world.get_region("ChaosWinkItems"), lambda state: sd_can_fight_chaos_warden(state, world))
         world.connect_2way(world.get_region("BlackBackdoorIsland"), world.get_region("ChaosScatterItems"), lambda state: sd_can_fight_chaos_warden(state, world))
 
-    if world.options.omni:
+    if world.options.omni or world.options.goal == 1:
         world.connect_2way(world.get_region("OmniRoom"), world.get_region("OmniItems"), lambda state: sd_can_fight_omni(state, world))
-    if world.options.goal == 1:
-        world.connect_2way(world.get_region("OmniRoom"), world.get_region("OmniItems"), lambda state: omni_reachable(state, world))
 
     if world.options.starstuds:
         world.connect_2way(world.get_region("Hub1"), world.get_region("Starstuds"), lambda state: sd_party_size_meets(state, world, 1))

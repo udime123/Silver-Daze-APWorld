@@ -97,7 +97,7 @@ def create_regular_locations(world: SDWorld) -> None:
         ]),SDLocation)
 
 #
-#    world.get_region("Blue1").add_locations(get_location_names_with_ids([
+#       world.get_region("Blue1").add_locations(get_location_names_with_ids([
 #   I don't think Blue1 has any locations atm
 #    ]),SDLocation)
 #
