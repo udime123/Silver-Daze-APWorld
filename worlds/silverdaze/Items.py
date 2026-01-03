@@ -43,22 +43,18 @@ party_members = {
 }
 
 mp3s = {
-    "Move": ItemData(1001, ItemClassification.useful, "MP3"),
     "Vengeance": ItemData(1002, ItemClassification.useful, "MP3"),
     "Big Shot": ItemData(1003, ItemClassification.useful, "MP3"),
     "Contact": ItemData(1004, ItemClassification.useful, "MP3"),
     "The Distance": ItemData(1005, ItemClassification.useful, "MP3"),
     "After Pain": ItemData(1006, ItemClassification.useful, "MP3"),
-    "Voxel Generation": ItemData(1007, ItemClassification.useful, "MP3"),
     "Aerodynamic": ItemData(1008, ItemClassification.useful, "MP3"),
     "Flow": ItemData(1009, ItemClassification.useful, "MP3"),
-    "Wet Hands": ItemData(1010, ItemClassification.useful, "MP3"),
 
     "Answers": ItemData(1011, ItemClassification.useful, "MP3"),
     "Instant Crush": ItemData(1012, ItemClassification.useful, "MP3"),
     "The One Star": ItemData(1013, ItemClassification.useful, "MP3"),
     "Elevation": ItemData(1014, ItemClassification.useful, "MP3"),
-    "Break Free": ItemData(1015, ItemClassification.useful, "MP3"),
     "Deja Vu": ItemData(1016, ItemClassification.useful, "MP3"),
     "The Good Doctor": ItemData(1017, ItemClassification.useful, "MP3"),
     "Rewrite": ItemData(1018, ItemClassification.useful, "MP3"),
@@ -69,11 +65,9 @@ mp3s = {
     "Something About Us": ItemData(1022, ItemClassification.useful, "MP3"),
     "Death By Glamour": ItemData(1023, ItemClassification.useful, "MP3"),
     "Long Dream": ItemData(1024, ItemClassification.useful, "MP3"),
-    "Due Vendetta": ItemData(1025, ItemClassification.useful, "MP3"),
     "Light Up The Night": ItemData(1026, ItemClassification.useful, "MP3"),
     "Stand By Me": ItemData(1027, ItemClassification.useful, "MP3"),
     "Hanabi": ItemData(1028, ItemClassification.useful, "MP3"),
-    "Nightvision": ItemData(1029, ItemClassification.useful, "MP3"),
     "Short Circuit": ItemData(1030, ItemClassification.useful, "MP3"),
 
     "Fragments Of Time": ItemData(1031, ItemClassification.useful, "MP3"),
@@ -93,16 +87,13 @@ mp3s = {
     "Flossophy": ItemData(1044, ItemClassification.useful, "MP3"),
     "The Sign": ItemData(1045, ItemClassification.useful, "MP3"),
     "Clear Mind": ItemData(1046, ItemClassification.useful, "MP3"),
-    "Someday": ItemData(1047, ItemClassification.useful, "MP3"),
     "All Blues": ItemData(1048, ItemClassification.useful, "MP3"),
-    "Move Along": ItemData(1049, ItemClassification.useful, "MP3"),
     "Dry Hands": ItemData(1050, ItemClassification.useful, "MP3"),
 
     "History Repeating": ItemData(1051, ItemClassification.useful, "MP3"),
     "Motherboard": ItemData(1052, ItemClassification.useful, "MP3"),
     "Oblivion": ItemData(1053, ItemClassification.useful, "MP3"),
     "Gymnopedie": ItemData(1054, ItemClassification.useful, "MP3"),
-    "Second Chance": ItemData(1056, ItemClassification.useful, "MP3"),
     "Synthetic": ItemData(1057, ItemClassification.useful, "MP3"),
     "Keep Quiet": ItemData(1058, ItemClassification.useful, "MP3"),
     "What Is Love": ItemData(1059, ItemClassification.useful, "MP3"),
@@ -110,7 +101,6 @@ mp3s = {
 
     "Strides": ItemData(1061, ItemClassification.useful, "MP3"),
     "Lost In Thought": ItemData(1062, ItemClassification.useful, "MP3"),
-    "Freddie Freeloader": ItemData(1063, ItemClassification.useful, "MP3"),
     "QuaternionicManifold": ItemData(1064, ItemClassification.useful, "MP3"),
     "Triage": ItemData(1065, ItemClassification.useful, "MP3"),
     "Sound of Silence": ItemData(1066, ItemClassification.useful, "MP3"),
@@ -121,8 +111,6 @@ mp3s = {
 
     "Glass Onion": ItemData(1071, ItemClassification.useful, "MP3"),
     "Blackbird": ItemData(1072, ItemClassification.useful, "MP3"),
-    "Revolution 1": ItemData(1073, ItemClassification.useful, "MP3"),
-    "I'm So Tired": ItemData(1074, ItemClassification.useful, "MP3"),
     "I Will": ItemData(1075, ItemClassification.useful, "MP3"),
     "Julia": ItemData(1076, ItemClassification.useful, "MP3"),
 
@@ -152,7 +140,6 @@ redcards = {
     "Sonic Boom": ItemData(29),
     "VariaCut": ItemData(30),
     "Blaze": ItemData(34, ItemClassification.filler, "Card", 0),
-    "TobiasMoor": ItemData(35),
     "Parry": ItemData(39),
     "FRAGSLASH": ItemData(40),
     "FastestFist": ItemData(41),
@@ -163,7 +150,6 @@ redcards = {
 orangecards = {
     "Motivate": ItemData(52, ItemClassification.filler, "Card", 0),
     "Gyro": ItemData(53, ItemClassification.filler, "Card", 0),
-    "Hear Me Out": ItemData(56),
     "Field Guard": ItemData(57),
     "Straight Shot": ItemData(58),
     "NthngRhyms": ItemData(60),
@@ -214,7 +200,6 @@ yellowcards = {
     "PainSplit": ItemData(124),
     "YellowJacket": ItemData(126),
     "VariaBolt": ItemData(127),
-    "Chain Bolt": ItemData(128),
     "Streetlight": ItemData(129),
     "Next Step": ItemData(130),
     "Beat Step": ItemData(133),
@@ -393,39 +378,54 @@ card_keys = {
 }
 
 omni_keys = {
-#These are progression because they can be used to defeat Omni, but they won't be listed as such.
-    "Shoto": ItemData(9),
-    "Team Player": ItemData(346),
-    "Reflect": ItemData(287),
-    "Bubble (Foil)": ItemData(573, ItemClassification.useful, "Card", 2),
-    "Microwave": ItemData(214),
-    "Re:Move": ItemData(43),
-    "Bloody Heck": ItemData(38, ItemClassification.useful, "Card", 2),
-    "FirstCut": ItemData(27),
-    "Mono No Aware": ItemData(244),
-    "Storm": ItemData(217),
-    "Pep Talk": ItemData(204),
-    "SmokeBreak": ItemData(311),
-    "GoMode": ItemData(194),
-    "Exception": ItemData(221),
-    "Wall (Foil)": ItemData(674),
-    "Footstool": ItemData(138),
-    "Amp Up": ItemData(105),
-    "NoU": ItemData(323),
-    "Exploit": ItemData(239),
-    "ZoneSlice": ItemData(224),
-    "Pushbie": ItemData(24),
-    "MOTS": ItemData(8),
-    "FeelingBlue": ItemData(211),
-    "Pullbie": ItemData(222),
-    "WeirdSig": ItemData(341),
-    "TobiasMoor": ItemData(35),
-    "Quick Strike": ItemData(109),
-    "BlitzDrive": ItemData(125),
-    "Underhand": ItemData(113),
-    "Re:PUNCH": ItemData(208),
-    "Softlock": ItemData(59),
-    "Hear Me Out": ItemData(56),
+#These are progression because they can be used to defeat Omni.
+    "Shoto": ItemData(9, ItemClassification.progression, "Card"),
+    "Team Player": ItemData(346, ItemClassification.progression, "Card"),
+    "Reflect": ItemData(287, ItemClassification.progression, "Card"),
+    "Bubble (Foil)": ItemData(573, ItemClassification.progression, "Card", 2),
+    "Microwave": ItemData(214, ItemClassification.progression, "Card"),
+    "Momentum": ItemData(22, ItemClassification.progression, "Card"),
+    "Re:Move": ItemData(43, ItemClassification.progression, "Card"),
+    "Bloody Heck": ItemData(38, ItemClassification.progression, "Card", 2),
+    "FirstCut": ItemData(27, ItemClassification.progression, "Card"),
+    "Mono No Aware": ItemData(244, ItemClassification.progression, "Card"),
+    "Storm": ItemData(217, ItemClassification.progression, "Card"),
+    "Pep Talk": ItemData(204, ItemClassification.progression, "Card"),
+    "SmokeBreak": ItemData(311, ItemClassification.progression, "Card"),
+    "GoMode": ItemData(194, ItemClassification.progression, "Card"),
+    "Exception": ItemData(221, ItemClassification.progression, "Card"),
+    "Wall (Foil)": ItemData(674, ItemClassification.progression, "Card"),
+    "Footstool": ItemData(138, ItemClassification.progression, "Card"),
+    "Amp Up": ItemData(105, ItemClassification.progression, "Card"),
+    "NoU": ItemData(323, ItemClassification.progression, "Card"),
+    "Exploit": ItemData(239, ItemClassification.progression, "Card"),
+    "ZoneSlice": ItemData(224, ItemClassification.progression, "Card"),
+    "Pushbie": ItemData(24, ItemClassification.progression, "Card"),
+    "MOTS": ItemData(8, ItemClassification.progression, "Card"),
+    "FeelingBlue": ItemData(211, ItemClassification.progression, "Card"),
+    "Pullbie": ItemData(222, ItemClassification.progression, "Card"),
+    "WeirdSig": ItemData(341, ItemClassification.progression, "Card"),
+    "TobiasMoor": ItemData(35, ItemClassification.progression, "Card"),
+    "Quick Strike": ItemData(109, ItemClassification.progression, "Card"),
+    "BlitzDrive": ItemData(125, ItemClassification.progression, "Card"),
+    "Underhand": ItemData(113, ItemClassification.progression, "Card"),
+    "Re:PUNCH": ItemData(208, ItemClassification.progression, "Card", 2),
+    "Softlock": ItemData(59, ItemClassification.progression, "Card"),
+    "Chain Bolt": ItemData(128, ItemClassification.progression, "Card"),
+    "Hear Me Out": ItemData(56, ItemClassification.progression, "Card"),
+
+    "I'm So Tired": ItemData(1074, ItemClassification.progression, "MP3"),
+    "Someday": ItemData(1047, ItemClassification.progression, "MP3"),
+    "Second Chance": ItemData(1056, ItemClassification.progression, "MP3"),
+    "Nightvision": ItemData(1029, ItemClassification.progression, "MP3"),
+    "Revolution 1": ItemData(1073, ItemClassification.progression, "MP3"),
+    "Voxel Generation": ItemData(1007, ItemClassification.progression, "MP3"),
+    "Move Along": ItemData(1049, ItemClassification.progression, "MP3"),
+    "Freddie Freeloader": ItemData(1063, ItemClassification.progression, "MP3"),
+    "Wet Hands": ItemData(1010, ItemClassification.progression, "MP3"),
+    "Move": ItemData(1001, ItemClassification.progression, "MP3"),
+    "Due Vendetta": ItemData(1025, ItemClassification.progression, "MP3"),
+    "Break Free": ItemData(1015, ItemClassification.progression, "MP3"),
 }
 
 consumables = {
@@ -606,25 +606,31 @@ def create_all_items(world: SDWorld):
     # for name in item_table:
     #     itempool.append(world.create_item(name))
     for name in party_members:
-        itempool.append(world.create_item(name))
+        for x in range(0, party_members[name].max_quantity):
+            itempool.append(world.create_item(name))
     for name in mp3s:
-        itempool.append(world.create_item(name))
+        for x in range(0, mp3s[name].max_quantity):
+            itempool.append(world.create_item(name))
     for name in keys:
-        itempool.append(world.create_item(name))
+        for x in range(0, keys[name].max_quantity):
+            itempool.append(world.create_item(name))
     for name in card_keys:
-        itempool.append(world.create_item(name))
+        for x in range(0, card_keys[name].max_quantity):
+            itempool.append(world.create_item(name))
     for name in omni_keys:
-        itempool.append(world.create_item(name))
+        for x in range (0, omni_keys[name].max_quantity):
+            itempool.append(world.create_item(name))
     if world.options.recollections:
         for name in reco_keys:
-            itempool.append(world.create_item(name))
+            for x in range(0, reco_keys[name].max_quantity):
+                itempool.append(world.create_item(name))
 
 
     # Starting Party Member given at game start
     #if world.options.starting_party_member:
     itempool.remove(get_random_member(world))
     #This adds in the second Wink slot.
-    itempool.append(world.create_item("Progressive Wink"))
+    #itempool.append(world.create_item("Progressive Wink"))
 
 
     #The following block will give us random cards but will *not* give us duplicate cards.

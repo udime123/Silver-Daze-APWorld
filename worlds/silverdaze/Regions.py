@@ -7,7 +7,7 @@ from BaseClasses import Entrance, Region, CollectionState
 
 from .Rules import sd_has_black, sd_has_blue, sd_has_red, sd_has_green, sd_has_orange, sd_has_purple, sd_has_yellow
 from .Rules import sd_can_fight_chaos_warden, sd_can_fight_warden, sd_can_fight_miniboss, sd_party_size_meets
-from .Rules import sd_has_memfinder, sd_has_glitch, sd_can_fight_omni, sd_has_reco, sd_has_reco10
+from .Rules import sd_has_memfinder, sd_has_glitch, sd_can_fight_omni, sd_has_reco, sd_has_reco10, omni_reachable
 from .Rules import (sd_has_dragon, sd_has_kappa, sd_has_cyclops, sd_has_unicorn, sd_has_phoenix, sd_has_pulgasari,
                     sd_has_pixie)
 from .Rules import sd_can_use_all_colors, sd_can_status_stun, sd_can_status_depression
@@ -513,8 +513,10 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
         world.connect_2way(world.get_region("GreenBackdoorIsland"), world.get_region("ChaosWinkItems"), lambda state: sd_can_fight_chaos_warden(state, world))
         world.connect_2way(world.get_region("BlackBackdoorIsland"), world.get_region("ChaosScatterItems"), lambda state: sd_can_fight_chaos_warden(state, world))
 
-    if world.options.omni or world.options.goal == 1:
+    if world.options.omni:
         world.connect_2way(world.get_region("OmniRoom"), world.get_region("OmniItems"), lambda state: sd_can_fight_omni(state, world))
+    if world.options.goal == 1:
+        world.connect_2way(world.get_region("OmniRoom"), world.get_region("OmniItems"), lambda state: omni_reachable(state, world))
 
     if world.options.starstuds:
         world.connect_2way(world.get_region("Hub1"), world.get_region("Starstuds"), lambda state: sd_party_size_meets(state, world, 1))

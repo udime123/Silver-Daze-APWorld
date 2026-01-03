@@ -60,7 +60,7 @@ Locations in which items can be found:
 - All shop items
 - All ReCollection rewards
 
-Based on your settings, some locations may only drop filler.
+Based on your settings, some locations may only drop filler and are not included in the pool.
 
 
 Items that can be shuffled:

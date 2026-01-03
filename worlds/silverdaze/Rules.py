@@ -112,90 +112,242 @@ def sd_can_fight_warden(state: CollectionState, world: SDWorld) -> bool:
 def sd_can_fight_chaos_warden(state: CollectionState, world: SDWorld) -> bool:
     return sd_party_size_meets(state, world,5)
 
-def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
-    if not (world.options.omni) and not (world.options.goal == 1):
-        return (
+def omni_reachable(state:CollectionState, world: SDWorld) -> bool:
+    return (
+        state.has("Black Key", world.player)
+        and state.has("Dragon", world.player)
+        and state.has("Kappa", world.player)
+        and state.has("Cyclops", world.player)
+        and state.has("Unicorn", world.player)
+        and state.has("Pulgasari", world.player)
+        and state.has("Pixie", world.player)
+    )
+
+def omni_team_1(state:CollectionState, world: SDWorld) -> bool:
+    return  (
             # First team to defeat Omni
-                (
-                        state.has("Jeff", world.player) and state.has("Kani", world.player)
-                        and state.has("Pinn", world.player)
-                        and state.has("Reflect", world.player) and state.has("Shoto", world.player)
-                        and state.has("Team Player", world.player)
-                        and state.has("Bubble (Foil)", world.player)
-                        and state.has("Second Chance", world.player) and state.has("Microwave", world.player)
-                        and state.has("RE:Move", world.player)
-                        and state.has("Bloody Heck", world.player, 2)
-                        and state.has("FirstCut", world.player)
-                        and state.has("I'm So Tired", world.player)
-                        and state.has("Mono No Aware",world.player)
-                        and state.has("Storm", world.player)
-                        and state.has("Pep Talk", world.player) and state.has("Someday", world.player)
-                )
-                # Second team to defeat Omni
-                or (
-                        state.has("Kani", world.player) and state.has("Liza", world.player)
-                        and state.has("Progressive Wink", world.player)
-                        and state.has("Microwave", world.player)
-                        and state.has("Voxel Generation",world.player)
-                        and state.has("FirstCut", world.player)
-                        and state.has("Momentum", world.player)
-                        and state.has("SmokeBreak", world.player)
-                        and state.has("GoMode", world.player)
-                        and state.has("Exception", world.player)
-                        and state.has("Bubble (Foil)", world.player)
-                        and state.has("Wall (Foil)", world.player)
-                        and state.has("Revolution 1", world.player)
-                        and state.has("Footstool",world.player)
-                        and state.has("Amp Up",world.player)
-                        and state.has("Chain Bolt", world.player) and state.has("Nightvision", world.player)
-                )
-                # Third team to defeat Omni
-                or (
-                        state.has("Geo", world.player) and state.has("Liza", world.player)
-                        and state.has("Pinn",world.player)
-                        and state.has("Bubble (Foil)", world.player, 2)
-                        and state.has("Team Player", world.player)
-                        and state.has("NoU", world.player, 2)
-                        and state.has("I'm So Tired", world.player)
-                        and state.has("GoMode", world.player)
-                        and state.has("Exception", world.player) and state.has("Wall (Foil)", world.player)
-                        and state.has("Revolution 1", world.player)
-                        and state.has("Mono No Aware",world.player)
-                        and state.has("Exploit", world.player)
-                        and state.has("ZoneSlice", world.player)
-                        and state.has("Pep Talk", world.player)
-                        and state.has("Move Along", world.player)
-                )
-                # Team that defeated Omni without taking damage
-                or (
-                        state.has("Geo", world.player) and state.has("Kani", world.player)
-                        and state.has("Pinn", world.player)
-                        and state.has("Wet Hands", world.player) and state.has("Pushbie", world.player)
-                        and state.has("Wall (Foil)", world.player)
-                        and state.has("Mono No Aware", world.player)
-                        and state.has("ZoneSlice",world.player) and state.has("MOTS", world.player)
-                        and state.has("Shoto", world.player) and state.has("Bubble (Foil)", world.player)
-                        and state.has("FeelingBlue", world.player)
-                        and state.has("Pullbie", world.player) and state.has("NoU", world.player)
-                        and state.has("Team Player", world.player)
-                        and state.has("WeirdSig", world.player) and state.has("Move Along", world.player)
-                        and state.has("Freddie Freeloader", world.player)
-                )
-                # Team created by SapphireJester
-                or (
-                        state.has("Kani", world.player) and state.has("Progressive Wink", world.player)
-                        and state.has("Shane", world.player)
-                        and state.has("TobiasMoor", world.player)
-                        and state.has("Microwave",world.player) and state.has("Quick Strike", world.player)
-                        and state.has("Move", world.player) and state.has("BlitzDrive", world.player)
-                        and state.has("Team Player", world.player)
-                        and state.has("Underhand", world.player)
-                        and state.has("Due Vendetta", world.player)
-                        and state.has("Re:PUNCH", world.player, 2)
-                        and state.has("Bubble (Foil)", world.player) and state.has("Softlock",world.player)
-                        and state.has("Hear Me Out", world.player) and state.has("Break Free", world.player)
-                )
-        )
+            state.has("Jeff", world.player)
+             and state.has("Kani", world.player)
+             and state.has("Pinn", world.player)
+             and state.has("Reflect", world.player)
+             and state.has("Shoto", world.player)
+             and state.has("Team Player", world.player)
+             and state.has("Bubble (Foil)", world.player)
+             and state.has("Second Chance", world.player)
+             and state.has("Microwave", world.player)
+             and state.has("RE:Move", world.player)
+             and state.has("Bloody Heck", world.player, 2)
+             and state.has("FirstCut", world.player)
+             and state.has("I'm So Tired", world.player)
+             and state.has("Mono No Aware",world.player)
+             and state.has("Storm", world.player)
+             and state.has("Pep Talk", world.player)
+             and state.has("Someday", world.player)
+    )
+
+def omni_team_2(state:CollectionState, world: SDWorld) -> bool:
+    return (
+            # Second team to defeat Omni
+            state.has("Kani", world.player)
+            and state.has("Liza", world.player)
+            and state.has("Progressive Wink", world.player)
+            and state.has("Microwave", world.player)
+            and state.has("Voxel Generation", world.player)
+            and state.has("FirstCut", world.player)
+            and state.has("Momentum", world.player)
+            and state.has("SmokeBreak", world.player)
+            and state.has("GoMode", world.player)
+            and state.has("Exception", world.player)
+            and state.has("Bubble (Foil)", world.player)
+            and state.has("Wall (Foil)", world.player)
+            and state.has("Revolution 1", world.player)
+            and state.has("Footstool", world.player)
+            and state.has("Amp Up", world.player)
+            and state.has("Chain Bolt", world.player)
+            and state.has("Nightvision", world.player)
+    )
+
+def omni_team_3(state:CollectionState, world: SDWorld) -> bool:
+    return (
+            # Third team to defeat Omni
+            state.has("Geo", world.player)
+            and state.has("Liza", world.player)
+            and state.has("Pinn", world.player)
+            and state.has("Bubble (Foil)", world.player, 2)
+            and state.has("Team Player", world.player)
+            and state.has("NoU", world.player, 2)
+            and state.has("I'm So Tired", world.player)
+            and state.has("GoMode", world.player)
+            and state.has("Exception", world.player)
+            and state.has("Wall (Foil)", world.player)
+            and state.has("Revolution 1", world.player)
+            and state.has("Mono No Aware", world.player)
+            and state.has("Exploit", world.player)
+            and state.has("ZoneSlice", world.player)
+            and state.has("Pep Talk", world.player)
+            and state.has("Move Along", world.player)
+    )
+def omni_team_4(state:CollectionState, world: SDWorld) -> bool:
+    return (
+            # Team that defeated Omni without taking damage
+            state.has("Geo", world.player)
+            and state.has("Kani", world.player)
+            and state.has("Pinn", world.player)
+            and state.has("Wet Hands", world.player)
+            and state.has("Pushbie", world.player)
+            and state.has("Wall (Foil)", world.player)
+            and state.has("Mono No Aware", world.player)
+            and state.has("ZoneSlice", world.player)
+            and state.has("MOTS", world.player)
+            and state.has("Shoto", world.player)
+            and state.has("Bubble (Foil)", world.player)
+            and state.has("FeelingBlue", world.player)
+            and state.has("Pullbie", world.player)
+            and state.has("NoU", world.player)
+            and state.has("Team Player", world.player)
+            and state.has("WeirdSig", world.player)
+            and state.has("Move Along", world.player)
+            and state.has("Freddie Freeloader", world.player)
+    )
+
+def omni_team_5(state:CollectionState, world: SDWorld) -> bool:
+    return (
+            # Team created by SapphireJester
+            state.has("Kani", world.player)
+            and state.has("Progressive Wink", world.player)
+            and state.has("Shane", world.player)
+            and state.has("TobiasMoor", world.player)
+            and state.has("Microwave", world.player)
+            and state.has("Quick Strike", world.player)
+            and state.has("Move", world.player)
+            and state.has("BlitzDrive", world.player)
+            and state.has("Team Player", world.player)
+            and state.has("Underhand", world.player)
+            and state.has("Due Vendetta", world.player)
+            and state.has("Re:PUNCH", world.player, 2)
+            and state.has("Bubble (Foil)", world.player)
+            and state.has("Softlock", world.player)
+            and state.has("Hear Me Out", world.player)
+            and state.has("Break Free", world.player)
+    )
+
+def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
+    if (world.options.omni) or (world.options.goal == 1):
+            if omni_reachable(state, world):
+                 if (
+                 # First team to defeat Omni
+                     state.has("Jeff", world.player)
+                 and state.has("Kani", world.player)
+                 and state.has("Pinn", world.player)
+
+                 and state.has("Reflect", world.player)
+                 and state.has("Shoto", world.player)
+                 and state.has("Team Player", world.player)
+                 and state.has("Bubble (Foil)", world.player)
+                 and state.has("Microwave", world.player)
+                 and state.has("Re:Move", world.player)
+                 and state.has("Bloody Heck", world.player, 2)
+                 and state.has("FirstCut", world.player)
+
+                 ):
+                     return True
+
+                 if (
+                 # Second team to defeat Omni
+                     state.has("Kani", world.player)
+                 and state.has("Liza", world.player)
+                 and state.has("Progressive Wink", world.player)
+
+                 and state.has("Microwave", world.player)
+                 and state.has("FirstCut", world.player)
+                 and state.has("Momentum", world.player)
+                 and state.has("SmokeBreak", world.player)
+                 and state.has("GoMode", world.player)
+                 and state.has("Exception", world.player)
+                 and state.has("Bubble (Foil)", world.player)
+                 and state.has("Wall (Foil)", world.player)
+                 and state.has("Footstool", world.player)
+                 and state.has("Amp Up", world.player)
+                 and state.has("Chain Bolt", world.player)
+
+                 and state.has("Nightvision", world.player)
+                 and state.has("Revolution 1", world.player)
+                 and state.has("Voxel Generation", world.player)
+                 ):
+                     return True
+
+                 if (
+                 # Third team to defeat Omni
+                     state.has("Geo", world.player)
+                 and state.has("Liza", world.player)
+                 and state.has("Pinn", world.player)
+
+                 and state.has("Bubble (Foil)", world.player, 2)
+                 and state.has("Team Player", world.player)
+                 and state.has("NoU", world.player, 2)
+                 and state.has("GoMode", world.player)
+                 and state.has("Exception", world.player)
+                 and state.has("Wall (Foil)", world.player)
+                 and state.has("Mono No Aware", world.player)
+                 and state.has("Exploit", world.player)
+                 and state.has("ZoneSlice", world.player)
+                 and state.has("Pep Talk", world.player)
+
+                 and state.has("Move Along", world.player)
+                 and state.has("Revolution 1", world.player)
+                 and state.has("I'm So Tired", world.player)
+                 ):
+                     return True
+
+                 if (
+                 # Team that defeated Omni without taking damage
+                     state.has("Geo", world.player)
+                 and state.has("Kani", world.player)
+                 and state.has("Pinn", world.player)
+
+                 and state.has("Pushbie", world.player)
+                 and state.has("Wall (Foil)", world.player)
+                 and state.has("Mono No Aware", world.player)
+                 and state.has("ZoneSlice", world.player)
+                 and state.has("MOTS", world.player)
+                 and state.has("Shoto", world.player)
+                 and state.has("Bubble (Foil)", world.player)
+                 and state.has("FeelingBlue", world.player)
+                 and state.has("Pullbie", world.player)
+                 and state.has("NoU", world.player)
+                 and state.has("Team Player", world.player)
+                 and state.has("WeirdSig", world.player)
+
+                 and state.has("Move Along", world.player)
+                 and state.has("Freddie Freeloader", world.player)
+                 and state.has("Wet Hands", world.player)
+                 ):
+                     return True
+
+                 if (
+                 # Team created by SapphireJester
+                    state.has("Kani", world.player)
+                 and state.has("Progressive Wink", world.player)
+                 and state.has("Shane", world.player)
+
+                 and state.has("TobiasMoor", world.player)
+                 and state.has("Microwave", world.player)
+                 and state.has("Quick Strike", world.player)
+                 and state.has("BlitzDrive", world.player)
+                 and state.has("Team Player", world.player)
+                 and state.has("Underhand", world.player)
+                 and state.has("Re:PUNCH", world.player, 2)
+                 and state.has("Bubble (Foil)", world.player)
+                 and state.has("Softlock", world.player)
+                 and state.has("Hear Me Out", world.player)
+
+                 and state.has("Break Free", world.player)
+                 and state.has("Move", world.player)
+                 and state.has("Due Vendetta", world.player)
+                ):
+                    return True
+            #If no conditions are met, return false.
+            return False
     else:
         return sd_party_size_meets(state, world, 7)
 
@@ -337,7 +489,7 @@ def set_completion_condition(world: SDWorld) -> None:
         world.multiworld.completion_condition[world.player] = lambda mystate: sd_party_size_meets(mystate, world,7) and sd_has_black( mystate, world)
     # Goal 1 is Omni
     elif world.options.goal == 1:
-        world.multiworld.completion_condition[world.player] = lambda mystate: sd_can_fight_omni(mystate, world) and mystate.can_reach_region('OmniItems', player)
+        world.multiworld.completion_condition[world.player] = lambda mystate: sd_can_fight_omni(mystate, world)
     # Goal 2 is Memory Emblems
     elif world.options.goal == 2:
         goal = world.options.emblemcount
