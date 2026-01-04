@@ -472,7 +472,7 @@ item_table = {
     **keys,
     **reco_keys,
     **card_keys,
-    #**omni_keys,
+    **omni_keys,
     **consumables,
     **redcards,
     **orangecards,
