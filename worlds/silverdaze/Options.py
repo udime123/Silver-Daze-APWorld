@@ -15,6 +15,8 @@ class goal(Choice):
     This selects the victory condition from the following:
     Entropy - Collect seven party members and beat Entropy.
     Omni - Reach Omni and defeat them using any strategy.
+    Memory Emblem - Find and collect enough Memory Emblems.
+    Chaos Emblem - Defeat bosses holding Chaos Emblems.
     """
     display_name = "Victory Condition"
     option_entropy = 0
@@ -26,7 +28,7 @@ class goal(Choice):
 
 class minibosses(Toggle):
     """
-    This toggles whether minibosses drop important items.
+    This toggles whether minibosses drops are included in the multiworld.
     NOTE: You may still need to defeat minibosses if they are blocking your path to progression
     """
     display_name = "Enable Miniboss Drops"
@@ -34,7 +36,7 @@ class minibosses(Toggle):
 
 class wardens(Toggle):
     """
-    This toggles whether Wardens drop important items.
+    This toggles whether Wardens drops are included in the multiworld.
     NOTE: This only includes normal Wardens, Chaos Wardens are a different option
     """
     display_name = "Enable Warden Drops"
@@ -42,7 +44,7 @@ class wardens(Toggle):
 
 class chaoswardens(Toggle):
     """
-    This toggles whether Chaos Wardens drop important items.
+    This toggles whether Chaos Wardens drops are included in the multiworld.
     NOTE: This only includes Chaos Wardens, normal Wardens are a different option
     """
     display_name = "Chaos Warden Drops"
@@ -50,7 +52,7 @@ class chaoswardens(Toggle):
 
 class omni(Toggle):
     """
-    This toggles whether Omni drops important items.
+    This toggles whether Omni drops are included in the multiworld.
     Note! Disabling this could prevent Omni from being beatable.
     """
     display_name = "Omni Drops"
@@ -58,21 +60,21 @@ class omni(Toggle):
 
 class shops(Toggle):
     """
-    This toggles whether shops contain important items.
+    This toggles whether shops are included in the multiworld.
     """
     display_name = "Enable Shops"
     default = 1
 
 class recollections(Toggle):
     """
-    This toggles whether ReCollections contain important items.
+    This toggles whether ReCollections are included in the multiworld.
     """
     display_name = "Enable ReCollections"
     default = 1
 
 class starstuds(Toggle):
     """
-    This toggles whether Starstuds contain important items.
+    This toggles whether Starstuds are included in the multiworld.
     """
     display_name = "Enable Starstuds"
     default = 1

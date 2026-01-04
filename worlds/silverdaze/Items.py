@@ -73,7 +73,6 @@ mp3s = {
     "Light Up The Night": ItemData(1026, ItemClassification.useful, "MP3"),
     "Stand By Me": ItemData(1027, ItemClassification.useful, "MP3"),
     "Hanabi": ItemData(1028, ItemClassification.useful, "MP3"),
-    "Short Circuit": ItemData(1030, ItemClassification.useful, "MP3"),
 
     "Fragments Of Time": ItemData(1031, ItemClassification.useful, "MP3"),
     "Too Good Too Bad": ItemData(1032, ItemClassification.useful, "MP3"),
@@ -82,7 +81,6 @@ mp3s = {
     "Gigalomania": ItemData(1035, ItemClassification.useful, "MP3"),
     "High Life": ItemData(1036, ItemClassification.useful, "MP3"),
     "Don'tStopMeNow": ItemData(1037, ItemClassification.useful, "MP3"),
-    "Handsome People": ItemData(1038, ItemClassification.useful, "MP3"),
     "RTRT": ItemData(1039, ItemClassification.useful, "MP3"),
     "Your Reality": ItemData(1040, ItemClassification.useful, "MP3"),
 
@@ -108,7 +106,6 @@ mp3s = {
     "Lost In Thought": ItemData(1062, ItemClassification.useful, "MP3"),
     "QuaternionicManifold": ItemData(1064, ItemClassification.useful, "MP3"),
     "Triage": ItemData(1065, ItemClassification.useful, "MP3"),
-    "Sound of Silence": ItemData(1066, ItemClassification.useful, "MP3"),
     "Re:Re": ItemData(1067, ItemClassification.useful, "MP3"),
     "To The Edge": ItemData(1068, ItemClassification.useful, "MP3"),
     "Resistance": ItemData(1069, ItemClassification.useful, "MP3"),
@@ -204,7 +201,6 @@ yellowcards = {
     "Hold It!": ItemData(123, ItemClassification.filler, "Card", 0),
     "PainSplit": ItemData(124),
     "YellowJacket": ItemData(126),
-    "VariaBolt": ItemData(127),
     "Streetlight": ItemData(129),
     "Next Step": ItemData(130),
     "Beat Step": ItemData(133),
@@ -218,7 +214,6 @@ yellowcards = {
 greencards = {
     "Somewhen": ItemData(156, ItemClassification.filler, "Card", 0),
     "Somewhen (Foil)": ItemData(656),
-    "TeaTime": ItemData(157, ItemClassification.filler, "Card", 0),
     "3's A Crowd": ItemData(158),
     "Dutch Angle": ItemData(160),
     "Mudsling": ItemData(161, ItemClassification.filler, "Card", 0),
@@ -226,7 +221,6 @@ greencards = {
     "Look Alive": ItemData(163),
     "Helion": ItemData(164),
     "Drift": ItemData(166),
-    "ItAin'tEasy": ItemData(167),
     "This Just In": ItemData(168),
     "Meat Shield": ItemData(169),
     "Once More": ItemData(170),
@@ -268,7 +262,6 @@ bluecards = {
     "Pointblank": ItemData(238),
     "Defender": ItemData(241, ItemClassification.filler, "Card", 0),
     "Vorpal": ItemData(242),
-    "Save4thBase": ItemData(243),
     "Kappa+": ItemData(248),
 }
 purplecards = {
@@ -289,7 +282,6 @@ purplecards = {
     "CloudDitto": ItemData(278),
     "LSDJ": ItemData(279, ItemClassification.filler, "Card", 0),
     "Contrarian": ItemData(281),
-    "Improvise": ItemData(282, ItemClassification.filler, "Card", 0),
     "WisdomDrive": ItemData(284),
     "Patience": ItemData(286),
     "VariaBeam": ItemData(288),
@@ -304,7 +296,6 @@ blackcards = {
     "CRT": ItemData(303, ItemClassification.filler, "Card", 0),
     "Zoner": ItemData(304, ItemClassification.filler, "Card", 0),
     "Play It Loud": ItemData(307, ItemClassification.filler, "Card", 0),
-    "Cellik": ItemData(308, ItemClassification.filler, "Card", 0),
     "Switchblade": ItemData(310, ItemClassification.filler, "Card", 0),
     "PaintItBlck": ItemData(312),
     "Wasting Time": ItemData(314),
@@ -401,7 +392,7 @@ omni_keys = {
     "Exception": ItemData(221, ItemClassification.useful, "Card"),
     "Wall (Foil)": ItemData(674, ItemClassification.useful, "Card"),
     "Footstool": ItemData(138, ItemClassification.useful, "Card"),
-    "Amp Up": ItemData(105, ItemClassification.useful, "Card"),
+    "Amp Up": ItemData(105, ItemClassification.useful, "Card", 2),
     "NoU": ItemData(323, ItemClassification.useful, "Card"),
     "Exploit": ItemData(239, ItemClassification.useful, "Card"),
     "ZoneSlice": ItemData(224, ItemClassification.useful, "Card"),
@@ -418,6 +409,15 @@ omni_keys = {
     "Softlock": ItemData(59, ItemClassification.useful, "Card"),
     "Chain Bolt": ItemData(128, ItemClassification.useful, "Card"),
     "Hear Me Out": ItemData(56, ItemClassification.useful, "Card"),
+    "Save4thBase": ItemData(243, ItemClassification.useful, "Card"),
+    "TeaTime": ItemData(157, ItemClassification.useful, "Card"),
+    "Cellik": ItemData(308, ItemClassification.useful, "Card"),
+    "Setplay": ItemData(253, ItemClassification.useful, "Card"),
+    "Improvise": ItemData(282, ItemClassification.filler, "Card"),
+    "GoMode (Foil)": ItemData(694, ItemClassification.useful, "Card"),
+    "Edison": ItemData(107, ItemClassification.useful, "Card"),
+    "VariaBolt": ItemData(127, ItemClassification.useful, "Card"),
+    "ItAin'tEasy": ItemData(167, ItemClassification.useful, "Card"),
 
     "I'm So Tired": ItemData(1074, ItemClassification.useful, "MP3"),
     "Someday": ItemData(1047, ItemClassification.useful, "MP3"),
@@ -431,6 +431,9 @@ omni_keys = {
     "Move": ItemData(1001, ItemClassification.useful, "MP3"),
     "Due Vendetta": ItemData(1025, ItemClassification.useful, "MP3"),
     "Break Free": ItemData(1015, ItemClassification.useful, "MP3"),
+    "Sound of Silence": ItemData(1066, ItemClassification.useful, "MP3"),
+    "Handsome People": ItemData(1038, ItemClassification.useful, "MP3"),
+    "Short Circuit": ItemData(1030, ItemClassification.useful, "MP3"),
 }
 
 consumables = {
@@ -493,8 +496,8 @@ fillercards = list(cards.keys())
 def get_random_filler_item_name(world: SDWorld) -> str:
     fillers = [
         "Evade Token", "Tent Token","Sneak Token","Heal Token","Hi-Heal Token",
-        "ChaoticDance", "Backup", "Counter", "Disruption", "Switchblade", "Cellik", "Play It Loud",
-        "Zoner", "CRT", "Floodgate", "Improvise", "LSDJ", "Lydian Scale", "Speed Mode", "Defender",
+        "ChaoticDance", "Backup", "Counter", "Disruption", "Switchblade", "Play It Loud",
+        "Zoner", "CRT", "Floodgate", "LSDJ", "Lydian Scale", "Speed Mode", "Defender",
         "Rushdown",
         "Drive Bit", "Schema", "BargainBin", "Deep Breath", "Mudsling", "Somewhen", "Setback", "Hold It!", "Screen",
         "Synchlite", "Flash", "Brightslice", "Pilfer", "Warm Glow", "Gyro", "Motivate", "Blaze",

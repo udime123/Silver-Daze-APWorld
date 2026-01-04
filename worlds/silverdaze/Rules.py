@@ -346,6 +346,54 @@ def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:
                  and state.has("Due Vendetta", world.player)
                 ):
                     return True
+
+                 if (
+                 # Team created while playing Archipelago
+                    state.has("Pinn", world.player)
+                 and state.has("Liza", world.player)
+                 and state.has("Geo", world.player)
+
+                 and state.has("Save4thBase", world.player)
+                 and state.has("Re:Punch", world.player)
+                 and state.has("Exception", world.player)
+                 and state.has("Kappa", world.player)
+                 and state.has("GoMode", world.player)
+                 and state.has("Wall (Foil)", world.player)
+                 and state.has("Teatime", world.player)
+                 and state.has("Bubble (Foil)", world.player,2)
+                 and state.has("WeirdSig", world.player)
+                 and state.has("NoU", world.player)
+                 and state.has("Cellik", world.player)
+
+                 and state.has("Sound of Silence", world.player)
+                 and state.has("Handsome People", world.player)
+                 and state.has("I'm So Tired", world.player)
+                ):
+                    return True
+                 if (
+                 # Team created by Amazia
+                     state.has("Jeff", world.player)
+                 and state.has("Liza", world.player)
+                 and state.has("Wink", world.player)
+
+                 and state.has("Bubble (Foil)", world.player)
+                 and state.has("Setplay", world.player)
+                 and state.has("Improvise", world.player)
+                 and state.has("GoMode (Foil)", world.player)
+                 and state.has("Pixie", world.player)
+                 and state.has("Edison", world.player)
+                 and state.has("Amp Up", world.player, 2)
+                 and state.has("VariaBolt", world.player)
+                 and state.has("ItAin'tEasy", world.player)
+                 and state.has("Wall (Foil)", world.player)
+                 and state.has("TeaTime", world.player)
+
+                 and state.has("Second Chance", world.player)
+                 and state.has("Handsome People", world.player)
+                 and state.has("Short Circuit", world.player)
+                ):
+                    return True
+
             #If no conditions are met, return false.
             return False
     else:
