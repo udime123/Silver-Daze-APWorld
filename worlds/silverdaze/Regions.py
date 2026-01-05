@@ -10,7 +10,7 @@ from .Rules import sd_can_fight_chaos_warden, sd_can_fight_warden, sd_can_fight_
 from .Rules import sd_has_memfinder, sd_has_glitch, sd_can_fight_omni, sd_has_reco, sd_has_reco10, omni_reachable
 from .Rules import (sd_has_dragon, sd_has_kappa, sd_has_cyclops, sd_has_unicorn, sd_has_phoenix, sd_has_pulgasari,
                     sd_has_pixie)
-from .Rules import sd_can_use_all_colors, sd_can_status_stun, sd_can_status_depression
+from .Rules import sd_can_use_all_colors, sd_can_status_stun, sd_can_status_depression, sd_has_heal
 
 if TYPE_CHECKING:
     from .World import SDWorld
@@ -457,7 +457,7 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
         world.connect_2way(world.get_region("Griffin1Room"), world.get_region("Griffin1Items"),
                            lambda state:  sd_can_fight_miniboss(state, world))
         world.connect_2way(world.get_region("DiggerRoom"), world.get_region("DiggerItems"),
-                           lambda state: sd_can_fight_miniboss(state, world))
+                           lambda state: sd_can_fight_miniboss(state, world) and sd_has_heal(state, world))
         world.connect_2way(world.get_region("DesmodusRoom"), world.get_region("DesmodusItems"),
                            lambda state: sd_can_fight_miniboss(state, world))
         world.connect_2way(world.get_region("SquailArea"), world.get_region("SquailItems"),

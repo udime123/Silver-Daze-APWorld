@@ -112,6 +112,23 @@ def sd_can_fight_warden(state: CollectionState, world: SDWorld) -> bool:
 def sd_can_fight_chaos_warden(state: CollectionState, world: SDWorld) -> bool:
     return sd_party_size_meets(state, world,5)
 
+def sd_has_heal(state: CollectionState, world: SDWorld) -> bool:
+    if state.has("Shane", world.player): return True
+    if state.has("Morning Ray", world.player): return True
+    if state.has("Shoto", world.player): return True
+    if state.has("Motivate", world.player): return True
+    if state.has("Jewell", world.player): return True
+    if state.has("PowerNap", world.player): return True
+    if state.has("FRAGHEAL", world.player): return True
+    if state.has("Setback", world.player): return True
+    if state.has("Fine Tune", world.player): return True
+    if state.has("Pep Talk", world.player): return True
+    if state.has("WeirdSig", world.player): return True
+    if state.has("Save4thBase", world.player): return True
+    if state.has("TeaTime", world.player): return True
+    if state.has("Improvise", world.player): return True
+    return False
+
 def omni_reachable(state:CollectionState, world: SDWorld) -> bool:
     return (
         state.has("Black Key", world.player)

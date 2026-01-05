@@ -319,7 +319,6 @@ blackcards = {
     "ChaoticDance": ItemData(344, ItemClassification.filler, "Card", 0),
     "GeoRomancey": ItemData(347),
     "Pulgasari+": ItemData(348),
-    "Ultima": ItemData(352),
 }
 
 keys = {
@@ -361,6 +360,7 @@ reco_keys = {
 }
 
 card_keys = {
+    "Ultima": ItemData(352),
 #These are cards but we shall treat them as progression.
     "Dragon": ItemData(31, ItemClassification.progression, "Card"),
     "Kappa": ItemData(230, ItemClassification.progression, "Card"),
