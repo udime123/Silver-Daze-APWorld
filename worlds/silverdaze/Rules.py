@@ -42,19 +42,26 @@ def sd_has_key(color: str, state: CollectionState, world: SDWorld) -> bool:
 
 #The Discord recommended we just make one function per key.
 def sd_has_red(state: CollectionState, world: SDWorld) -> bool:
-    return state.has("Red Key", world.player)
+    #return state.has("Red Key", world.player)
+    return state.prog_items[world.player]["Red"] >= 1
 def sd_has_yellow(state: CollectionState, world: SDWorld) -> bool:
-    return state.has("Yellow Key", world.player)
+    # return state.has("Yellow Key", world.player)
+    return state.prog_items[world.player]["Yellow"] >= 1
 def sd_has_blue(state: CollectionState, world: SDWorld) -> bool:
-    return state.has("Blue Key", world.player)
+    # return state.has("Blue Key", world.player)
+    return state.prog_items[world.player]["Blue"] >= 1
 def sd_has_green(state: CollectionState, world: SDWorld) -> bool:
-    return state.has("Green Key", world.player)
+    # return state.has("Green Key", world.player)
+    return state.prog_items[world.player]["Green"] >= 1
 def sd_has_purple(state: CollectionState, world: SDWorld) -> bool:
-    return state.has("Purple Key", world.player)
+    # return state.has("Purple Key", world.player)
+    return state.prog_items[world.player]["Purple"] >= 1
 def sd_has_orange(state: CollectionState, world: SDWorld) -> bool:
-    return state.has("Orange Key", world.player)
+    # return state.has("Orange Key", world.player)
+    return state.prog_items[world.player]["Orange"] >= 1
 def sd_has_black(state: CollectionState, world: SDWorld) -> bool:
-    return state.has("Black Key", world.player)
+    #return state.has("Black Key", world.player)
+    return state.prog_items[world.player]["Black"] >= 1
 
 def sd_has_memfinder(state: CollectionState, world: SDWorld) -> bool:
     return state.has("Memfinder", world.player)
@@ -90,17 +97,21 @@ def sd_has_chaotic(state: CollectionState, world: SDWorld) -> bool:
 def sd_party_size_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
     # party_members is all items that are party members
     # keys is just the strings, which are item names
-    return state.has_from_list_unique(party_members.keys(), world.player, size)
+    #return state.has_from_list_unique(party_members.keys(), world.player, size)
+    return state.prog_items[world.player]["Party"] >= size
 
 def sd_emblems_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
-    return state.has("Memory Emblem", world.player, size)
+    #return state.has("Memory Emblem", world.player, size)
+    return state.prog_items[world.player]["Memory Emblem"] >= size
 def sd_chips_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
-    return state.has("Chaos Chip", world.player, size)
+    #return state.has("Chaos Chip", world.player, size)
+    return state.prog_items[world.player]["Chaos Chip"] >= size
 
 #This is copied from vanilla, I won't bother reconfiguring the logic.
 #Basic gist is that it checks every location where a Starstud could be available and adds it to the pile.
 def sd_stars(state: CollectionState, world: SDWorld, size:int) -> bool:
-    return state.has("Starstud", world.player, size)
+    #return state.has("Starstud", world.player, size)
+    return state.prog_items[world.player]["Starstud"] >= size
 
 
 def sd_can_fight_miniboss(state: CollectionState, world: SDWorld) -> bool:
@@ -138,114 +149,6 @@ def omni_reachable(state:CollectionState, world: SDWorld) -> bool:
         and state.has("Unicorn", world.player)
         and state.has("Pulgasari", world.player)
         and state.has("Pixie", world.player)
-    )
-
-def omni_team_1(state:CollectionState, world: SDWorld) -> bool:
-    return  (
-            # First team to defeat Omni
-            state.has("Jeff", world.player)
-             and state.has("Kani", world.player)
-             and state.has("Pinn", world.player)
-             and state.has("Reflect", world.player)
-             and state.has("Shoto", world.player)
-             and state.has("Team Player", world.player)
-             and state.has("Bubble (Foil)", world.player)
-             and state.has("Second Chance", world.player)
-             and state.has("Microwave", world.player)
-             and state.has("RE:Move", world.player)
-             and state.has("Bloody Heck", world.player, 2)
-             and state.has("FirstCut", world.player)
-             and state.has("I'm So Tired", world.player)
-             and state.has("Mono No Aware",world.player)
-             and state.has("Storm", world.player)
-             and state.has("Pep Talk", world.player)
-             and state.has("Someday", world.player)
-    )
-
-def omni_team_2(state:CollectionState, world: SDWorld) -> bool:
-    return (
-            # Second team to defeat Omni
-            state.has("Kani", world.player)
-            and state.has("Liza", world.player)
-            and state.has("Progressive Wink", world.player)
-            and state.has("Microwave", world.player)
-            and state.has("Voxel Generation", world.player)
-            and state.has("FirstCut", world.player)
-            and state.has("Momentum", world.player)
-            and state.has("SmokeBreak", world.player)
-            and state.has("GoMode", world.player)
-            and state.has("Exception", world.player)
-            and state.has("Bubble (Foil)", world.player)
-            and state.has("Wall (Foil)", world.player)
-            and state.has("Revolution 1", world.player)
-            and state.has("Footstool", world.player)
-            and state.has("Amp Up", world.player)
-            and state.has("Chain Bolt", world.player)
-            and state.has("Nightvision", world.player)
-    )
-
-def omni_team_3(state:CollectionState, world: SDWorld) -> bool:
-    return (
-            # Third team to defeat Omni
-            state.has("Geo", world.player)
-            and state.has("Liza", world.player)
-            and state.has("Pinn", world.player)
-            and state.has("Bubble (Foil)", world.player, 2)
-            and state.has("Team Player", world.player)
-            and state.has("NoU", world.player, 2)
-            and state.has("I'm So Tired", world.player)
-            and state.has("GoMode", world.player)
-            and state.has("Exception", world.player)
-            and state.has("Wall (Foil)", world.player)
-            and state.has("Revolution 1", world.player)
-            and state.has("Mono No Aware", world.player)
-            and state.has("Exploit", world.player)
-            and state.has("ZoneSlice", world.player)
-            and state.has("Pep Talk", world.player)
-            and state.has("Move Along", world.player)
-    )
-def omni_team_4(state:CollectionState, world: SDWorld) -> bool:
-    return (
-            # Team that defeated Omni without taking damage
-            state.has("Geo", world.player)
-            and state.has("Kani", world.player)
-            and state.has("Pinn", world.player)
-            and state.has("Wet Hands", world.player)
-            and state.has("Pushbie", world.player)
-            and state.has("Wall (Foil)", world.player)
-            and state.has("Mono No Aware", world.player)
-            and state.has("ZoneSlice", world.player)
-            and state.has("MOTS", world.player)
-            and state.has("Shoto", world.player)
-            and state.has("Bubble (Foil)", world.player)
-            and state.has("FeelingBlue", world.player)
-            and state.has("Pullbie", world.player)
-            and state.has("NoU", world.player)
-            and state.has("Team Player", world.player)
-            and state.has("WeirdSig", world.player)
-            and state.has("Move Along", world.player)
-            and state.has("Freddie Freeloader", world.player)
-    )
-
-def omni_team_5(state:CollectionState, world: SDWorld) -> bool:
-    return (
-            # Team created by SapphireJester
-            state.has("Kani", world.player)
-            and state.has("Progressive Wink", world.player)
-            and state.has("Shane", world.player)
-            and state.has("TobiasMoor", world.player)
-            and state.has("Microwave", world.player)
-            and state.has("Quick Strike", world.player)
-            and state.has("Move", world.player)
-            and state.has("BlitzDrive", world.player)
-            and state.has("Team Player", world.player)
-            and state.has("Underhand", world.player)
-            and state.has("Due Vendetta", world.player)
-            and state.has("Re:PUNCH", world.player, 2)
-            and state.has("Bubble (Foil)", world.player)
-            and state.has("Softlock", world.player)
-            and state.has("Hear Me Out", world.player)
-            and state.has("Break Free", world.player)
     )
 
 def sd_can_fight_omni(state: CollectionState, world: SDWorld) -> bool:

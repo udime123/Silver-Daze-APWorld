@@ -1,12 +1,12 @@
 
 
 from collections.abc import Mapping
-from typing import Any, Callable
+from typing import Any, Callable, Optional
 
 # Imports base Archipelago autoworld.
 from worlds.AutoWorld import World
 
-from BaseClasses import Entrance, Region, CollectionState
+from BaseClasses import Entrance, Region, CollectionState, Item, Location
 
 # Imports our files. We use capitals for the paths.
 from . import Items, Locations, Options, Regions, Rules, Web_World
@@ -33,9 +33,12 @@ class SDWorld(World):
     options_dataclass = Options.SilverDazeOptions
     options: Options.SilverDazeOptions
 
-    #Sawyer: We used to define these here but we'll do it in Regions and Items instead.
+    #Sawyer: We used to define these here, but we'll do it in Regions and Items instead.
     location_name_to_id = Locations.LOCATION_NAME_TO_ID
     item_name_to_id = {key: item.code for (key, item) in Items.item_table.items()}
+
+    #Sawyer: These are iterative values we can check later.
+    partyMembers = 0
 
     @staticmethod
     def connect_2way(r1: Region, r2: Region, rule: Callable[[CollectionState], bool]):
@@ -66,8 +69,6 @@ class SDWorld(World):
     def get_filler_item_name(self) -> str:
         return Items.get_random_filler_item_name(self)
 
-
-
     def generate_early(self) -> None:
         emblempool = self.options.emblempool
         if (emblempool < self.options.emblemcount and self.options.goal == 2):
@@ -93,3 +94,55 @@ class SDWorld(World):
             "minibosses","wardens","chaoswardens","omni","shops","recollections","starstuds","goal",
             "omniscaling","emblemcount","chipcount"
         )
+
+    def collect(self, state: "CollectionState", item: "Item") -> bool:
+        name = self.collect_item(state, item)
+        num = 1
+        if name:
+            state.add_item(name, self.player)
+            self.iterate_collectibles(state, name, num)
+
+            return True
+        return False
+
+    def remove(self, state: "CollectionState", item: "Item") -> bool:
+        name = self.collect_item(state, item, True)
+        num = -1
+        if name:
+            state.remove_item(name, self.player)
+            self.iterate_collectibles(state, name, num)
+
+
+            return True
+        return False
+
+    def iterate_collectibles(self, state:CollectionState, name, num) -> None:
+        # Iterate Party Members
+        if name in Items.party_members:
+            state.prog_items[self.player]["Party"] += num
+            if state.prog_items[self.player]["Party"] > 7:
+                state.prog_items[self.player]["Party"] = 7
+
+        # Iterate Collectibles
+        if name == "Starstud":
+            state.prog_items[self.player]["Starstud"] += num
+        if name == "Memory Emblem":
+            state.prog_items[self.player]["Memory Emblem"] += num
+        if name == "Chaos Emblem":
+            state.prog_items[self.player]["Chaos Emblem"] += num
+
+        # Iterate Keys
+        if name == "Red Key":
+            state.prog_items[self.player]["Red"] += num
+        if name == "Orange Key":
+            state.prog_items[self.player]["Orange"] += num
+        if name == "Yellow Key":
+            state.prog_items[self.player]["Yellow"] += num
+        if name == "Green Key":
+            state.prog_items[self.player]["Green"] += num
+        if name == "Blue Key":
+            state.prog_items[self.player]["Blue"] += num
+        if name == "Purple Key":
+            state.prog_items[self.player]["Purple"] += num
+        if name == "Black Key":
+            state.prog_items[self.player]["Black"] += num
