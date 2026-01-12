@@ -329,7 +329,9 @@ keys = {
     "Red Key": ItemData(2014, ItemClassification.progression, "Key"),
     "Orange Key": ItemData(2015, ItemClassification.progression, "Key"),
     "Black Key": ItemData(2016, ItemClassification.progression, "Key"),
+}
 
+special_keys = {
     "Blue_Zone()": ItemData(2018, ItemClassification.progression, "Glitch"),
     "._locale": ItemData(2019, ItemClassification.progression, "Glitch"),
 
@@ -470,6 +472,7 @@ item_table = {
     **party_members,
     **mp3s,
     **keys,
+    **special_keys,
     **reco_keys,
     **card_keys,
     **omni_keys,
@@ -487,6 +490,20 @@ item_table = {
 
     # Other Items
     #  "Sneak Token":          ItemData(2006,       ItemClassification.filler, "Filler",   1),
+}
+
+item_name_groups = {
+    #Sawyer: These aren't working right, I'll fix it later.
+    #Pulled the basic code concept from Outer Wilds, probably just a syntax issue with different formats.
+
+    # "progression": set(entry["name"] for entry in item_table if entry["category"] == "progression"),
+    # "useful": set(entry["name"] for entry in item_table if entry["category"] == "useful"),
+    # "filler": set(entry["name"] for entry in item_table if entry["category"] == "filler"),
+    # "trap": set(entry["name"] for entry in item_table if entry["category"] == "trap"),
+
+    "Party": set(key for key, val in party_members.items()),
+    "Keys": set(key for key, val in keys.items()),
+#
 }
 
 fillercards = list(cards.keys())
@@ -624,6 +641,9 @@ def create_all_items(world: SDWorld):
     for name in keys:
         for x in range(0, keys[name].max_quantity):
             itempool.append(world.create_item(name))
+    for name in special_keys:
+        for x in range(0, special_keys[name].max_quantity):
+            itempool.append(world.create_item(name))
     for name in card_keys:
         for x in range(0, card_keys[name].max_quantity):
             itempool.append(world.create_item(name))
@@ -670,3 +690,5 @@ def create_item(self, name: str) -> SDItem:
     item_data = item_table[name]
     item = SDItem(name, item_data.classification, item_data.code, self.player)
     return item
+
+
