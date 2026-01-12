@@ -64,6 +64,11 @@ class SDWorld(World):
     def create_item(self, name: str) -> Items.SDItem:
         return Items.create_item(self, name)
 
+    # def pre_fill(self):
+    #     state = CollectionState(self.multiworld)
+    #     state.sweep_for_advancements()  # breakpoint here, step through the function to see what it's doing
+    #     print(state.prog_items)
+
     #Sawyer: We should make sure we have filler items too.
     #Sawyer: ATM these will just be Heal Tokens but honestly most Tokens work, maybe even some weak cards.
     def get_filler_item_name(self) -> str:
@@ -85,10 +90,9 @@ class SDWorld(World):
                 f"The difference will be added to the pool."
             )
 
+
     # #Sawyer: Slotdata currently contains Goal.
     def fill_slot_data(self) -> Mapping[str, Any]:
-
-
         # This is just options.
         return self.options.as_dict(
             "minibosses","wardens","chaoswardens","omni","shops","recollections","starstuds","goal",
@@ -125,11 +129,11 @@ class SDWorld(World):
 
         # Iterate Collectibles
         if name == "Starstud":
-            state.prog_items[self.player]["Starstud"] += num
+            state.prog_items[self.player]["Starstuds"] += num
         if name == "Memory Emblem":
-            state.prog_items[self.player]["Memory Emblem"] += num
+            state.prog_items[self.player]["Memory Emblems"] += num
         if name == "Chaos Emblem":
-            state.prog_items[self.player]["Chaos Emblem"] += num
+            state.prog_items[self.player]["Chaos Emblems"] += num
 
         # Iterate Keys
         if name == "Red Key":

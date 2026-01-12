@@ -445,9 +445,9 @@ consumables = {
     "Sneak Token": ItemData(2006, ItemClassification.filler, "Filler", 0),
 }
 
-starstuds = {
-    "Starstud": ItemData(None, ItemClassification.progression, "Event", 25),
-}
+#starstuds = {
+#    "Starstud": ItemData(None, ItemClassification.progression, "Event", 25),
+#}
 
 emblems = {
     "Memory Emblem": ItemData(2040, ItemClassification.progression, "Progression", 0),

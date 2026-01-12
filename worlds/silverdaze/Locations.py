@@ -638,7 +638,7 @@ def create_events(world: SDWorld) -> None:
     world.get_region("BlackDungeon").locations.append(
         SDLocation(world.player, "Starstud23Empty", None, world.get_region("BlackDungeon")))
     world.get_region("OmniZone1").locations.append(
-        SDLocation(world.player, "Starstud25Empty", None, world.get_region("OmniZone1")))
+        SDLocation(world.player, "Starstud25Empty", None, world.get_region("FinalLobby")))
 
     for i in range(25):
         location_name = f"Starstud{i + 1}Empty"

@@ -392,7 +392,7 @@ def connect_regions(state: CollectionState, world: SDWorld) -> None:
                        lambda state: sd_has_black(state, world) and sd_party_size_meets(state, world, 7))
 
     world.connect_2way(world.get_region("FinalLobby"), world.get_region("OmniZone1"),
-                       lambda state: sd_party_size_meets(state, world, 1))
+                       lambda state: sd_has_black(state, world))
     world.connect_2way(world.get_region("OmniZone1"), world.get_region("OmniZone2"),
                        lambda state:  sd_has_dragon(state, world))
     world.connect_2way(world.get_region("OmniZone2"), world.get_region("OmniZone3"),

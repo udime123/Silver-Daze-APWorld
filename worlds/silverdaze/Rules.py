@@ -102,16 +102,17 @@ def sd_party_size_meets(state: CollectionState, world: SDWorld, size: int) -> bo
 
 def sd_emblems_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
     #return state.has("Memory Emblem", world.player, size)
-    return state.prog_items[world.player]["Memory Emblem"] >= size
+    return state.prog_items[world.player]["Memory Emblems"] >= size
+
 def sd_chips_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
     #return state.has("Chaos Chip", world.player, size)
-    return state.prog_items[world.player]["Chaos Chip"] >= size
+    return state.prog_items[world.player]["Chaos Chips"] >= size
 
 #This is copied from vanilla, I won't bother reconfiguring the logic.
 #Basic gist is that it checks every location where a Starstud could be available and adds it to the pile.
 def sd_stars(state: CollectionState, world: SDWorld, size:int) -> bool:
     #return state.has("Starstud", world.player, size)
-    return state.prog_items[world.player]["Starstud"] >= size
+    return state.prog_items[world.player]["Starstuds"] >= size
 
 
 def sd_can_fight_miniboss(state: CollectionState, world: SDWorld) -> bool:
