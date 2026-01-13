@@ -37,6 +37,8 @@ class SDWorld(World):
     location_name_to_id = Locations.LOCATION_NAME_TO_ID
     item_name_to_id = {key: item.code for (key, item) in Items.item_table.items()}
 
+    item_name_groups = Items.sd_item_name_groups
+
     #Sawyer: These are iterative values we can check later.
     partyMembers = 0
 

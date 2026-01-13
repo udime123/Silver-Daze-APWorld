@@ -21,6 +21,8 @@ class SDItem(Item):
     game = "Silver Daze"
 
 
+
+
 class ItemData(typing.NamedTuple):
     code: int
     classification: ItemClassification = ItemClassification.filler
@@ -492,21 +494,21 @@ item_table = {
     #  "Sneak Token":          ItemData(2006,       ItemClassification.filler, "Filler",   1),
 }
 
-item_name_groups = {
-    #Sawyer: These aren't working right, I'll fix it later.
-    #Pulled the basic code concept from Outer Wilds, probably just a syntax issue with different formats.
+fillercards = list(cards.keys())
+
+sd_item_name_groups = {
+    # Sawyer: These aren't working right, I'll fix it later.
+    # Pulled the basic code concept from Outer Wilds, probably just a syntax issue with different formats.
 
     # "progression": set(entry["name"] for entry in item_table if entry["category"] == "progression"),
     # "useful": set(entry["name"] for entry in item_table if entry["category"] == "useful"),
     # "filler": set(entry["name"] for entry in item_table if entry["category"] == "filler"),
     # "trap": set(entry["name"] for entry in item_table if entry["category"] == "trap"),
 
-    "Party": set(key for key, val in party_members.items()),
-    "Keys": set(key for key, val in keys.items()),
-#
+    "Party": {key for key, val in party_members.items()},
+    "Keys": {key for key, val in keys.items()},
+    # "Zone Keys": {"Red Key", "Yellow Key", "Blue Key", "Green Key", "Purple Key", "Orange Key", "Black Key"},
 }
-
-fillercards = list(cards.keys())
 
 
 #Sawyer: This should give us some random fillers. Let's look into adding traps later.
