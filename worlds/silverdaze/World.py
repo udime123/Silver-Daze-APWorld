@@ -134,8 +134,8 @@ class SDWorld(World):
             state.prog_items[self.player]["Starstuds"] += num
         if name == "Memory Emblem":
             state.prog_items[self.player]["Memory Emblems"] += num
-        if name == "Chaos Emblem":
-            state.prog_items[self.player]["Chaos Emblems"] += num
+        if name == "Chaos Chip":
+            state.prog_items[self.player]["Chaos Chip"] += num
 
         # Iterate Keys
         if name == "Red Key":
