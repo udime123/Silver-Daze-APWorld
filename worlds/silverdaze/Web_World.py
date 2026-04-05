@@ -2,7 +2,7 @@ from BaseClasses import Tutorial
 #from scripts.regsetup import description
 from worlds.AutoWorld import WebWorld
 
-from .Options import option_groups, option_presets
+from .options import option_groups, option_presets
 
 
 

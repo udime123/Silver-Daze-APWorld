@@ -8,10 +8,10 @@ from typing import TYPE_CHECKING
 
 from BaseClasses import ItemClassification, Location
 
-from . import Items
+from . import items
 
 if TYPE_CHECKING:
-    from .World import SDWorld
+    from .world import SDWorld
 from .Location_Table import location_table
 
 #Okay, looks like everything needs an ID. Blehhh it is what it is, I'll just go in order from the default thingy.
@@ -643,7 +643,7 @@ def create_events(world: SDWorld) -> None:
     for i in range(25):
         location_name = f"Starstud{i + 1}Empty"
         location = world.get_location(location_name)
-        starstud = Items.SDItem("Starstud", ItemClassification.progression, None, world.player)
+        starstud = items.SDItem("Starstud", ItemClassification.progression, None, world.player)
         location.place_locked_item(starstud)
 
     #LOCATION_NAME_TO_ID.close()

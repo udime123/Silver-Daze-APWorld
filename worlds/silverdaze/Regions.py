@@ -5,15 +5,15 @@ from typing import TYPE_CHECKING
 
 from BaseClasses import Entrance, Region, CollectionState
 
-from .Rules import sd_has_black, sd_has_blue, sd_has_red, sd_has_green, sd_has_orange, sd_has_purple, sd_has_yellow
-from .Rules import sd_can_fight_chaos_warden, sd_can_fight_warden, sd_can_fight_miniboss, sd_party_size_meets
-from .Rules import sd_has_memfinder, sd_has_glitch, sd_can_fight_omni, sd_has_reco, sd_has_reco10, omni_reachable
-from .Rules import (sd_has_dragon, sd_has_kappa, sd_has_cyclops, sd_has_unicorn, sd_has_phoenix, sd_has_pulgasari,
+from .rules import sd_has_black, sd_has_blue, sd_has_red, sd_has_green, sd_has_orange, sd_has_purple, sd_has_yellow
+from .rules import sd_can_fight_chaos_warden, sd_can_fight_warden, sd_can_fight_miniboss, sd_party_size_meets
+from .rules import sd_has_memfinder, sd_has_glitch, sd_can_fight_omni, sd_has_reco, sd_has_reco10, omni_reachable
+from .rules import (sd_has_dragon, sd_has_kappa, sd_has_cyclops, sd_has_unicorn, sd_has_phoenix, sd_has_pulgasari,
                     sd_has_pixie)
-from .Rules import sd_can_use_all_colors, sd_can_status_stun, sd_can_status_depression, sd_has_heal
+from .rules import sd_can_use_all_colors, sd_can_status_stun, sd_can_status_depression, sd_has_heal
 
 if TYPE_CHECKING:
-    from .World import SDWorld
+    from .world import SDWorld
 
 def create_and_connect_regions(world: SDWorld) -> None:
     state = CollectionState

@@ -12,7 +12,7 @@ logger = logging.getLogger("Silver Daze")
 logger.setLevel(logging.WARNING)
 
 if TYPE_CHECKING:
-    from .World import SDWorld
+    from .world import SDWorld
 
 #Sawyer: This time I said screwit and went with the old system we already had, hopefully it works.
 #Sawyer: The APQuest version looked mean and scary but we can do it if we must.

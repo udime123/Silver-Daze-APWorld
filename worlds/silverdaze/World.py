@@ -9,7 +9,7 @@ from worlds.AutoWorld import World
 from BaseClasses import Entrance, Region, CollectionState, Item, Location
 
 # Imports our files. We use capitals for the paths.
-from . import Items, Locations, Options, Regions, Rules, Web_World
+from . import items, locations, options, regions, rules, Web_World
 import logging
 logger = logging.getLogger("Silver Daze")
 logger.setLevel(logging.WARNING)
@@ -30,14 +30,14 @@ class SDWorld(World):
     #Sawyer: Webworld will be important eventually so we might as well add that now.
     web = Web_World.SilverDazeWebWorld()
 
-    options_dataclass = Options.SilverDazeOptions
-    options: Options.SilverDazeOptions
+    options_dataclass = options.SilverDazeOptions
+    options: options.SilverDazeOptions
 
     #Sawyer: We used to define these here, but we'll do it in Regions and Items instead.
-    location_name_to_id = Locations.LOCATION_NAME_TO_ID
-    item_name_to_id = {key: item.code for (key, item) in Items.item_table.items()}
+    location_name_to_id = locations.LOCATION_NAME_TO_ID
+    item_name_to_id = {key: item.code for (key, item) in items.item_table.items()}
 
-    item_name_groups = Items.sd_item_name_groups
+    item_name_groups = items.sd_item_name_groups
 
     #Sawyer: These are iterative values we can check later.
     partyMembers = 0
@@ -53,18 +53,18 @@ class SDWorld(World):
 
     #Sawyer: These are important rules, check APQuest for an explanation.
     def create_regions(self) -> None:
-        Regions.create_and_connect_regions(self)
-        Locations.create_all_locations(self)
+        regions.create_and_connect_regions(self)
+        locations.create_all_locations(self)
 
     def set_rules(self) -> None:
-        Rules.set_all_rules(self)
+        rules.set_all_rules(self)
 
     def create_items(self) -> None:
-        Items.create_all_items(self)
+        items.create_all_items(self)
 
     #Sawyer: Time to make items, of course!
-    def create_item(self, name: str) -> Items.SDItem:
-        return Items.create_item(self, name)
+    def create_item(self, name: str) -> items.SDItem:
+        return items.create_item(self, name)
 
     # def pre_fill(self):
     #     state = CollectionState(self.multiworld)
@@ -74,7 +74,7 @@ class SDWorld(World):
     #Sawyer: We should make sure we have filler items too.
     #Sawyer: ATM these will just be Heal Tokens but honestly most Tokens work, maybe even some weak cards.
     def get_filler_item_name(self) -> str:
-        return Items.get_random_filler_item_name(self)
+        return items.get_random_filler_item_name(self)
 
     def generate_early(self) -> None:
         emblempool = self.options.emblempool
@@ -124,10 +124,11 @@ class SDWorld(World):
 
     def iterate_collectibles(self, state:CollectionState, name, num) -> None:
         # Iterate Party Members
-        if name in Items.party_members:
-            state.prog_items[self.player]["Party"] += num
-            if state.prog_items[self.player]["Party"] > 7:
-                state.prog_items[self.player]["Party"] = 7
+        if name in items.party_members:
+            if state.count(name, self.player) < 2:
+                state.prog_items[self.player]["Party"] += num
+                if state.prog_items[self.player]["Party"] > 7:
+                    state.prog_items[self.player]["Party"] = 7
 
         # Iterate Collectibles
         if name == "Starstud":

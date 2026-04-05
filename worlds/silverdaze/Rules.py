@@ -6,10 +6,10 @@ from BaseClasses import CollectionState
 from worlds.generic.Rules import add_rule, set_rule
 
 import Options
-from .Items import (party_members, redcards, orangecards, yellowcards, greencards, bluecards, purplecards, blackcards)
+from .items import (party_members, redcards, orangecards, yellowcards, greencards, bluecards, purplecards, blackcards)
 
 if TYPE_CHECKING:
-    from .World import SDWorld
+    from .world import SDWorld
 
 
 def set_all_rules(world: SDWorld) -> None:
@@ -97,10 +97,10 @@ def sd_has_chaotic(state: CollectionState, world: SDWorld) -> bool:
 def sd_party_size_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
     # party_members is all items that are party members
     # keys is just the strings, which are item names
-    return state.has_from_list_unique(party_members.keys(), world.player, size)
-    #temp_size = state.prog_items[world.player]["Party"]
+    #return state.has_from_list_unique(party_members.keys(), world.player, size)
+    temp_size = state.prog_items[world.player]["Party"]
     #Temp Size is so we can subtract one if they have multiple Winks.
-    #return  temp_size >= size
+    return  temp_size >= size
 
 def sd_emblems_meets(state: CollectionState, world: SDWorld, size: int) -> bool:
     #return state.has("Memory Emblem", world.player, size)
