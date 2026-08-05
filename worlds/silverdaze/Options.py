@@ -146,6 +146,13 @@ class chippool(Range):
     range_end = 15
     default = 4
 
+class hintchips(Toggle):
+    """
+    Toggle on to hint the location of Chaos Chips at the beginning.
+    """
+    display_name = "Hint Chaos Chips"
+    default = 0
+
 
 @dataclass
 class SilverDazeOptions(PerGameCommonOptions):
@@ -155,6 +162,7 @@ class SilverDazeOptions(PerGameCommonOptions):
          emblempool: emblempool
          chipcount: chipcount
          chippool: chippool
+         hintchips: hintchips
 
          easylogic: easylogic
          omniscaling: omniscaling
@@ -173,7 +181,7 @@ class SilverDazeOptions(PerGameCommonOptions):
 option_groups = [
     OptionGroup(
         "Goals",
-        [goal,emblemcount,emblempool,chipcount,chippool]
+        [goal,emblemcount,emblempool,chipcount,chippool,hintchips]
     ),
     OptionGroup(
         "Gameplay",

@@ -91,6 +91,8 @@ class SDWorld(World):
                 f"There are fewer Chaos Chips in the pool than required to beat the game. "
                 f"The difference will be added to the pool."
             )
+        if self.options.hintchips == 1 and self.options.goal == 3:
+            self.options.start_hints.value.add("Chaos Chip")
 
 
     # #Sawyer: Slotdata currently contains Goal.
@@ -98,7 +100,7 @@ class SDWorld(World):
         # This is just options.
         return self.options.as_dict(
             "minibosses","wardens","chaoswardens","omni","shops","recollections","starstuds","goal",
-            "omniscaling","emblemcount","chipcount","disableenemylevelslider"
+            "omniscaling","emblemcount","chipcount","disableenemylevelslider","hintchips"
         )
 
     def collect(self, state: "CollectionState", item: "Item") -> bool:
