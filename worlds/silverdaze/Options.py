@@ -94,6 +94,15 @@ class omniscaling(Toggle):
     display_name = "Omni Level Scaling"
     default = 1
 
+class disableenemylevelslider(Toggle):
+    """
+    This toggles whether the Enemy Levels slider in the options is available to be edited.
+    WARNING: This could cause required grinding for some seeds.
+    """
+    display_name = "Disable Enemy Level Slider"
+    default = 0
+
+
 class emblemcount(Range):
     """
     How many Memory Emblems are required to beat the game?
@@ -149,6 +158,7 @@ class SilverDazeOptions(PerGameCommonOptions):
 
          easylogic: easylogic
          omniscaling: omniscaling
+         disableenemylevelslider: disableenemylevelslider
 
          minibosses: minibosses
          wardens: wardens
@@ -167,7 +177,7 @@ option_groups = [
     ),
     OptionGroup(
         "Gameplay",
-        [omniscaling,easylogic]
+        [omniscaling,easylogic,disableenemylevelslider]
     ),
     OptionGroup(
         "Excluded Locations",
@@ -186,6 +196,7 @@ option_presets = {
         "recollections": True,
         "starstuds": True,
         "omniscaling": True,
+        "disableenemylevelslider": True,
         "easylogic": False,
     },
     "Breezy": {
@@ -198,6 +209,7 @@ option_presets = {
         "recollections": False,
         "starstuds": False,
         "easylogic": True,
+        "disableenemylevelslider": False,
         "emblemcount": 25,
         "emblempool": 50,
 

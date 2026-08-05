@@ -98,7 +98,7 @@ class SDWorld(World):
         # This is just options.
         return self.options.as_dict(
             "minibosses","wardens","chaoswardens","omni","shops","recollections","starstuds","goal",
-            "omniscaling","emblemcount","chipcount"
+            "omniscaling","emblemcount","chipcount","disableenemylevelslider"
         )
 
     def collect(self, state: "CollectionState", item: "Item") -> bool:
